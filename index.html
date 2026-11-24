@@ -164,10 +164,10 @@ var LANGS={
   "Kommend":"Upcoming","Vergaangen":"Past","Näischt do.":"Nothing here.",
   "Jo":"Yes","Villäicht":"Maybe","Nee":"No","✓ Dobäi":"✓ Going","Liicht":"Easy","Mettel":"Moderate","Haart":"Hard","Ausdauer":"endurance",
   "Schwell":"Threshold","Intervaller":"Intervals","Biergleef & Schwell":"Hill & threshold","Pyramid":"Pyramid","Tempo-Dauerlaf":"Tempo run","Laftreff":"Group run",
-  "Athlet":"Athlete","Vorstand":"Board","Trainer":"Coach",
+  "Athlet":"Athlete","Comité":"Committee","Trainer":"Coach",
   "DEMO-SCHALTER · Roll wielen":"DEMO SWITCH · choose role","Ergänzungen (Prototyp)":"Additions (prototype)",
   "Profil änneren":"Edit profile","Notifikatiounen":"Notifications","Kont":"Account","Hëllef":"Help","Iwwer d'App":"About the app","Ofmellen":"Log out",
-  "Sprooch":"Language","Mäi Beräich":"My area","Wunschbox":"Wish box","Social-Media Fräigab":"Social media approval","Export Coursen (CSV)":"Export races (CSV)",
+  "Sprooch":"Language","Mäi Beräich":"My area","Wunschbox":"Wish box","Social-Media Fräiginn":"Social media approval","Export Coursen (CSV)":"Export races (CSV)",
   "Prototyp · v0.1 · Demo-Daten (erfonnen)":"Prototype · v0.1 · demo data (fictional)",
   "Datum":"Date","Auerzäit":"Time","Uert":"Place","Beschreiwung":"Description","Deng Umeldung":"Your response","Dain aktuellen Status:":"Your current status:",
   "15 Min. virum Training sprengt de Status automatesch op Neen.":"15 min before training the status automatically switches to No.",
@@ -175,21 +175,21 @@ var LANGS={
   "Präsenz":"Attendance","Präsenzlëscht":"Attendance list","Keen an dëser Grupp.":"Nobody in this group.",
   "Umeldungsschluss":"Registration deadline","Course änneren":"Edit race","Meng Umeldung":"My registration","Umeldung änneren":"Change registration",
   "Umeldungsschluss ass ofgelaf":"Registration deadline has passed","Distanz":"Distance","Umellen":"Register","Resultater":"Results","Nach keng Resultater.":"No results yet.",
-  "+ Resultat androen":"+ Add result","Änneren":"Edit","Fir Social Media":"For social media","fräigigi":"approved","waart op Fräigab":"awaiting approval",
+  "+ Resultat androen":"+ Add result","Änneren":"Edit","Fir Social Media":"For social media","fräigigi":"approved","waart op Fräiginn":"awaiting approval",
   "Anerer":"Other","— (spéider)":"— (later)","Meng Distanz":"My distance","Numm":"Name","Land":"Country","Info":"Info",
   "Resultat änneren":"Edit result","Resultat androen":"Add result","Zäit (h:mm:ss)":"Time (h:mm:ss)","Plaz":"Place","Kommentar":"Comment","Läschen":"Delete",
   "Vun der Course ofmellen":"Withdraw from race",
   "Virschau 1080 × 1350 (Instagram-Format)":"Preview 1080 × 1350 (Instagram format)",
   "Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.":"May be published (name, time). Revocable at any time.",
-  "✓ Vum Vorstand fräigigi":"✓ Approved by the board","Waart op Fräigab duerch de Vorstand":"Awaiting board approval","Zoumaachen":"Close",
+  "✓ Vum Comité fräigigi":"✓ Approved by the committee","Waart op Fräiginn duerch d'Comité":"Awaiting committee approval","Zoumaachen":"Close",
   "Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.":"Only results with opt-in “May be published” appear here.",
-  "Virschau":"Preview","Fräigeben":"Approve","Zréckzéien":"Withdraw","op Fräigab":"pending",
-  "Nach näischt zur Fräigab. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)":"Nothing to approve yet. (As an athlete, choose “For social media” on a result.)",
+  "Virschau":"Preview","Fräiginn":"Approve","Zréckzéien":"Withdraw","op Fräiginn":"pending",
+  "Nach näischt zur Fräiginn. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)":"Nothing to approve yet. (As an athlete, choose “For social media” on a result.)",
   "Trainings besicht":"Trainings attended","Nëmmen du gesäis dës Zuelen.":"Only you can see these numbers.","Meng Trainings":"My trainings",
   "… nëmmen déi lescht 12 gewisen":"… only the last 12 are shown","Meng Bestzäiten":"My personal bests","Nach keng.":"None yet.","Meng Resultater":"My results",
   "⌚ Spéider: Daten-Import (Garmin/Coros)":"⌚ Later: data import (Garmin/Coros)",
   "Wat wëlls du an der App? Stëmm fir Wënsch vun aneren mat engem Daum.":"What do you want in the app? Vote for others’ wishes with a thumbs-up.",
-  "+ Wonsch androen":"+ Add wish","Wonsch androen":"Add wish","Titel":"Title","Anonym (nëmmen de Vorstand kann de Verfasser gesinn)":"Anonymous (only the board can see the author)","Absenden":"Submit",
+  "+ Wonsch androen":"+ Add wish","Wonsch androen":"Add wish","Titel":"Title","Anonym (nëmmen d'Comité kann de Verfasser gesinn)":"Anonymous (only the committee can see the author)","Absenden":"Submit",
   "anonym":"anonymous","geplant":"planned",
   "Kalenner-Export fir Handy (ICS)":"Calendar export for phone (ICS)","Trainingen automatesch am Handy-Kalenner.":"Trainings automatically in the phone calendar.",
   "Dark/Light Modus":"Dark/light mode","Hell Variant fir dote wou et sonneg ass.":"Light variant for when it’s sunny.",
@@ -231,7 +231,7 @@ var LANGS={
    [/«(.*)»/,function(m,t){return "«"+trs(t)+"»";}],
    [/^Sprooch: Lëtzebuergesch$/,"Language: Lëtzebuergesch"],[/^Sprooch: (.*)$/,"Language: $1"],
    [/^(Schwell|Intervaller|Pyramid|Tempo-Dauerlaf|Laftreff|Biergleef & Schwell)( · .*)$/,function(m,t,r){return LANGS.en.exact[t]+r;}],
-   [/^vun /,"by "],[/^by anonym$/,"by anonymous"],[/^Trainings am Joer (\d+)$/,"trainings in $1"],[/^Waart op Fräigab$/,"awaiting approval"],
+   [/^vun /,"by "],[/^by anonym$/,"by anonymous"],[/^Trainings am Joer (\d+)$/,"trainings in $1"],[/^Waart op Fräiginn$/,"awaiting approval"],
    [/Plaz /g,"Place "],[/Läufer /g,"Runner "],[/\(Du\)/g,"(You)"],[/Gaascht/g,"Guest"],[/Hallefmarathon/g,"Half marathon"],
    [/Ettelbréck/g,"Ettelbruck"],[/Veianen/g,"Vianden"],[/Mäerzeg/g,"Mertzig"],[/Herbstlaf/g,"Autumn run"],[/Pilzlaf/g,"Mushroom run"],[/Cross Championnat/g,"Cross Championship"],[/Maratón/g,"Marathon"],
    [/ Auer$/,""],[/^Anonym$/,"Anonymous"]
@@ -310,11 +310,11 @@ function vCo(){
     return '<div class="card" data-a="co" data-v="'+c.id+'" style="cursor:pointer"><div class="row"><div class="trophy">'+ic("cup")+'</div><div class="sp"><div class="tt">'+esc(c.name)+'</div><div class="muted sm">'+longDate(c.date)+'</div><div class="muted sm">📍 '+esc(c.place)+', '+c.land+'</div></div>'+(reg?'<span class="badge b-g">✓ '+esc(reg)+'</span>':"")+'<span class="chev">›</span></div>'+(up?'<div style="border-top:1px solid var(--line);margin-top:10px;padding-top:8px;color:var(--pink);font-weight:700;font-size:14px">🕒 an '+dd+' Deeg</div>':"")+'</div>';}).join("")||'<div class="empty">Näischt do.</div>';
   return '<div class="chips"><button class="chip'+(up?" on":"")+'" data-a="cf" data-v="next">Kommend</button><button class="chip'+(!up?" on":"")+'" data-a="cf" data-v="past">Vergaangen</button></div>'+cards;}
 function vProf(){
-  var roles=["Athlet","Trainer","Vorstand"];
+  var roles=["Athlet","Trainer","Comité"];
   var h='<div class="demo"><div class="sm" style="margin-bottom:8px;color:var(--yellow);font-weight:700">DEMO-SCHALTER · Roll wielen</div><div class="seg">'+roles.map(function(r){return '<button class="'+(S.role===r?"on":"")+'" data-a="role" data-v="'+r+'">'+r+'</button>';}).join("")+'</div></div>';
   h+='<div class="card" style="text-align:center"><div class="av big">L</div><div style="font-size:22px;font-weight:800">Läufer A (Du)</div><div class="muted">laeufer.a@beispill.test</div><div class="muted sm" style="margin:6px 0 10px">📍 Sauerbeen · Member zënter Juli 2026</div><span class="badge b-r" style="background:#4a2161">'+S.role+'</span></div>';
   var items=[["bar","Mäi Beräich","mb",true,"chart"],["pace","Pace-Grupp: "+S.pace,"pace",true,"group"],["wish","Wunschbox","wb",true,"bulb"]];
-  if(S.role==="Vorstand"){items.push(["x","Social-Media Fräigab","fg",true,"share"]);items.push(["x","Export Coursen (CSV)","csv",true,"dl"]);}
+  if(S.role==="Comité"){items.push(["x","Social-Media Fräiginn","fg",true,"share"]);items.push(["x","Export Coursen (CSV)","csv",true,"dl"]);}
   h+='<div class="card menu"><h3>Ergänzungen (Prototyp)</h3>'+items.map(function(i){return '<div class="li" data-a="'+i[2]+'">'+ic(i[4])+'<span class="sp">'+i[1]+nei()+'</span><span class="chev">›</span></div>';}).join("")+'</div>';
   h+='<div class="card menu"><h3>Kont</h3><div class="li" data-a="soon" data-v="Profil änneren">'+ic("user")+'<span class="sp">Profil änneren</span><span class="chev">›</span></div><div class="li" data-a="lang">'+ic("group")+'<span class="sp">Sprooch: '+LANGS[S.lang].name+'</span><span class="chev">›</span></div><div class="li" data-a="notif">'+ic("bell")+'<span class="sp">Notifikatiounen</span><span class="chev">›</span></div></div>';
   h+='<div class="card menu"><h3>Hëllef</h3><div class="li" data-a="soon" data-v="Support">'+ic("help")+'<span class="sp">Support<div class="muted sm">support@sauerbeen.example</div></span><span class="chev">›</span></div><div class="li" data-a="about">'+ic("info")+'<span class="sp">Iwwer d\'App</span><span class="chev">›</span></div></div>';
@@ -347,7 +347,7 @@ function vTrDetail(id){
 function distOpts(c,sel){var o=["5km","10km","21km","Hallefmarathon","Marathon","Trail 12km","Trail 25km","Anerer"];return o.map(function(x){return '<option value="'+x+'"'+(x===sel?" selected":"")+'>'+x+'</option>';}).join("");}
 function vCoDetail(id){
   var c=coById(id),past=c.date<TODAY,open=nextDeadlineOpen(c),mine=S.reg[id]&&S.reg[id][0];
-  var canEdit=c.mine||S.role==="Vorstand";
+  var canEdit=c.mine||S.role==="Comité";
   var h='<div class="row" style="margin-bottom:10px"><div class="trophy">'+ic("cup")+'</div><div style="font-size:24px;font-weight:800">'+esc(c.name)+'</div></div>';
   h+='<div class="card"><div class="li"><div class="muted sm">Datum</div>'+longDate(c.date)+' · '+c.time+'</div><div class="li"><div class="muted sm">Uert</div>'+esc(c.place)+', '+c.land+'</div><div class="li"><div class="muted sm">Umeldungsschluss</div>'+longDate(c.deadline)+'</div></div>';
   h+='<div class="card"><h3>Info</h3><div style="white-space:pre-line">'+esc(c.info)+'</div>'+(canEdit?'<button class="btn sm sec" style="margin-top:12px" data-a="coedit" data-v="'+id+'">Course änneren'+nei()+'</button>':"")+'</div>';
@@ -362,7 +362,7 @@ function vCoDetail(id){
    var rs=S.res.filter(function(r){return r.cid===id;}),has=rs.some(function(r){return r.rid===0;});
    h+='<div class="card"><h3>Resultater</h3>'+rs.map(function(r){var rn=RUN[r.rid],sh=S.share[r.id];
      return '<div class="li"><div class="row"><div class="av">'+rn.short+'</div><div class="sp">'+rn.name+'<div class="muted sm">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div></div><b style="color:var(--yellow);font-size:17px">'+esc(r.time)+'</b></div>'+(r.comment?'<div class="note" style="margin:4px 0 0 50px">«'+esc(r.comment)+'»</div>':"")+
-     (r.rid===0?'<div class="row" style="margin:8px 0 0 50px;gap:8px;flex-wrap:wrap"><button class="btn sm sec" data-a="resedit" data-v="'+r.id+'">Änneren'+nei()+'</button><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Fir Social Media'+nei()+'</button>'+(sh&&sh.opt?'<span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"waart op Fräigab")+'</span>':"")+'</div>':"")+'</div>';}).join("")+(rs.length?"":'<div class="empty">Nach keng Resultater.</div>')+
+     (r.rid===0?'<div class="row" style="margin:8px 0 0 50px;gap:8px;flex-wrap:wrap"><button class="btn sm sec" data-a="resedit" data-v="'+r.id+'">Änneren'+nei()+'</button><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Fir Social Media'+nei()+'</button>'+(sh&&sh.opt?'<span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"waart op Fräiginn")+'</span>':"")+'</div>':"")+'</div>';}).join("")+(rs.length?"":'<div class="empty">Nach keng Resultater.</div>')+
      (has?"":'<button class="btn full" data-a="resadd" data-v="'+id+'">+ Resultat androen</button>')+'</div>';}
   return h;}
 
@@ -390,7 +390,7 @@ function vWb(){
 /* --- Freigabe --- */
 function vFg(){
   var l=S.res.filter(function(r){return S.share[r.id]&&S.share[r.id].opt;});
-  return '<div class="muted sm" style="margin-bottom:12px">Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.</div>'+(l.map(function(r){var c=coById(r.cid),sh=S.share[r.id];return '<div class="card"><div class="row"><div class="sp"><b>'+RUN[r.rid].name+'</b><div class="muted sm">'+esc(c.name)+' · '+esc(r.dist)+' · '+esc(r.time)+'</div></div><span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"op Fräigab")+'</span></div><div class="row" style="margin-top:10px;gap:8px"><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Virschau</button>'+(sh.approved?'<button class="btn sm ghost" data-a="unapprove" data-v="'+r.id+'">Zréckzéien</button>':'<button class="btn sm" data-a="approve" data-v="'+r.id+'">Fräigeben</button>')+'</div></div>';}).join("")||'<div class="empty">Nach näischt zur Fräigab. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)</div>');}
+  return '<div class="muted sm" style="margin-bottom:12px">Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.</div>'+(l.map(function(r){var c=coById(r.cid),sh=S.share[r.id];return '<div class="card"><div class="row"><div class="sp"><b>'+RUN[r.rid].name+'</b><div class="muted sm">'+esc(c.name)+' · '+esc(r.dist)+' · '+esc(r.time)+'</div></div><span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"op Fräiginn")+'</span></div><div class="row" style="margin-top:10px;gap:8px"><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Virschau</button>'+(sh.approved?'<button class="btn sm ghost" data-a="unapprove" data-v="'+r.id+'">Zréckzéien</button>':'<button class="btn sm" data-a="approve" data-v="'+r.id+'">Fräiginn</button>')+'</div></div>';}).join("")||'<div class="empty">Nach näischt zur Fräiginn. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)</div>');}
 
 /* ===== Render ===== */
 function render(){
@@ -400,7 +400,7 @@ function render(){
     else if(k==="co"){title="Course";body=vCoDetail(top.id);}
     else if(k==="mb"){title="Mäi Beräich";body=vMb();}
     else if(k==="wb"){title="Wunschbox";body=vWb();}
-    else if(k==="fg"){title="Social-Media Fräigab";body=vFg();}}
+    else if(k==="fg"){title="Social-Media Fräiginn";body=vFg();}}
   else{body={cal:vCal,tr:vTr,co:vCo,pr:vProf}[S.tab]();}
   var hd;
   if(top)hd='<header><button class="back" data-a="back">←</button><div class="ttl sp" style="text-align:center;margin-right:34px">'+title+'</div></header>';
@@ -464,7 +464,7 @@ var A={
  approve:function(v){S.share[v].approved=true;render();toast("Fräigigi");},unapprove:function(v){S.share[v].approved=false;render();},
  mb:function(){go({t:"mb"});},wb:function(){go({t:"wb"});},fg:function(){go({t:"fg"});},
  vote:function(v){var w=S.wishes.find(function(x){return x.id===v;}),i=w.votes.indexOf("me");if(i>=0)w.votes.splice(i,1);else w.votes.push("me");render();},
- wadd:function(){sheet('<h2>Wonsch androen'+nei()+'</h2><label>Titel<input id="w-t" maxlength="60"></label><label>Beschreiwung<textarea id="w-x" rows="3" maxlength="200"></textarea></label><label class="ck" style="margin-top:14px"><input type="checkbox" id="w-a">Anonym (nëmmen de Vorstand kann de Verfasser gesinn)</label><button class="btn full" style="margin-top:14px" data-a="wsave">Absenden</button>');},
+ wadd:function(){sheet('<h2>Wonsch androen'+nei()+'</h2><label>Titel<input id="w-t" maxlength="60"></label><label>Beschreiwung<textarea id="w-x" rows="3" maxlength="200"></textarea></label><label class="ck" style="margin-top:14px"><input type="checkbox" id="w-a">Anonym (nëmmen d'Comité kann de Verfasser gesinn)</label><button class="btn full" style="margin-top:14px" data-a="wsave">Absenden</button>');},
  wsave:function(){var t=val("w-t");if(!t){toast("Titel fehlt");return;}S.wishes.push({id:"w"+Date.now(),title:t,text:val("w-x"),by:document.getElementById("w-a").checked?"anonym":"Läufer A",votes:["me"],status:""});closeSheet();render();toast("Merci fir däi Wonsch!");},
  csv:function(){exportCsv();}
 };
@@ -476,7 +476,7 @@ function presSheet(id){var t=trById(id),a=attOf(t),g=S.guests[id]||[];
   var cand=RUN.filter(function(r){return status(t,r.id)!=="nee"||a[r.id];});
   sheet('<h2>Präsenzlëscht'+nei()+'</h2><div class="muted sm">'+esc(t.title)+' · '+longDate(t.date)+'</div><div style="margin-top:8px">'+cand.map(function(r){return '<label class="pw"><input type="checkbox" '+(a[r.id]?"checked":"")+' data-a="ptog" data-v="'+id+'|'+r.id+'"><span class="sp">'+r.name+'</span><span class="muted sm">'+stBadge(status(t,r.id))+'</span></label>';}).join("")+g.map(function(n,i){return '<div class="pw"><span style="width:26px;color:var(--green)">✓</span><span class="sp">'+esc(n)+' <span class="badge b-n">Gaascht</span></span><button class="btn sm sec" data-a="gdel" data-v="'+id+'|'+i+'">×</button></div>';}).join("")+'</div><div class="row" style="margin-top:12px"><input id="gname" placeholder="Gaascht: Numm" style="margin:0"><button class="btn" data-a="gadd" data-v="'+id+'">+ Gaascht</button></div><button class="btn full sec" style="margin-top:14px" data-a="close">Fäerdeg ('+(Object.keys(a).filter(function(k){return a[k];}).length+g.length)+' do)</button>');}
 function shareSheet(rid){var r=S.res.find(function(x){return x.id===rid;}),c=coById(r.cid),sh=S.share[rid]||{};
-  sheet('<h2>Fir Social Media'+nei()+'</h2><div class="share"><img src="sauerbeen-schriftzug.png" alt=""><div class="k">'+esc(c.name)+'</div><div class="n">'+RUN[r.rid].name.replace(" (Du)","")+'</div><div class="t">'+esc(r.time)+'</div><div class="m">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div><div class="m" style="color:#cdd4f5">'+longDate(c.date)+' · '+esc(c.place)+'</div></div><div class="muted sm" style="text-align:center;margin:6px 0 10px">Virschau 1080 × 1350 (Instagram-Format)</div><label class="ck"><input type="checkbox" id="opt" '+(sh.opt?"checked":"")+' data-a="shopt" data-v="'+rid+'">Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.</label>'+(sh.opt?'<div class="sm" style="margin-top:10px;color:var(--yellow)">'+(sh.approved?"✓ Vum Vorstand fräigigi":"Waart op Fräigab duerch de Vorstand")+'</div>':"")+'<button class="btn full sec" style="margin-top:14px" data-a="close">Zoumaachen</button>');}
+  sheet('<h2>Fir Social Media'+nei()+'</h2><div class="share"><img src="sauerbeen-schriftzug.png" alt=""><div class="k">'+esc(c.name)+'</div><div class="n">'+RUN[r.rid].name.replace(" (Du)","")+'</div><div class="t">'+esc(r.time)+'</div><div class="m">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div><div class="m" style="color:#cdd4f5">'+longDate(c.date)+' · '+esc(c.place)+'</div></div><div class="muted sm" style="text-align:center;margin:6px 0 10px">Virschau 1080 × 1350 (Instagram-Format)</div><label class="ck"><input type="checkbox" id="opt" '+(sh.opt?"checked":"")+' data-a="shopt" data-v="'+rid+'">Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.</label>'+(sh.opt?'<div class="sm" style="margin-top:10px;color:var(--yellow)">'+(sh.approved?"✓ Vum Comité fräigigi":"Waart op Fräiginn duerch d'Comité")+'</div>':"")+'<button class="btn full sec" style="margin-top:14px" data-a="close">Zoumaachen</button>');}
 function exportCsv(){
   var rows=[["Course","Datum","Uert","Land","Umeldungsschluss","Läufer","Distanz","Zäit","Plaz"]];
   S.courses.slice().sort(function(a,b){return a.date<b.date?-1:1;}).forEach(function(c){var rg=S.reg[c.id]||{},ks=Object.keys(rg);
