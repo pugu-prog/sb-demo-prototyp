@@ -17,7 +17,7 @@ html,body{margin:0;height:100%;background:#0d1233;font-family:Inter,-apple-syste
 #app:after{width:380px;height:240px;background:#2d1f5c;opacity:.6;left:-200px;bottom:120px;transform:rotate(-20deg)}
 header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:14px 18px 8px;min-height:62px}
 header img{height:34px}
-.lang{margin-left:8px;background:var(--navy);border:1px solid var(--line);color:#fff;border-radius:14px;padding:5px 9px;font:700 12px Inter,sans-serif;cursor:pointer;white-space:nowrap}
+.lang svg{stroke:#e8a33f;stroke-width:2;width:15px;height:15px}.lang{margin-left:8px;background:var(--navy);border:1px solid var(--line);color:#fff;border-radius:14px;padding:5px 9px;font:700 12px Inter,sans-serif;cursor:pointer;white-space:nowrap}
 .leg{font-size:12px !important}
 header .ttl{font-size:20px;font-weight:700}
 .back{background:none;border:0;color:#fff;font-size:26px;padding:0 8px 0 0;cursor:pointer}
@@ -394,7 +394,7 @@ function vFg(){
 
 /* ===== Render ===== */
 function render(){
-  var langBtn='<button class="lang" data-a="lang" title="Sprooch / Language">\uD83C\uDF10 '+LANGS[S.lang].code+'</button>';var top=S.stack[S.stack.length-1],body="",title="",logo=!top;
+  var langBtn='<button class="lang" data-a="lang" title="Sprooch / Language"><svg class="gl" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#e8a33f" stroke-width="2" stroke-linecap="round" style="vertical-align:-3px;margin-right:4px"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>'+LANGS[S.lang].code+'</button>';var top=S.stack[S.stack.length-1],body="",title="",logo=!top;
   if(top){var k=top.t;
     if(k==="tr"){title="Training";body=vTrDetail(top.id);}
     else if(k==="co"){title="Course";body=vCoDetail(top.id);}
@@ -464,7 +464,7 @@ var A={
  approve:function(v){S.share[v].approved=true;render();toast("Fräigigi");},unapprove:function(v){S.share[v].approved=false;render();},
  mb:function(){go({t:"mb"});},wb:function(){go({t:"wb"});},fg:function(){go({t:"fg"});},
  vote:function(v){var w=S.wishes.find(function(x){return x.id===v;}),i=w.votes.indexOf("me");if(i>=0)w.votes.splice(i,1);else w.votes.push("me");render();},
- wadd:function(){sheet('<h2>Wonsch androen'+nei()+'</h2><label>Titel<input id="w-t" maxlength="60"></label><label>Beschreiwung<textarea id="w-x" rows="3" maxlength="200"></textarea></label><label class="ck" style="margin-top:14px"><input type="checkbox" id="w-a">Anonym (nëmmen d'Comité kann de Verfasser gesinn)</label><button class="btn full" style="margin-top:14px" data-a="wsave">Absenden</button>');},
+ wadd:function(){sheet('<h2>Wonsch androen'+nei()+'</h2><label>Titel<input id="w-t" maxlength="60"></label><label>Beschreiwung<textarea id="w-x" rows="3" maxlength="200"></textarea></label><label class="ck" style="margin-top:14px"><input type="checkbox" id="w-a">Anonym (nëmmen d\'Comité kann de Verfasser gesinn)</label><button class="btn full" style="margin-top:14px" data-a="wsave">Absenden</button>');},
  wsave:function(){var t=val("w-t");if(!t){toast("Titel fehlt");return;}S.wishes.push({id:"w"+Date.now(),title:t,text:val("w-x"),by:document.getElementById("w-a").checked?"anonym":"Läufer A",votes:["me"],status:""});closeSheet();render();toast("Merci fir däi Wonsch!");},
  csv:function(){exportCsv();}
 };
