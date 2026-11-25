@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="lb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#18214f">
+<meta name="robots" content="noindex,nofollow">
+<title>SauerBeen App – Prototyp B (Flow)</title>
+<style>
+:root{--page:#e9eff3;--bg:#fefefe;--card:#ffffff;--soft:#e2ebf2;--soft2:#cfdde8;--field:#f4f8fa;--ink:#1c2b35;--muted:#5b7d8c;--line:#dbe3e8;--accent:#0b3a5a;--on-accent:#ffffff;--sun:#e8a33f;--sunt:#a16207;--ok:#15803d;--bad:#b91c1c;--cold:#2563eb;--navy:var(--soft);--navy2:var(--bg);--yellow:var(--sun);--pink:var(--accent);--violet:var(--cold);--green:var(--ok)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--page);font-family:Archivo,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink)}
+#app{position:relative;margin:0 auto;max-width:430px;height:100dvh;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+@media(min-width:500px){#app{margin:12px auto;height:min(860px,calc(100dvh - 24px));border-radius:34px;box-shadow:0 0 0 8px #1c2b35,0 20px 60px #1c2b3544}}
+#app:before,#app:after{content:"";position:absolute;border-radius:200px;pointer-events:none}
+#app:before{width:420px;height:200px;background:var(--sun);opacity:.13;right:-180px;top:30px;transform:rotate(-28deg)}
+#app:after{width:380px;height:240px;background:var(--accent);opacity:.07;left:-200px;bottom:120px;transform:rotate(-20deg)}
+header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:14px 18px 8px;min-height:62px}
+.logo{display:block;width:118px;height:34px;background:var(--accent);-webkit-mask:url(sauerbeen-schriftzug.png) left center/contain no-repeat;mask:url(sauerbeen-schriftzug.png) left center/contain no-repeat}
+.lang svg{stroke:var(--sun);stroke-width:2;width:15px;height:15px}.lang{margin-left:8px;background:var(--navy);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:5px 9px;font:700 12px Archivo,sans-serif;cursor:pointer;white-space:nowrap}
+.leg{font-size:12px !important}
+header .ttl{font-size:20px;font-weight:700}
+.back{background:none;border:0;color:var(--ink);font-size:26px;padding:0 8px 0 0;cursor:pointer}
+main{position:relative;z-index:1;flex:1;overflow-y:auto;padding:4px 18px 24px;-webkit-overflow-scrolling:touch}
+nav{position:relative;z-index:3;display:flex;background:var(--navy);border-top:1px solid var(--line);padding:6px 0 max(8px,env(safe-area-inset-bottom))}
+nav button{flex:1;background:none;border:0;color:var(--muted);font:600 11px Archivo,sans-serif;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px;cursor:pointer}
+nav button svg{width:26px;height:26px}
+nav button.on{color:var(--pink)}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px}
+.card.l-y{border-left:4px solid var(--yellow)}.card.l-v{border-left:4px solid var(--violet)}
+h2{font-size:22px;margin:18px 0 12px}h3{font-size:12px;letter-spacing:.08em;color:var(--muted);margin:0 0 10px;text-transform:uppercase}
+.muted{color:var(--muted)}.sm{font-size:13px}
+.chips{display:flex;gap:10px;margin:6px 0 16px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:var(--navy);color:var(--muted);border-radius:30px;padding:10px 22px;font:700 16px Archivo,sans-serif;cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chip.s{padding:7px 14px;font-size:13px}
+.btn{background:var(--accent);color:var(--on-accent);border:0;border-radius:14px;padding:12px 18px;font:700 15px Archivo,sans-serif;cursor:pointer}
+.btn.sec{background:var(--navy);border:1px solid var(--line)}.btn.ghost{background:transparent;border:1.5px solid var(--pink);color:var(--pink)}
+.btn.full{width:100%}.btn.sm{padding:8px 12px;font-size:13px;border-radius:12px}
+.btn[disabled]{opacity:.45}
+.badge{display:inline-block;border-radius:20px;padding:3px 11px;font:700 13px Archivo,sans-serif;border:1.5px solid;white-space:nowrap}
+.b-y{color:var(--sunt);border-color:var(--yellow)}.b-g{color:var(--green);border-color:var(--green)}.b-r{color:var(--pink);border-color:var(--pink)}
+.b-n{color:var(--muted);border-color:var(--line);background:var(--soft)}
+.nei{display:inline-block;background:var(--yellow);color:#1c2b35;font:800 10px Archivo,sans-serif;border-radius:6px;padding:2px 5px;margin-left:6px;vertical-align:middle;letter-spacing:.04em}
+.row{display:flex;align-items:center;gap:12px}.sp{flex:1;min-width:0}
+.date{background:var(--pink);border-radius:12px;width:58px;padding:7px 0;text-align:center;flex:none}
+.date small{display:block;font-size:11px;opacity:.9;text-transform:uppercase}.date b{font-size:26px;line-height:1.1;display:block}
+.tt{font-size:19px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.chev{color:var(--muted);font-size:22px}
+.trophy{width:46px;height:46px;border-radius:50%;background:var(--soft);border:1px solid var(--sun);display:flex;align-items:center;justify-content:center;color:var(--sunt);flex:none}
+.trophy svg{width:24px;height:24px}
+.cal{background:var(--navy);border-radius:22px;padding:14px 8px 8px}
+.cal .hd{display:flex;justify-content:space-between;align-items:center;padding:0 10px 8px;font-size:20px;font-weight:700}
+.cal .hd button{background:none;border:0;color:var(--sunt);font-size:26px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;row-gap:2px}
+.grid .wd{color:var(--muted);font-size:13px;font-weight:600;padding:6px 0}
+.grid .d{padding:7px 0 4px;font-size:16px;cursor:pointer;border-radius:12px}
+.grid .d.o{color:var(--muted);opacity:.55}.grid .d.today{color:var(--pink);font-weight:800}.grid .d.sel{background:var(--soft2)}
+.dots{height:7px;display:flex;justify-content:center;gap:2px;margin-top:2px}.dots i{width:5px;height:5px;border-radius:50%}
+.leg{display:flex;gap:6px;align-items:center;font-size:14px;color:var(--muted)}.leg i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.seg{display:flex;gap:8px}.seg button{flex:1;padding:12px 4px;border-radius:14px;border:1.5px solid var(--line);background:var(--navy);color:var(--ink);font:700 15px Archivo,sans-serif;cursor:pointer}
+.seg button.on.jo{background:var(--green);border-color:var(--green)}.seg button.on.vl{background:var(--sun);border-color:var(--sun);color:#1c2b35}.seg button.on.ne{background:var(--pink);border-color:var(--pink)}
+input,textarea,select{width:100%;background:var(--field);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:12px;font:16px Archivo,sans-serif;margin-top:4px}
+label{display:block;font-size:13px;color:var(--muted);margin-top:12px;font-weight:600}
+label.ck{display:flex;gap:10px;align-items:flex-start;color:var(--ink);font-size:14px;font-weight:500}
+label.ck input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--pink)}
+.av{width:38px;height:38px;border-radius:50%;background:var(--soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.av.big{width:84px;height:84px;font-size:40px;background:var(--pink);color:var(--on-accent);border:0;box-shadow:0 8px 24px #0b3a5a33;margin:0 auto 10px}
+.li{padding:11px 0;border-bottom:1px solid var(--line)}.li:last-child{border:0}
+.note{font-style:italic;color:var(--muted);font-size:13px}
+.menu .li{display:flex;align-items:center;gap:14px;cursor:pointer;padding:15px 4px}.menu svg{width:22px;height:22px;color:var(--muted)}
+.cnt b.g{color:var(--green)}.cnt b.y{color:var(--sunt)}.cnt b.r{color:var(--pink)}
+.demo{background:var(--soft);border:1px dashed var(--yellow);border-radius:16px;padding:12px;margin-bottom:14px}
+.demo .seg button{padding:9px 2px;font-size:14px}.demo .seg button.on{background:var(--sun);color:#1c2b35;border-color:var(--yellow)}
+.ov{position:absolute;inset:0;z-index:10;background:#1c2b3599;display:flex;align-items:flex-end}
+.sheet{background:var(--navy2);width:100%;max-height:92%;overflow-y:auto;border-radius:24px 24px 0 0;padding:18px 18px 26px}
+.sheet h2{margin:0 0 6px}
+.toast{position:absolute;z-index:20;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-weight:700;padding:10px 16px;border-radius:30px;font-size:14px;box-shadow:0 6px 20px #0006;max-width:90%;text-align:center}
+.share{aspect-ratio:4/5;border-radius:16px;background:linear-gradient(160deg,#0b3a5a,#0f4a6e 62%,#16556f);position:relative;overflow:hidden;padding:7% 8%;display:flex;flex-direction:column;container-type:inline-size}
+.share:before{content:"";position:absolute;width:90%;height:30%;background:#2563eb;opacity:.55;border-radius:200px;right:-35%;bottom:12%;transform:rotate(-24deg)}
+.share:after{content:"";position:absolute;width:80%;height:22%;background:#e8a33f;opacity:.95;border-radius:200px;left:-30%;bottom:-2%;transform:rotate(-24deg)}
+.share>*{position:relative;z-index:1}
+.share img{height:9cqw;align-self:flex-start}
+.share .k{text-transform:uppercase;font-size:5cqw;color:#f0b563;color:#f0b563;font-weight:800;letter-spacing:.06em;margin-top:12cqw}
+.share{color:var(--ink)}.share .n{font-size:9.5cqw;font-weight:800;line-height:1.05;margin-top:2cqw}
+.share .t{font-size:18cqw;font-weight:800;color:#f0b563;line-height:1;margin-top:5cqw}
+.share .m{font-size:5cqw;margin-top:3cqw}
+.bar{height:10px;border-radius:6px;background:var(--accent);min-width:3px}
+.vote{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--navy);border:1.5px solid var(--line);border-radius:14px;padding:8px 12px;color:var(--ink);font:700 15px Archivo,sans-serif;cursor:pointer}
+.vote.on{border-color:var(--yellow);color:var(--sunt)}
+.pw{display:flex;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid var(--line)}
+.pw input[type=checkbox]{width:26px;height:26px;margin:0;accent-color:var(--green);flex:none}
+.empty{text-align:center;color:var(--muted);padding:30px 0}
+.fdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e8a33f;vertical-align:middle;margin-left:6px}.fsun{text-align:center;margin:2px 0 18px}.fsun .fdot{width:14px;height:14px;box-shadow:0 0 14px rgba(232,163,63,.55)}
+
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-stretch:100%;font-display:swap;src:url(schrift/archivo-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-stretch:100%;font-display:swap;src:url(schrift/archivo-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(schrift/plexmono-latin-400.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(schrift/plexmono-latin-500.woff2) format('woff2')}
+/* Design B: Flow Lisboa */
+.b-r,.cnt b.r{color:var(--bad);border-color:var(--bad)}
+.seg button.on.jo,.seg button.on.ne{color:#fff}.seg button.on.ne{background:var(--bad);border-color:var(--bad)}
+.date{color:var(--on-accent)}
+.card{box-shadow:0 1px 2px #1c2b3510}
+nav{background:var(--bg)}nav button.on{color:var(--accent)}nav button.on svg{stroke-width:2.2}
+.grid .d.today{color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--sun)}
+.share .m,.share .n{color:#fff}
+.mono{font-family:'IBM Plex Mono',monospace}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 12px}
+.kp>div{background:var(--soft);border-radius:14px;padding:10px 12px}
+.kp small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.kp b{font:500 21px 'IBM Plex Mono',monospace;color:var(--accent);display:block;margin-top:2px}
+.kp b em{font-style:normal;font-size:12px;color:var(--muted);margin-left:3px}
+.zone{display:flex;height:16px;border-radius:8px;overflow:hidden;margin:8px 0 6px}
+.zone i{display:block}
+.zl{display:flex;justify-content:space-between;font:400 11px 'IBM Plex Mono',monospace;color:var(--muted)}
+.brow{display:flex;align-items:center;gap:8px;margin:5px 0}
+.brow .l{width:46px;font:400 12px 'IBM Plex Mono',monospace;color:var(--muted)}
+.brow .v{width:58px;text-align:right;font:500 13px 'IBM Plex Mono',monospace}
+.brow .t{flex:1;background:var(--soft);border-radius:6px;height:10px}
+.brow .t i{display:block;height:10px;border-radius:6px;background:var(--accent)}
+.brow .t i.s{background:var(--sun)}
+.sp3{display:flex;gap:8px}.sp3>div{flex:1;text-align:center;background:var(--soft);border-radius:14px;padding:10px 4px;cursor:pointer;border:1.5px solid transparent}
+.sp3 b{display:block;font:500 17px 'IBM Plex Mono',monospace;color:var(--accent)}.sp3 small{font-size:11px;color:var(--muted)}
+.pill{display:inline-block;font-size:11px;font-weight:700;color:var(--sunt);border:1px solid var(--sun);border-radius:10px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+@media(prefers-color-scheme:dark){:root{--page:#0a1319;--bg:#0f1b22;--card:#17262e;--soft:#22343d;--soft2:#2b4552;--field:#13222a;--ink:#eef3f5;--muted:#93b3bf;--line:#26404b;--accent:#f0b563;--on-accent:#0f1b22;--sunt:#f0b563;--ok:#4ade80;--bad:#f87171;--cold:#60a5fa}
+ .logo{background:#eef3f5}.card{box-shadow:none}.seg button.on.jo,.seg button.on.ne{color:#0f1b22}.vl{color:#0f1b22}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+"use strict";
+/* ===== Hilfsfunktionen ===== */
+var TODAY="2026-11-24";
+var WDLONG=[];
+function D(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function dayDiff(a,b){return Math.round((D(a)-D(b))/864e5);}
+function longDate(s){var d=D(s);return WD[d.getDay()]+", "+d.getDate()+DOT+" "+MON[d.getMonth()]+" "+d.getFullYear();}
+function ic(n){var p={cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/><path d="M5 12h4l1.5-3 2 6 1.5-3H19"/>',cup:'<path d="M8 4h8v6a4 4 0 0 1-8 0zM8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3M12 14v4M8 21h8M10 18h4"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',pin:'<path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>',share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/>',dl:'<path d="M12 4v12M7 11l5 5 5-5M5 20h14"/>',group:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0M17 5a3.5 3.5 0 0 1 0 7M18 14a7 7 0 0 1 4 6"/>',check:'<path d="M5 12l5 5 9-10"/>'};return '<svg viewBox="0 0 24 24">'+(p[n]||"")+'</svg>';}
+
+/* ===== Testdaten (alles erfunden) ===== */
+var RUN=[];["A","B","C","D","E","F","G","H","I","J","K","L","M","N"].forEach(function(l,i){RUN.push({id:i,name:"Läufer "+l+(i===0?" (Du)":""),short:l,pace:["4:30–5:00","4:00–4:30","4:30–5:00","5:00–5:30","5:30+","4:30–5:00","5:00–5:30","4:00–4:30","5:30+","4:30–5:00","5:00–5:30","4:30–5:00","5:30+","4:00–4:30"][i]});});
+var PACES=["4:00–4:30","4:30–5:00","5:00–5:30","5:30+"];
+var NOTES={2:"kommen 10 Min méi spéit",4:"mat Kinnerwon 🙂",7:"Waarm-up fänken ech eleng un",11:"hunn nach Muskelkater"};
+var TTITLES={3:["Schwell","Intervaller","Biergleef & Schwell"],5:["Pyramid","Tempo-Dauerlaf","Biergleef & Schwell"],0:["Laftreff"]};
+var TINT={Schwell:["Mettel","threshold"],Intervaller:["Haart","interval"],"Biergleef & Schwell":["Mettel","hill"],Pyramid:["Haart","interval"],"Tempo-Dauerlaf":["Mettel","tempo"],Laftreff:["Liicht","Ausdauer"]};
+var DESC={Schwell:"Aufwärmen: 15 Min. lockeren Dauerlauf + Lauf-ABC\nHaaptdeel: 4 × 8 Min. Schwelle (Pause 2 Min. Trabpause)\nAuslafen: 10 Min.\nMobility: 10 Min. am Stadion",Intervaller:"Aufwärmen 15 Min.\n8 × 400 m (Pause 90 Sek.)\nAuslafen 10 Min.","Biergleef & Schwell":"Aufwärmen 15 Min. op der Strooss\n5 × Biergop (ca. 2 Min.), lues erofjoggen\nAnschleißend 2 × 6 Min. Schwelle\nAuslafen 10 Min.",Pyramid:"Aufwärmen 15 Min.\n1-2-3-4-3-2-1 Min. haart, jeweils 1 Min. Pause\nAuslafen 10 Min.","Tempo-Dauerlaf":"Aufwärmen 10 Min.\n30 Min. Tempo-Dauerlaf\nAuslafen 10 Min.",Laftreff:"Gemittlechen Dauerlaf an Gruppen, Ennerhalung inklusiv. Kaffi duerno am Veräinsheem."};
+var PLACES={Schwell:"Stadion Diekirch",Intervaller:"Stadion Diekirch","Biergleef & Schwell":"Stadion Diekirch",Pyramid:"Stadion Diekirch","Tempo-Dauerlaf":"Asport Angelduerf",Laftreff:"Asport Angelduerf"};
+function genTrainings(){
+  var out=[],d=D("2026-09-02"),end=D("2026-12-20"),k=0,sun=0;
+  while(d<=end){var w=d.getDay(),t=null;
+    if(w===3){t=TTITLES[3][k%3];k++;}
+    else if(w===5){t=TTITLES[5][k%3];k++;}
+    else if(w===0){sun++;if(sun%2===1)t="Laftreff";}
+    if(t){out.push({id:"t"+iso(d),date:iso(d),time:w===0?"10:00":"18:00",title:t,place:PLACES[t],lvl:TINT[t][0],type:TINT[t][1],desc:DESC[t]});}
+    d.setDate(d.getDate()+1);}
+  return out;}
+var TR=genTrainings();
+var CO0=[
+ {id:"c1",name:"Großkarolinenfelder Nikolauslauf",date:"2026-11-28",time:"14:00",place:"Großkarolinenfeld",land:"GER",deadline:"2026-11-22",info:"Stroossenlaf: 5 km, 10 km.\nNikolaus-Mütz ass bei der Startnummer dobäi.",mine:false},
+ {id:"c2",name:"Cross Championnat",date:"2026-11-29",time:"11:00",place:"Dudelange",land:"LUX",deadline:"2026-11-27",info:"Nationale Cross-Championnat. Distanzen: 4 km (Kuerz), 8 km (Laang).\nChampionnat-Lizenz noutwendeg.",mine:false},
+ {id:"c3",name:"Valencia Maratón",date:"2026-12-06",time:"08:30",place:"Valencia",land:"ESP",deadline:"2026-12-01",info:"Marathon 42,2 km, flaach. Gruppereesen ass geplangt, Info kënnt per Mail.",mine:true},
+ {id:"c4",name:"Trail de Dinant Winter",date:"2026-12-13",time:"09:00",place:"Dinant",land:"BEL",deadline:"2026-12-08",info:"Distanzen: 12 km (350 Hm), 25 km (900 Hm), 42 km (1600 Hm).",mine:false},
+ {id:"c5",name:"X-Mas Trail",date:"2026-12-13",time:"10:30",place:"Neunkirchen",land:"GER",deadline:"2026-12-10",info:"Trail 10 km / 21 km. Weihnachtsmützen erwünscht.",mine:true},
+ {id:"p1",name:"Herbstlaf Ettelbréck",date:"2026-11-08",time:"10:00",place:"Ettelbréck",land:"LUX",deadline:"2026-11-05",info:"Hallefmarathon op der Sauer-Streck.",mine:false},
+ {id:"p2",name:"Halloween Trail",date:"2026-11-01",time:"15:00",place:"Veianen",land:"LUX",deadline:"2026-10-29",info:"Trail 12 km / 21 km, Kostümer erlaabt.",mine:false},
+ {id:"p3",name:"Pilzlaf",date:"2026-10-11",time:"09:30",place:"Mäerzeg",land:"LUX",deadline:"2026-10-08",info:"10 km Stroossenlaf.",mine:false}
+];
+var REG0={c1:{1:"10km",2:"10km",5:"5km"},c2:{3:"8km",4:"4km",6:"8km",9:"4km"},c3:{0:"Marathon",1:"Marathon",7:"Marathon",13:"Marathon"},c4:{2:"25km",8:"12km"},c5:{10:"21km",11:"10km"},p1:{0:"Hallefmarathon",1:"Hallefmarathon",3:"10km"},p2:{0:"Trail 21km",2:"Trail 12km"},p3:{0:"10km",4:"10km"}};
+var RES0=[
+ {id:"r1",cid:"p1",rid:0,dist:"Hallefmarathon",time:"1:52:30",place:"41.",comment:"Schéint Wieder, Konditioun passt!"},
+ {id:"r2",cid:"p1",rid:1,dist:"Hallefmarathon",time:"1:38:12",place:"12. overall",comment:""},
+ {id:"r3",cid:"p1",rid:3,dist:"10km",time:"52:07",place:"3. AK",comment:"Neie Rekord 🎉"},
+ {id:"r4",cid:"p2",rid:0,dist:"Trail 21km",time:"2:31:10",place:"58.",comment:""},
+ {id:"r5",cid:"p2",rid:2,dist:"Trail 12km",time:"1:12:44",place:"7. (2. AK)",comment:"Vill Bam an Blieder 😅"},
+ {id:"r6",cid:"p3",rid:0,dist:"10km",time:"54:20",place:"83",comment:""},
+ {id:"r7",cid:"p3",rid:4,dist:"10km",time:"49:58",place:"20.",comment:""}
+];
+var WISH0=[
+ {id:"w1",title:"Kalenner-Export fir Handy (ICS)",text:"Trainingen automatesch am Handy-Kalenner.",by:"Läufer F",votes:["x1","x2","x3","x4","x5","x6","x7"],status:"geplant"},
+ {id:"w2",title:"Dark/Light Modus",text:"Hell Variant fir dote wou et sonneg ass.",by:"anonym",votes:["x1","x2","x3"],status:""},
+ {id:"w3",title:"Erënnerung virun Umeldeschluss",text:"Push 2 Deeg virum Schluss vun enger Course.",by:"Läufer K",votes:["x1","x2","x3","x4","x5"],status:""}
+];
+/* ===== Sprachen: alle Quelltexte sind Luxemburgisch (lb). Weitere Sprachen (de, fr) = neuer Eintrag in LANGS mit exact/pat/WD/MON/MONS/dot. ===== */
+var LANGS={
+ lb:{name:"Lëtzebuergesch",code:"LB",WD:["So","Méi","Dën","Mët","Don","Fre","Sam"],MON:["Januar","Februar","Mäerz","Abrëll","Mee","Juni","Juli","August","September","Oktober","November","Dezember"],MONS:["Jan.","Feb.","Mäe.","Abr.","Mee","Juni","Juli","Aug.","Sep.","Okt.","Nov.","Dez."],dot:"."},
+ en:{name:"English",code:"EN",WD:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],MON:["January","February","March","April","May","June","July","August","September","October","November","December"],MONS:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],dot:"",
+  exact:{
+  "Kalenner":"Calendar","Coursen":"Races","Profil":"Profile","Course":"Race","+ Course":"+ Race",
+  "Méi":"Mon","Dën":"Tue","Mët":"Wed","Don":"Thu","Fre":"Fri","Sam":"Sat","So":"Sun",
+  "Nächst Events":"Upcoming events","alles":"all","Keng Events un deem Dag.":"No events on this day.",
+  "Kommend":"Upcoming","Vergaangen":"Past","Näischt do.":"Nothing here.",
+  "Jo":"Yes","Villäicht":"Maybe","Nee":"No","✓ Dobäi":"✓ Going","Liicht":"Easy","Mettel":"Moderate","Haart":"Hard","Ausdauer":"endurance",
+  "Schwell":"Threshold","Intervaller":"Intervals","Biergleef & Schwell":"Hill & threshold","Pyramid":"Pyramid","Tempo-Dauerlaf":"Tempo run","Laftreff":"Group run",
+  "Athlet":"Athlete","Comité":"Committee","Trainer":"Coach",
+  "DEMO-SCHALTER · Roll wielen":"DEMO SWITCH · choose role","Ergänzungen (Prototyp)":"Additions (prototype)",
+  "Profil änneren":"Edit profile","Notifikatiounen":"Notifications","Kont":"Account","Hëllef":"Help","Iwwer d'App":"About the app","Ofmellen":"Log out",
+  "Sprooch":"Language","Meng Auswertung":"My analysis","Lescht Aktivitéit":"Latest activity","Méi Detailer":"More details","FIT-Datei eropluedden":"Upload FIT file","Pace pro Kilometer":"Pace per kilometre","Leeschtung pro Block":"Power per block","Pace pro 100 m":"Pace per 100 m","Lafen":"Running","Schwammen":"Swimming","Mäi Beräich":"My area","Wunschbox":"Wish box","Social-Media Fräiginn":"Social media approval","Export Coursen (CSV)":"Export races (CSV)",
+  "Prototyp · v0.1 · Demo-Daten (erfonnen)":"Prototype · v0.1 · demo data (fictional)",
+  "Datum":"Date","Auerzäit":"Time","Uert":"Place","Beschreiwung":"Description","Deng Umeldung":"Your response","Dain aktuellen Status:":"Your current status:",
+  "15 Min. virum Training sprengt de Status automatesch op Neen.":"15 min before training the status automatically switches to No.",
+  "NOTIZ FIR DÉI ANER (OPTIONAL)":"NOTE FOR THE OTHERS (OPTIONAL)","Späicheren":"Save","Participanten":"Participants","All":"All",
+  "Präsenz":"Attendance","Präsenzlëscht":"Attendance list","Keen an dëser Grupp.":"Nobody in this group.",
+  "Umeldungsschluss":"Registration deadline","Course änneren":"Edit race","Meng Umeldung":"My registration","Umeldung änneren":"Change registration",
+  "Umeldungsschluss ass ofgelaf":"Registration deadline has passed","Distanz":"Distance","Umellen":"Register","Resultater":"Results","Nach keng Resultater.":"No results yet.",
+  "+ Resultat androen":"+ Add result","Änneren":"Edit","Fir Social Media":"For social media","fräigigi":"approved","waart op Fräiginn":"awaiting approval",
+  "Anerer":"Other","— (spéider)":"— (later)","Meng Distanz":"My distance","Numm":"Name","Land":"Country","Info":"Info",
+  "Resultat änneren":"Edit result","Resultat androen":"Add result","Zäit (h:mm:ss)":"Time (h:mm:ss)","Plaz":"Place","Kommentar":"Comment","Läschen":"Delete",
+  "Vun der Course ofmellen":"Withdraw from race",
+  "Virschau 1080 × 1350 (Instagram-Format)":"Preview 1080 × 1350 (Instagram format)",
+  "Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.":"May be published (name, time). Revocable at any time.",
+  "✓ Vum Comité fräigigi":"✓ Approved by the committee","Waart op Fräiginn duerch d'Comité":"Awaiting committee approval","Zoumaachen":"Close",
+  "Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.":"Only results with opt-in “May be published” appear here.",
+  "Virschau":"Preview","Fräiginn":"Approve","Zréckzéien":"Withdraw","op Fräiginn":"pending",
+  "Nach näischt zur Fräiginn. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)":"Nothing to approve yet. (As an athlete, choose “For social media” on a result.)",
+  "Trainings besicht":"Trainings attended","Nëmmen du gesäis dës Zuelen.":"Only you can see these numbers.","Meng Trainings":"My trainings",
+  "… nëmmen déi lescht 12 gewisen":"… only the last 12 are shown","Meng Bestzäiten":"My personal bests","Nach keng.":"None yet.","Meng Resultater":"My results",
+  "⌚ Spéider: Daten-Import (Garmin/Coros)":"⌚ Later: data import (Garmin/Coros)",
+  "Wat wëlls du an der App? Stëmm fir Wënsch vun aneren mat engem Daum.":"What do you want in the app? Vote for others’ wishes with a thumbs-up.",
+  "+ Wonsch androen":"+ Add wish","Wonsch androen":"Add wish","Titel":"Title","Anonym (nëmmen d'Comité kann de Verfasser gesinn)":"Anonymous (only the committee can see the author)","Absenden":"Submit",
+  "anonym":"anonymous","geplant":"planned",
+  "Kalenner-Export fir Handy (ICS)":"Calendar export for phone (ICS)","Trainingen automatesch am Handy-Kalenner.":"Trainings automatically in the phone calendar.",
+  "Dark/Light Modus":"Dark/light mode","Hell Variant fir dote wou et sonneg ass.":"Light variant for when it’s sunny.",
+  "Erënnerung virun Umeldeschluss":"Reminder before registration deadline","Push 2 Deeg virum Schluss vun enger Course.":"Push notification 2 days before a race’s deadline.",
+  "Pace-Grupp":"Pace group","Wielt déi Grupp, an där s du normalerweis leefs. Am Training gesäis du dann „Meng Pace-Grupp“.":"Choose the group you normally run in. In training you will then see “My pace group”.",
+  "Nei Trainingen":"New trainings","Nei Coursen":"New races","Erënnerung virun Training":"Reminder before training","OK":"OK",
+  "Hei wäerte mir spéider d'Funktiounen vun der Sauerbeen App erklären.":"Here we will later explain the features of the Sauerbeen app.","Versioun 0.1 (Prototyp)":"Version 0.1 (prototype)",
+  "Am Prototyp gëtt et kee Login. Demo-Daten zrécksetzen?":"The prototype has no login. Reset demo data?","Daten zrécksetzen":"Reset data","Ofbriechen":"Cancel",
+  "Notiz gespäichert":"Note saved","Zréckgesat":"Reset","Numm, Datum an Uert ausfëllen":"Please fill in name, date and place","Course geännert":"Race updated","Course ugeluecht":"Race created",
+  "Umeldung geännert":"Registration updated","Ofgemellt":"Withdrawn","Zäit ausfëllen":"Please enter the time","Resultat geännert":"Result updated","Resultat gespäichert":"Result saved","Resultat geläscht":"Result deleted",
+  "Fräigigi":"Approved","Merci fir däi Wonsch!":"Thanks for your wish!","Titel fehlt":"Title missing","Export net méiglech":"Export not possible",
+  "Gaascht: Numm":"Guest name","+ Gaascht":"+ Guest",
+  "Aufwärmen: 15 Min. lockeren Dauerlauf + Lauf-ABC":"Warm-up: 15 min easy run + running drills","Haaptdeel: 4 × 8 Min. Schwelle (Pause 2 Min. Trabpause)":"Main set: 4 × 8 min threshold (2 min jog recovery)",
+  "Auslafen: 10 Min.":"Cool-down: 10 min","Mobility: 10 Min. am Stadion":"Mobility: 10 min at the stadium","Aufwärmen 15 Min.":"Warm-up 15 min","8 × 400 m (Pause 90 Sek.)":"8 × 400 m (90 sec rest)","Auslafen 10 Min.":"Cool-down 10 min",
+  "Aufwärmen 15 Min. op der Strooss":"Warm-up 15 min on the road","5 × Biergop (ca. 2 Min.), lues erofjoggen":"5 × uphill (approx. 2 min), jog down slowly","Anschleißend 2 × 6 Min. Schwelle":"Then 2 × 6 min threshold",
+  "1-2-3-4-3-2-1 Min. haart, jeweils 1 Min. Pause":"1-2-3-4-3-2-1 min hard, 1 min rest each","Aufwärmen 10 Min.":"Warm-up 10 min","30 Min. Tempo-Dauerlaf":"30 min tempo run",
+  "Gemittlechen Dauerlaf an Gruppen, Ennerhalung inklusiv. Kaffi duerno am Veräinsheem.":"Relaxed group run, chatting included. Coffee afterwards at the clubhouse.",
+  "Stroossenlaf: 5 km, 10 km.":"Road race: 5 km, 10 km.","Nikolaus-Mütz ass bei der Startnummer dobäi.":"Santa hat comes with the start number.",
+  "Nationale Cross-Championnat. Distanzen: 4 km (Kuerz), 8 km (Laang).":"National cross championship. Distances: 4 km (short), 8 km (long).","Championnat-Lizenz noutwendeg.":"Championship licence required.",
+  "Marathon 42,2 km, flaach. Gruppereesen ass geplangt, Info kënnt per Mail.":"Marathon 42.2 km, flat. Group travel is planned, info follows by mail.",
+  "Distanzen: 12 km (350 Hm), 25 km (900 Hm), 42 km (1600 Hm).":"Distances: 12 km (350 m elevation), 25 km (900 m), 42 km (1600 m).",
+  "Trail 10 km / 21 km. Weihnachtsmützen erwünscht.":"Trail 10 km / 21 km. Christmas hats welcome.","Hallefmarathon op der Sauer-Streck.":"Half marathon along the Sauer.",
+  "Trail 12 km / 21 km, Kostümer erlaabt.":"Trail 12 km / 21 km, costumes allowed.","10 km Stroossenlaf.":"10 km road race.",
+  "kommen 10 Min méi spéit":"arriving 10 min late","mat Kinnerwon 🙂":"with stroller 🙂","Waarm-up fänken ech eleng un":"I’ll start my warm-up alone","hunn nach Muskelkater":"still have sore muscles",
+  "Schéint Wieder, Konditioun passt!":"Nice weather, fitness is fine!","Neie Rekord 🎉":"New record 🎉","Vill Bam an Blieder 😅":"Lots of trees and leaves 😅"
+  },
+  pat:[
+   [/(\d{1,2}:\d{2}) Auer/g,"$1"],
+   [/^(\d+) Jo$/,"$1 Yes"],[/^(\d+) Villäicht$/,"$1 Maybe"],[/^(\d+) Nee$/,"$1 No"],
+   [/an (\d+) Deeg/,function(m,n){return "in "+n+(n==="1"?" day":" days");}],
+   [/^(\d+) Trainings am Joer (\d+)$/,"$1 trainings in $2"],
+   [/^Meng Pace-Grupp \((.*)\)$/,"My pace group ($1)"],[/^Pace-Grupp: (.*)$/,"Pace group: $1"],
+   [/^Ugemellte Leefer \((\d+)\)$/,"Registered runners ($1)"],
+   [/^(\d+) do\b/,"$1 present"],[/\(kann nogeholl ginn\)/,"(can be edited later)"],[/^Fäerdeg \((\d+) do\)$/,"Done ($1 present)"],
+   [/^Member zënter Juli 2026/,"Member since July 2026"],[/Member zënter Juli 2026/,"Member since July 2026"],
+   [/^Roll: (.*)$/,function(m,r){return "Role: "+trs(r);}],[/^Umeldung: (.*)$/,function(m,r){return "Response: "+trs(r);}],[/^Ugemellt: (.*)$/,"Registered: $1"],
+   [/^(.*): am Prototyp net aktiv$/,function(m,r){return trs(r)+": not active in the prototype";}],
+   [/^CSV erstallt: (.*) \((\d+) Zeilen\)$/,"CSV created: $1 ($2 rows)"],
+   [/«(.*)»/,function(m,t){return "«"+trs(t)+"»";}],
+   [/^Sprooch: Lëtzebuergesch$/,"Language: Lëtzebuergesch"],[/^Sprooch: (.*)$/,"Language: $1"],
+   [/^(Schwell|Intervaller|Pyramid|Tempo-Dauerlaf|Laftreff|Biergleef & Schwell)( · .*)$/,function(m,t,r){return LANGS.en.exact[t]+r;}],
+   [/^vun /,"by "],[/^by anonym$/,"by anonymous"],[/^Trainings am Joer (\d+)$/,"trainings in $1"],[/^Waart op Fräiginn$/,"awaiting approval"],
+   [/Plaz /g,"Place "],[/Läufer /g,"Runner "],[/\(Du\)/g,"(You)"],[/Gaascht/g,"Guest"],[/Hallefmarathon/g,"Half marathon"],
+   [/Ettelbréck/g,"Ettelbruck"],[/Veianen/g,"Vianden"],[/Mäerzeg/g,"Mertzig"],[/Herbstlaf/g,"Autumn run"],[/Pilzlaf/g,"Mushroom run"],[/Cross Championnat/g,"Cross Championship"],[/Maratón/g,"Marathon"],
+   [/ Auer$/,""],[/^Anonym$/,"Anonymous"]
+  ]}
+};
+var WD,MON,MONS,DOT=".";
+function trs(s){var L=LANGS[S&&S.lang||"lb"];if(!L||!L.exact||typeof s!=="string")return s;
+  var core=s.trim();if(!core)return s;var lead=s.slice(0,s.indexOf(core)),trail=s.slice(lead.length+core.length);
+  if(L.exact[core]!==undefined)return lead+L.exact[core]+trail;
+  var lines=core.split("\n");
+  return lead+lines.map(function(l){if(L.exact[l]!==undefined)return L.exact[l];var o=l;L.pat.forEach(function(p){o=o.replace(p[0],p[1]);});return o;}).join("\n")+trail;}
+function applyI18n(root){var L=LANGS[S.lang];if(!L||!L.exact)return;
+  var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];while(n=w.nextNode())list.push(n);
+  list.forEach(function(n){var v=trs(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;});
+  root.querySelectorAll("[placeholder]").forEach(function(e){e.placeholder=trs(e.placeholder);});}
+function setLang(l){if(!LANGS[l])l="lb";S.lang=l;var L=LANGS[l];WD=L.WD;MON=L.MON;MONS=L.MONS;DOT=L.dot;document.documentElement.lang=l;}
+
+/* ===== Zustand ===== */
+var S;
+function fresh(){return{lang:"lb",role:"Athlet",pace:"4:30–5:00",tab:"cal",stack:[],tf:"next",cf:"next",paceF:false,selDay:null,month:[2026,10],
+ rs:{},att:{},guests:{},courses:JSON.parse(JSON.stringify(CO0)),reg:JSON.parse(JSON.stringify(REG0)),res:JSON.parse(JSON.stringify(RES0)),wishes:JSON.parse(JSON.stringify(WISH0)),share:{},notif:{tr:true,co:true,rem:true},year:2026};}
+try{var raw=localStorage.getItem("sb-proto-v1");S=raw?Object.assign(fresh(),JSON.parse(raw)):fresh();}catch(e){S=fresh();}
+function save(){try{localStorage.setItem("sb-proto-v1",JSON.stringify(S));}catch(e){}}
+var T0={};TR.forEach(function(t){T0[t.id]=t;});
+function trById(id){return T0[id];}
+function coById(id){return S.courses.find(function(c){return c.id===id;});}
+function isPast(d){return d<TODAY;}
+/* Anmeldungen der anderen: deterministisch */
+function status(t,rid){
+  if(rid===0){var m=S.rs[t.id];if(m)return m.s;if(isPast(t.date)){return (hash(t.id,0)%4)?"jo":"nee";}return"villaicht";}
+  var h=hash(t.id,rid)%10;return h<5?"jo":h<7?"villaicht":"nee";}
+function hash(s,n){var h=n*31+7;for(var i=0;i<s.length;i++)h=(h*33+s.charCodeAt(i))>>>0;return h;}
+function noteOf(t,rid){if(rid===0)return(S.rs[t.id]||{}).note||"";return hash(t.id,rid)%9===0&&NOTES[rid]?NOTES[rid]:"";}
+function attOf(t){if(!S.att[t.id]){var a={};RUN.forEach(function(r){if(status(t,r.id)==="jo"&&(hash("a"+t.id,r.id)%10)>0)a[r.id]=true;});S.att[t.id]=a;}return S.att[t.id];}
+function lvlCls(l){return l==="Liicht"?"g":l==="Mettel"?"y":"r";}
+function lvlDot(l){return l==="Liicht"?"#15803d":l==="Mettel"?"#e8a33f":"#b91c1c";}
+function stBadge(s){var m={jo:["Jo","b-g"],villaicht:["Villäicht","b-y"],nee:["Nee","b-r"]}[s];return '<span class="badge '+m[1]+'">'+m[0]+'</span>';}
+function nei(){return '<span class="nei">NEI</span>';}
+function toSec(t){var p=t.replace(/'/g,":").split(":").map(Number);if(p.some(isNaN))return 1e9;return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];}
+function nextDeadlineOpen(c){return TODAY<=c.deadline;}
+function go(v){S.stack.push(v);render();}
+function toast(m){var t=document.createElement("div");t.className="toast";t.textContent=trs(m);document.getElementById("app").appendChild(t);setTimeout(function(){t.remove();},2200);}
+function sheet(html){closeSheet();var o=document.createElement("div");o.className="ov";o.id="ov";o.innerHTML='<div class="sheet">'+html+'</div>';applyI18n(o);o.addEventListener("click",function(e){if(e.target===o)closeSheet();});document.getElementById("app").appendChild(o);}
+function closeSheet(){var o=document.getElementById("ov");if(o)o.remove();}
+function val(id){var e=document.getElementById(id);return e?e.value.trim():"";}
+
+/* ===== Views ===== */
+function eventsOn(d){var ev=[];TR.forEach(function(t){if(t.date===d)ev.push({k:"t",o:t});});S.courses.forEach(function(c){if(c.date===d)ev.push({k:"c",o:c});});return ev;}
+function vCal(){
+  var y=S.month[0],m=S.month[1],first=new Date(y,m,1),off=(first.getDay()+6)%7,start=new Date(y,m,1-off),h="";
+  ["Méi","Dën","Mët","Don","Fre","Sam","So"].forEach(function(w){h+='<div class="wd">'+w+'</div>';});
+  for(var i=0;i<42;i++){var d=new Date(start);d.setDate(start.getDate()+i);var s=iso(d),ev=eventsOn(s),dots="";
+    ev.slice(0,3).forEach(function(e){dots+='<i style="background:'+(e.k==="c"?"#2563eb":lvlDot(e.o.lvl))+'"></i>';});
+    h+='<div class="d'+(d.getMonth()!==m?" o":"")+(s===TODAY?" today":"")+(s===S.selDay?" sel":"")+'" data-a="day" data-v="'+s+'">'+d.getDate()+'<div class="dots">'+dots+'</div></div>';}
+  var list=[];
+  if(S.selDay){eventsOn(S.selDay).forEach(function(e){list.push(e);});}
+  else{TR.forEach(function(t){if(t.date>=TODAY)list.push({k:"t",o:t});});S.courses.forEach(function(c){if(c.date>=TODAY)list.push({k:"c",o:c});});list.sort(function(a,b){return a.o.date<b.o.date?-1:a.o.date>b.o.date?1:0;});list=list.slice(0,8);}
+  var ev=list.map(function(e){var o=e.o;var dd=D(o.date);var head=WD[dd.getDay()]+", "+dd.getDate()+DOT+" "+MONS[dd.getMonth()]+" · "+o.time;
+    if(e.k==="t")return '<div class="card l-y row" data-a="tr" data-v="'+o.id+'" style="cursor:pointer"><span style="color:var(--sunt);width:26px">'+ic("heart")+'</span><div class="sp"><div class="muted sm">'+head+'</div><div class="tt">'+esc(o.title)+'</div><div class="muted sm">'+esc(o.place)+'</div></div>'+stBadge(status(o,0))+'<span class="chev">›</span></div>';
+    return '<div class="card l-v row" data-a="co" data-v="'+o.id+'" style="cursor:pointer"><span style="color:#2563eb;width:26px">'+ic("cup")+'</span><div class="sp"><div class="muted sm">'+head+'</div><div class="tt">'+esc(o.name)+'</div><div class="muted sm">'+esc(o.place)+', '+o.land+'</div></div><span class="chev">›</span></div>';}).join("")||'<div class="empty">Keng Events un deem Dag.</div>';
+  return '<div class="cal"><div class="hd"><button data-a="mm" data-v="-1">‹</button>'+MON[m]+' '+y+'<button data-a="mm" data-v="1">›</button></div><div class="grid">'+h+'</div></div>'+
+   '<h2>'+(S.selDay?longDate(S.selDay):"Nächst Events")+(S.selDay?' <button class="chip s" data-a="day" data-v="">alles</button>':"")+'</h2>'+ev;}
+function trCard(t){
+  var st=status(t,0),dd=D(t.date);
+  return '<div class="card row" data-a="tr" data-v="'+t.id+'" style="cursor:pointer"><div class="date"><small>'+WD[dd.getDay()]+'</small><b>'+dd.getDate()+'</b><small>'+MONS[dd.getMonth()]+'</small></div><div class="sp"><div class="tt">'+esc(t.title)+'</div><div class="muted sm">🕒 '+t.time+' Auer · '+esc(t.place)+'</div><div class="tags"><span class="badge b-'+lvlCls(t.lvl)+'">'+t.lvl+'</span><span class="badge b-n">'+t.type+'</span></div></div>'+(isPast(t.date)?"":stBadge(st))+'<span class="chev">›</span></div>';}
+function vTr(){
+  var up=S.tf==="next";
+  var list=TR.filter(function(t){return up?t.date>=TODAY:t.date<TODAY;});
+  if(up)list=list.slice(0,12);else list=list.slice(-12).reverse();
+  return '<div class="chips"><button class="chip'+(up?" on":"")+'" data-a="tf" data-v="next">Kommend</button><button class="chip'+(!up?" on":"")+'" data-a="tf" data-v="past">Vergaangen</button></div>'+
+   (list.map(trCard).join("")||'<div class="empty">Näischt do.</div>');}
+function vCo(){
+  var up=S.cf==="next";
+  var list=S.courses.filter(function(c){return up?c.date>=TODAY:c.date<TODAY;}).sort(function(a,b){return up?(a.date<b.date?-1:1):(a.date<b.date?1:-1);});
+  var cards=list.map(function(c){var dd=dayDiff(c.date,TODAY),reg=S.reg[c.id]&&S.reg[c.id][0];
+    return '<div class="card" data-a="co" data-v="'+c.id+'" style="cursor:pointer"><div class="row"><div class="trophy">'+ic("cup")+'</div><div class="sp"><div class="tt">'+esc(c.name)+'</div><div class="muted sm">'+longDate(c.date)+'</div><div class="muted sm">📍 '+esc(c.place)+', '+c.land+'</div></div>'+(reg?'<span class="badge b-g">✓ '+esc(reg)+'</span>':"")+'<span class="chev">›</span></div>'+(up?'<div style="border-top:1px solid var(--line);margin-top:10px;padding-top:8px;color:var(--pink);font-weight:700;font-size:14px">🕒 an '+dd+' Deeg</div>':"")+'</div>';}).join("")||'<div class="empty">Näischt do.</div>';
+  return '<div class="chips"><button class="chip'+(up?" on":"")+'" data-a="cf" data-v="next">Kommend</button><button class="chip'+(!up?" on":"")+'" data-a="cf" data-v="past">Vergaangen</button></div>'+cards;}
+function vProf(){
+  var roles=["Athlet","Trainer","Comité"];
+  var h='<div class="demo"><div class="sm" style="margin-bottom:8px;color:var(--sunt);font-weight:700">DEMO-SCHALTER · Roll wielen</div><div class="seg">'+roles.map(function(r){return '<button class="'+(S.role===r?"on":"")+'" data-a="role" data-v="'+r+'">'+r+'</button>';}).join("")+'</div></div>';
+  h+='<div class="card" style="text-align:center"><div class="av big">L</div><div style="font-size:22px;font-weight:800">Läufer A (Du)</div><div class="muted">laeufer.a@beispill.test</div><div class="muted sm" style="margin:6px 0 10px">📍 Sauerbeen · Member zënter Juli 2026</div><span class="badge b-r" style="background:#4a2161">'+S.role+'</span></div>';
+  var items=[["an","Meng Auswertung","an",true,"chart"],["bar","Mäi Beräich","mb",true,"chart"],["pace","Pace-Grupp: "+S.pace,"pace",true,"group"],["wish","Wunschbox","wb",true,"bulb"]];
+  if(S.role==="Comité"){items.push(["x","Social-Media Fräiginn","fg",true,"share"]);items.push(["x","Export Coursen (CSV)","csv",true,"dl"]);}
+  h+='<div class="card menu"><h3>Ergänzungen (Prototyp)</h3>'+items.map(function(i){return '<div class="li" data-a="'+i[2]+'">'+ic(i[4])+'<span class="sp">'+i[1]+nei()+'</span><span class="chev">›</span></div>';}).join("")+'</div>';
+  h+='<div class="card menu"><h3>Kont</h3><div class="li" data-a="soon" data-v="Profil änneren">'+ic("user")+'<span class="sp">Profil änneren</span><span class="chev">›</span></div><div class="li" data-a="lang">'+ic("group")+'<span class="sp">Sprooch: '+LANGS[S.lang].name+'</span><span class="chev">›</span></div><div class="li" data-a="notif">'+ic("bell")+'<span class="sp">Notifikatiounen</span><span class="chev">›</span></div></div>';
+  h+='<div class="card menu"><h3>Hëllef</h3><div class="li" data-a="soon" data-v="Support">'+ic("help")+'<span class="sp">Support<div class="muted sm">support@sauerbeen.example</div></span><span class="chev">›</span></div><div class="li" data-a="about">'+ic("info")+'<span class="sp">Iwwer d\'App</span><span class="chev">›</span></div></div>';
+  h+='<button class="btn full ghost" data-a="reset">Ofmellen</button><div class="muted sm" style="text-align:center;margin:14px">Prototyp · v0.1 · Demo-Daten (erfonnen)</div><div class="fsun"><span class="fdot"></span></div>';
+  return h;}
+
+/* --- Detail Training --- */
+function vTrDetail(id){
+  var t=trById(id),past=isPast(t.date),me=S.rs[id]||{s:status(t,0),note:""},cur=me.s,dd=D(t.date);
+  var all=RUN.map(function(r){return{r:r,s:status(t,r.id)};});
+  var cnt={jo:0,villaicht:0,nee:0};all.forEach(function(x){cnt[x.s]++;});
+  var list=all;if(S.paceF)list=all.filter(function(x){return x.r.pace===S.pace;});
+  var order={jo:0,villaicht:1,nee:2};list=list.slice().sort(function(a,b){return order[a.s]-order[b.s];});
+  var h='<div class="row" style="margin-bottom:8px"><span class="badge b-'+lvlCls(t.lvl)+'">'+t.lvl+'</span><span class="badge b-n">'+t.type+'</span></div><div style="font-size:26px;font-weight:800">'+esc(t.title)+'</div>';
+  h+='<div class="card" style="margin-top:14px"><div class="li"><div class="muted sm">Datum</div>'+longDate(t.date)+'</div><div class="li"><div class="muted sm">Auerzäit</div>'+t.time+' Auer</div><div class="li"><div class="muted sm">Uert</div>'+esc(t.place)+'</div></div>';
+  h+='<div class="card"><h3>Beschreiwung</h3><div style="white-space:pre-line">'+esc(t.desc)+'</div></div>';
+  if(!past){
+   h+='<div class="card"><h3>Deng Umeldung</h3><div class="sm muted" style="margin-bottom:10px">Dain aktuellen Status: '+stBadge(cur)+'</div><div class="seg">'+[["jo","Jo","jo"],["villaicht","Villäicht","vl"],["nee","Nee","ne"]].map(function(b){return '<button class="'+b[2]+(cur===b[0]?" on":"")+'" data-a="rs" data-v="'+b[0]+'">'+b[1]+'</button>';}).join("")+'</div><div class="sm muted" style="margin-top:10px">15 Min. virum Training sprengt de Status automatesch op Neen.</div>'+
+    '<label>NOTIZ FIR DÉI ANER (OPTIONAL)<textarea id="note" rows="2" maxlength="50" placeholder="z.B. „kommen 10 Min méi spéit“" oninput="document.getElementById(\'nc\').textContent=this.value.length+\'/50\'">'+esc(me.note||"")+'</textarea></label><div class="row" style="margin-top:8px"><span class="muted sm" id="nc">'+(me.note||"").length+'/50</span><span class="sp"></span><button class="btn sm" data-a="note">Späicheren</button></div></div>';
+  }
+  if(S.role!=="Athlet"){
+   var a=attOf(t),n=Object.keys(a).filter(function(k){return a[k];}).length+(S.guests[t.id]||[]).length;
+   h+='<div class="card"><h3>Präsenz'+nei()+'</h3><div class="row"><div class="sp">'+n+' do'+(past?" (kann nogeholl ginn)":"")+'</div><button class="btn sm" data-a="pres" data-v="'+t.id+'">Präsenzlëscht</button></div></div>';}
+  h+='<div class="card"><h3>Participanten</h3><div class="cnt" style="font-size:16px;margin-bottom:10px"><b class="g">'+cnt.jo+' Jo</b> · <b class="y">'+cnt.villaicht+' Villäicht</b> · <b class="r">'+cnt.nee+' Nee</b></div>'+
+   '<div class="row" style="margin-bottom:8px"><button class="chip s'+(!S.paceF?" on":"")+'" data-a="pf" data-v="0">All</button><button class="chip s'+(S.paceF?" on":"")+'" data-a="pf" data-v="1">Meng Pace-Grupp ('+S.pace+')</button>'+nei()+'</div>'+
+   list.map(function(x){var n=noteOf(t,x.r.id);return '<div class="li row"><div class="av">'+x.r.short+'</div><div class="sp"><div>'+x.r.name+'</div><div class="muted sm">Pace '+x.r.pace+'</div>'+(n?'<div class="note">«'+esc(n)+'»</div>':"")+'</div>'+(x.s==="jo"?'<span class="badge b-g">✓ Dobäi</span>':stBadge(x.s))+'</div>';}).join("")+(list.length?"":'<div class="empty">Keen an dëser Grupp.</div>')+'</div>';
+  return h;}
+
+/* --- Detail Course --- */
+function distOpts(c,sel){var o=["5km","10km","21km","Hallefmarathon","Marathon","Trail 12km","Trail 25km","Anerer"];return o.map(function(x){return '<option value="'+x+'"'+(x===sel?" selected":"")+'>'+x+'</option>';}).join("");}
+function vCoDetail(id){
+  var c=coById(id),past=c.date<TODAY,open=nextDeadlineOpen(c),mine=S.reg[id]&&S.reg[id][0];
+  var canEdit=c.mine||S.role==="Comité";
+  var h='<div class="row" style="margin-bottom:10px"><div class="trophy">'+ic("cup")+'</div><div style="font-size:24px;font-weight:800">'+esc(c.name)+'</div></div>';
+  h+='<div class="card"><div class="li"><div class="muted sm">Datum</div>'+longDate(c.date)+' · '+c.time+'</div><div class="li"><div class="muted sm">Uert</div>'+esc(c.place)+', '+c.land+'</div><div class="li"><div class="muted sm">Umeldungsschluss</div>'+longDate(c.deadline)+'</div></div>';
+  h+='<div class="card"><h3>Info</h3><div style="white-space:pre-line">'+esc(c.info)+'</div>'+(canEdit?'<button class="btn sm sec" style="margin-top:12px" data-a="coedit" data-v="'+id+'">Course änneren'+nei()+'</button>':"")+'</div>';
+  h+='<div class="card"><h3>Meng Umeldung</h3>';
+  if(mine){h+='<div class="row"><span class="badge b-g">✓ '+esc(mine)+'</span><span class="sp"></span>'+(open?'<button class="btn sm sec" data-a="regedit" data-v="'+id+'">Umeldung änneren'+nei()+'</button>':"")+'</div>'+(!open?'<div class="muted sm" style="margin-top:8px">'+ic("lock").replace("<svg",'<svg width="14" height="14"')+' Umeldungsschluss ass ofgelaf</div>':"");}
+  else if(open&&!past){h+='<label>Distanz<select id="dist">'+distOpts(c,"")+'</select></label><button class="btn full" style="margin-top:12px" data-a="reg" data-v="'+id+'">Umellen</button>';}
+  else h+='<div class="sm muted" style="background:#2d3e94;border-radius:12px;padding:12px">'+ic("lock").replace("<svg",'<svg width="16" height="16" style="vertical-align:-3px"')+' Umeldungsschluss ass ofgelaf</div>';
+  h+='</div>';
+  var regs=Object.keys(S.reg[id]||{});
+  h+='<div class="card"><h3>Ugemellte Leefer ('+regs.length+')</h3>'+regs.map(function(k){var r=RUN[+k];return '<div class="li row"><div class="av">'+r.short+'</div><div class="sp">'+r.name+'<div class="muted sm">'+esc(S.reg[id][k])+'</div></div><span style="color:var(--green)">'+ic("check").replace("<svg",'<svg width="22" height="22"')+'</span></div>';}).join("")+'</div>';
+  if(past){
+   var rs=S.res.filter(function(r){return r.cid===id;}),has=rs.some(function(r){return r.rid===0;});
+   h+='<div class="card"><h3>Resultater</h3>'+rs.map(function(r){var rn=RUN[r.rid],sh=S.share[r.id];
+     return '<div class="li"><div class="row"><div class="av">'+rn.short+'</div><div class="sp">'+rn.name+'<div class="muted sm">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div></div><b style="color:var(--sunt);font-size:17px">'+esc(r.time)+'</b></div>'+(r.comment?'<div class="note" style="margin:4px 0 0 50px">«'+esc(r.comment)+'»</div>':"")+
+     (r.rid===0?'<div class="row" style="margin:8px 0 0 50px;gap:8px;flex-wrap:wrap"><button class="btn sm sec" data-a="resedit" data-v="'+r.id+'">Änneren'+nei()+'</button><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Fir Social Media'+nei()+'</button>'+(sh&&sh.opt?'<span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"waart op Fräiginn")+'</span>':"")+'</div>':"")+'</div>';}).join("")+(rs.length?"":'<div class="empty">Nach keng Resultater.</div>')+
+     (has?"":'<button class="btn full" data-a="resadd" data-v="'+id+'">+ Resultat androen</button>')+'</div>';}
+  return h;}
+
+
+/* --- Meng Auswertung (Design B): Beispill-Daten, spéider aus FIT-Import --- */
+var AN={
+ run:{name:"Lafen",titel:"Schwell · Mëttwoch 25. Nov.",kp:[["Distanz","10,2","km"],["Zäit","52:14",""],["Ø Pace","5:07","/km"],["Ø Häerzfrequenz","158","bpm"]],
+  bars:[["km 1","5:21",72],["km 2","5:12",80],["km 3","5:04",86],["km 4","5:02",88],["km 5","5:00",90],["km 6","5:03",87],["km 7","5:01",89],["km 8","4:58",93],["km 9","4:55",96],["km 10","4:49",100]],barTitel:"Pace pro Kilometer",
+  zonen:[8,22,38,26,6],zonTitel:"Zäit an den HF-Zonen",extra:[["Schwell-Block 6 × 1 km","Ø 4:31 /km, Pause 90 s, Schwankung 3 s"],["Rhythmus","Ø 174 Schrëtt/min"],["Héichtemeter","+ 64 m"]]},
+ bike:{name:"Velo",titel:"Sonndegsrees · Sonndeg 22. Nov.",kp:[["Distanz","42,6","km"],["Zäit","1:21:10",""],["Ø Leeschtung","186","W"],["NP","201","W"]],
+  bars:[["0–10′","171 W",78],["10–20′","192 W",88],["20–30′","205 W",94],["30–40′","198 W",90],["40–50′","188 W",86],["50–60′","176 W",80],["60–70′","201 W",92],["70–81′","219 W",100]],barTitel:"Leeschtung pro Block",
+  zonen:[14,34,30,18,4],zonTitel:"Zäit an den Leeschtungszonen",extra:[["Ø Geschwindegkeet","31,5 km/h"],["Max. Leeschtung (5 s)","612 W"],["Kadenz","Ø 88 U/min"]]},
+ swim:{name:"Schwammen",titel:"Mëttwoch-Training · Mëttwoch 18. Nov.",kp:[["Distanz","2 000","m"],["Zäit","38:20",""],["Ø Pace","1:55","/100 m"],["SWOLF","38",""]],
+  bars:[["100 m","1:58",88],["200 m","1:56",92],["300 m","1:55",94],["400 m","1:57",90],["500 m","1:54",96],["…","",0],["1,7 km","1:55",94],["1,8 km","1:52",98],["1,9 km","1:50",100],["2,0 km","1:49",100]],barTitel:"Pace pro 100 m",
+  zonen:[10,30,40,16,4],zonTitel:"Zäit an den Intensitéitszonen",extra:[["Zich-Rate","Ø 29 Zich/min"],["Zich pro Bunn (25 m)","Ø 17"],["Technik","Brust 60 % · Crawl 40 %"]]}
+};
+var ZC=["#9ac5d8","#5aa3c4","#e8a33f","#d9731b","#b91c1c"];
+function anSport(){return AN[S.ansp||"run"];}
+function vAn(){
+  var k=S.ansp||"run",a=AN[k];
+  var h='<div class="sp3" style="margin:6px 0 14px">';
+  [["run","Lafen","38 km"],["bike","Velo","96 km"],["swim","Schwammen","3,8 km"]].forEach(function(x){h+='<div data-a="ansp" data-v="'+x[0]+'" style="'+(k===x[0]?'border-color:var(--accent);background:var(--card)':'')+'"><b>'+x[1]+'</b><small>'+x[2]+' · Woch</small></div>';});
+  h+='</div>';
+  h+='<div class="card"><h3>Lescht Aktivitéit'+nei()+'</h3><div style="font-size:18px;font-weight:700;margin-bottom:10px">'+a.titel+'</div><div class="kp">'+a.kp.map(function(x){return '<div><small>'+x[0]+'</small><b>'+x[1]+'<em>'+x[2]+'</em></b></div>';}).join("")+'</div></div>';
+  h+='<div class="card"><h3>'+a.barTitel+'</h3>'+a.bars.map(function(b){return b[2]?'<div class="brow"><div class="l">'+b[0]+'</div><div class="t"><i'+(b[2]===100?' class="s"':'')+' style="width:'+b[2]+'%"></i></div><div class="v">'+b[1]+'</div></div>':'<div class="muted sm" style="text-align:center">· · ·</div>';}).join("")+'</div>';
+  var tot=a.zonen.reduce(function(x,y){return x+y;},0);
+  h+='<div class="card"><h3>'+a.zonTitel+'</h3><div class="zone">'+a.zonen.map(function(z,i){return '<i style="width:'+(z/tot*100)+'%;background:'+ZC[i]+'"></i>';}).join("")+'</div><div class="zl">'+a.zonen.map(function(z,i){return '<span>Z'+(i+1)+' '+z+'%</span>';}).join("")+'</div></div>';
+  h+='<div class="card"><h3>Méi Detailer</h3>'+a.extra.map(function(e){return '<div class="li row"><div class="sp">'+e[0]+'</div><b class="mono" style="font-size:13px;text-align:right">'+e[1]+'</b></div>';}).join("")+'</div>';
+  h+='<div class="card" style="border-style:dashed;text-align:center"><div class="muted sm" style="margin-bottom:10px">Beispill-Daten. Mat dem Import kënnt dës Auswertung automatesch aus denger Garmin-/Coros-/FIT-Datei.</div><button class="btn sec full" data-a="soon" data-v="FIT-Datei eropluedden">FIT-Datei eropluedden</button></div>';
+  h+='<div class="muted sm" style="text-align:center;margin:4px 0 8px">Nëmmen du gesäis dës Zuelen.</div>';
+  return h;
+}
+
+/* --- Mäi Beräich --- */
+function vMb(){
+  var att=TR.filter(function(t){return isPast(t.date)&&attOf(t)[0];});
+  var inY=att.filter(function(t){return t.date.slice(0,4)===String(S.year);});
+  var months={};inY.forEach(function(t){var k=+t.date.slice(5,7)-1;months[k]=(months[k]||0)+1;});
+  var max=Math.max.apply(null,Object.values(months).concat([1]));
+  var h='<div class="card" data-a="an" style="cursor:pointer"><div class="row"><div class="sp"><h3 style="margin:0 0 4px">Meng Auswertung'+nei()+'</h3><div class="muted sm">Lafen · Velo · Schwammen: Pace, Leeschtung, Zonen</div></div><span class="chev">›</span></div></div><div class="card"><h3>Trainings besicht'+nei()+'</h3><div class="row"><div style="font-size:42px;font-weight:800;color:var(--sunt)">'+inY.length+'</div><div class="muted">Trainings am Joer '+S.year+'</div></div><div style="margin-top:10px">';
+  for(var m=8;m<=10;m++){var n=months[m]||0;h+='<div class="row" style="margin:6px 0"><div style="width:84px" class="sm">'+MON[m]+'</div><div class="sp"><div class="bar" style="width:'+Math.round(n/max*100)+'%"></div></div><b>'+n+'</b></div>';}
+  h+='<div class="muted sm" style="margin-top:8px">Nëmmen du gesäis dës Zuelen.</div></div>';
+  h+='<div class="card"><h3>Meng Trainings</h3>'+att.slice().reverse().slice(0,12).map(function(t){return '<div class="li row"><div class="sp"><div>'+esc(t.title)+'</div><div class="muted sm">'+longDate(t.date)+'</div></div><span class="badge b-'+lvlCls(t.lvl)+'">'+t.lvl+'</span></div>';}).join("")+'<div class="muted sm" style="margin-top:8px">… nëmmen déi lescht 12 gewisen</div></div>';
+  var mine=S.res.filter(function(r){return r.rid===0;}),best={};
+  mine.forEach(function(r){if(!best[r.dist]||toSec(r.time)<toSec(best[r.dist].time))best[r.dist]=r;});
+  h+='<div class="card"><h3>Meng Bestzäiten</h3>'+(Object.keys(best).map(function(k){return '<div class="li row"><div class="sp">'+esc(k)+'</div><b style="color:var(--sunt)">'+esc(best[k].time)+'</b></div>';}).join("")||'<div class="muted">Nach keng.</div>')+'</div>';
+  h+='<div class="card"><h3>Meng Resultater</h3>'+mine.map(function(r){var c=coById(r.cid);return '<div class="li row" data-a="co" data-v="'+c.id+'" style="cursor:pointer"><div class="sp">'+esc(c.name)+'<div class="muted sm">'+longDate(c.date)+' · '+esc(r.dist)+' · Plaz '+esc(r.place)+'</div></div><b style="color:var(--sunt)">'+esc(r.time)+'</b></div>';}).join("")+'</div>';
+  h+='<div class="card" style="border-style:dashed;text-align:center" ><div class="muted">⌚ Spéider: Daten-Import (Garmin/Coros)</div></div>';
+  return h;}
+/* --- Wunschbox --- */
+function vWb(){
+  var l=S.wishes.slice().sort(function(a,b){return b.votes.length-a.votes.length;});
+  return '<div class="muted sm" style="margin-bottom:12px">Wat wëlls du an der App? Stëmm fir Wënsch vun aneren mat engem Daum.</div><button class="btn full" data-a="wadd" style="margin-bottom:14px">+ Wonsch androen</button>'+
+   l.map(function(w){var on=w.votes.indexOf("me")>=0;return '<div class="card row"><button class="vote'+(on?" on":"")+'" data-a="vote" data-v="'+w.id+'"><span>👍</span><span>'+w.votes.length+'</span></button><div class="sp"><div style="font-weight:700">'+esc(w.title)+'</div><div class="muted sm">'+esc(w.text)+'</div><div class="muted sm" style="margin-top:4px">vun '+esc(w.by)+(w.status?' · <span class="badge b-y" style="padding:1px 8px;font-size:11px">'+w.status+'</span>':"")+'</div></div></div>';}).join("");}
+/* --- Freigabe --- */
+function vFg(){
+  var l=S.res.filter(function(r){return S.share[r.id]&&S.share[r.id].opt;});
+  return '<div class="muted sm" style="margin-bottom:12px">Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.</div>'+(l.map(function(r){var c=coById(r.cid),sh=S.share[r.id];return '<div class="card"><div class="row"><div class="sp"><b>'+RUN[r.rid].name+'</b><div class="muted sm">'+esc(c.name)+' · '+esc(r.dist)+' · '+esc(r.time)+'</div></div><span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"op Fräiginn")+'</span></div><div class="row" style="margin-top:10px;gap:8px"><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Virschau</button>'+(sh.approved?'<button class="btn sm ghost" data-a="unapprove" data-v="'+r.id+'">Zréckzéien</button>':'<button class="btn sm" data-a="approve" data-v="'+r.id+'">Fräiginn</button>')+'</div></div>';}).join("")||'<div class="empty">Nach näischt zur Fräiginn. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)</div>');}
+
+/* ===== Render ===== */
+function render(){
+  var langBtn='<button class="lang" data-a="lang" title="Sprooch / Language"><svg class="gl" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#e8a33f" stroke-width="2" stroke-linecap="round" style="vertical-align:-3px;margin-right:4px"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>'+LANGS[S.lang].code+'</button>';var top=S.stack[S.stack.length-1],body="",title="",logo=!top;
+  if(top){var k=top.t;
+    if(k==="tr"){title="Training";body=vTrDetail(top.id);}
+    else if(k==="co"){title="Course";body=vCoDetail(top.id);}
+    else if(k==="mb"){title="Mäi Beräich";body=vMb();}
+    else if(k==="an"){title="Meng Auswertung";body=vAn();}
+    else if(k==="wb"){title="Wunschbox";body=vWb();}
+    else if(k==="fg"){title="Social-Media Fräiginn";body=vFg();}}
+  else{body={cal:vCal,tr:vTr,co:vCo,pr:vProf}[S.tab]();}
+  var hd;
+  if(top)hd='<header><button class="back" data-a="back">←</button><div class="ttl sp" style="text-align:center;margin-right:34px">'+title+'</div></header>';
+  else{var right="";
+    if(S.tab==="cal")right='<div class="leg"><i style="background:#15803d"></i><i style="background:#e8a33f"></i><i style="background:#b91c1c"></i>Training <i style="background:#2563eb;margin-left:6px"></i>Coursen</div>';
+    if(S.tab==="co")right='<button class="btn" data-a="coadd" style="padding:9px 16px">+ Course</button>';
+    if(S.tab==="pr")hd='<header><div class="ttl sp" style="font-size:30px">Profil</div>'+langBtn+'</header>';
+    hd=hd||'<header><span class="logo" role="img" aria-label="SauerBeen"></span><span class="sp"></span>'+right+langBtn+'</header>';}
+  var tabs=[["cal","Kalenner","cal"],["tr","Training","heart"],["co","Coursen","cup"],["pr","Profil","user"]];
+  var scroll=document.querySelector("main"),st=scroll?scroll.scrollTop:0;
+  var app=document.getElementById("app"),ov=document.getElementById("ov");
+  app.innerHTML=hd+'<main>'+body+'</main><nav>'+tabs.map(function(t){return '<button class="'+(S.tab===t[0]?"on":"")+'" data-a="tab" data-v="'+t[0]+'">'+ic(t[2])+t[1]+'</button>';}).join("")+'</nav>';
+  applyI18n(app);
+  if(ov)app.appendChild(ov);
+  if(scroll&&!window.__resetScroll)document.querySelector("main").scrollTop=st;window.__resetScroll=false;
+  save();}
+
+/* ===== Aktionen ===== */
+var A={
+ tab:function(v){S.tab=v;S.stack=[];S.selDay=null;window.__resetScroll=true;render();},
+ back:function(){S.stack.pop();window.__resetScroll=true;render();},
+ day:function(v){S.selDay=(v&&S.selDay!==v)?v:null;render();},
+ mm:function(v){var m=S.month[1]+ +v,y=S.month[0];if(m<0){m=11;y--;}if(m>11){m=0;y++;}S.month=[y,m];S.selDay=null;render();},
+ tf:function(v){S.tf=v;render();},cf:function(v){S.cf=v;render();},
+ tr:function(v){window.__resetScroll=true;go({t:"tr",id:v});},co:function(v){window.__resetScroll=true;go({t:"co",id:v});},
+ an:function(){window.__resetScroll=true;go({t:"an"});},
+ ansp:function(v){S.ansp=v;render();},
+ role:function(v){S.role=v;render();toast("Roll: "+v);},
+ rs:function(v){var id=S.stack[S.stack.length-1].id,o=S.rs[id]||{note:""};o.s=v;S.rs[id]=o;render();toast("Umeldung: "+{jo:"Jo",villaicht:"Villäicht",nee:"Nee"}[v]);},
+ note:function(){var id=S.stack[S.stack.length-1].id,o=S.rs[id]||{s:status(trById(id),0)};o.note=val("note").slice(0,50);S.rs[id]=o;render();toast("Notiz gespäichert");},
+ pf:function(v){S.paceF=v==="1";render();},
+ pace:function(){sheet('<h2>Pace-Grupp'+nei()+'</h2><div class="muted sm" style="margin-bottom:12px">Wielt déi Grupp, an där s du normalerweis leefs. Am Training gesäis du dann „Meng Pace-Grupp“.</div>'+PACES.map(function(p){return '<button class="btn full '+(p===S.pace?"":"sec")+'" style="margin-bottom:8px" data-a="setpace" data-v="'+p+'">'+p+' min/km</button>';}).join(""));},
+ setpace:function(v){S.pace=v;RUN[0].pace=v;closeSheet();render();toast("Pace-Grupp: "+v);},
+ notif:function(){sheet('<h2>Notifikatiounen</h2>'+[["tr","Nei Trainingen"],["co","Nei Coursen"],["rem","Erënnerung virun Training"]].map(function(x){return '<label class="ck" style="padding:10px 0"><input type="checkbox" '+(S.notif[x[0]]?"checked":"")+' onchange="S.notif[\''+x[0]+'\']=this.checked;save()">'+x[1]+'</label>';}).join("")+'<button class="btn full" style="margin-top:12px" data-a="close">OK</button>');},
+ close:function(){closeSheet();},
+ lang:function(){var k=Object.keys(LANGS),i=(k.indexOf(S.lang)+1)%k.length;closeSheet();setLang(k[i]);window.__resetScroll=false;render();toast(LANGS[S.lang].name);},
+ about:function(){sheet('<h2>Iwwer d\'App</h2><p>Hei wäerte mir spéider d\'Funktiounen vun der Sauerbeen App erklären.</p><p class="muted">Versioun 0.1 (Prototyp)<span class="fdot"></span></p><button class="btn full" data-a="close">OK</button>');},
+ soon:function(v){toast(v+": am Prototyp net aktiv");},
+ reset:function(){sheet('<h2>Ofmellen</h2><p class="muted">Am Prototyp gëtt et kee Login. Demo-Daten zrécksetzen?</p><button class="btn full" data-a="doreset">Daten zrécksetzen</button><button class="btn full sec" style="margin-top:8px" data-a="close">Ofbriechen</button>');},
+ doreset:function(){S=fresh();setLang(S.lang);RUN[0].pace=S.pace;closeSheet();render();toast("Zréckgesat");},
+ /* Courses */
+ coadd:function(){coForm();},coedit:function(v){coForm(coById(v));},
+ cosave:function(v){var n=val("f-name"),d=val("f-date"),p=val("f-place");if(!n||!d||!p){toast("Numm, Datum an Uert ausfëllen");return;}
+   var o=v?coById(v):{id:"c"+Date.now(),mine:true};Object.assign(o,{name:n,date:d,time:val("f-time")||"10:00",place:p,land:val("f-land")||"LUX",deadline:val("f-dl")||d,info:val("f-info")});
+   if(!v){S.courses.push(o);if(document.getElementById("f-dist").value)S.reg[o.id]={0:val("f-dist")};}
+   closeSheet();render();toast(v?"Course geännert":"Course ugeluecht");},
+ reg:function(v){S.reg[v]=S.reg[v]||{};S.reg[v][0]=val("dist");render();toast("Ugemellt: "+S.reg[v][0]);},
+ regedit:function(v){sheet('<h2>Umeldung änneren'+nei()+'</h2><label>Distanz<select id="dist">'+distOpts(coById(v),S.reg[v][0])+'</select></label><button class="btn full" style="margin-top:14px" data-a="regsave" data-v="'+v+'">Späicheren</button><button class="btn full ghost" style="margin-top:8px" data-a="regdel" data-v="'+v+'">Vun der Course ofmellen</button>');},
+ regsave:function(v){S.reg[v][0]=val("dist");closeSheet();render();toast("Umeldung geännert");},
+ regdel:function(v){delete S.reg[v][0];closeSheet();render();toast("Ofgemellt");},
+ resadd:function(v){resForm(null,v);},resedit:function(v){resForm(S.res.find(function(r){return r.id===v;}));},
+ ressave:function(v,cid){var tm=val("r-time"),pl=val("r-place");if(!tm){toast("Zäit ausfëllen");return;}
+   var o=v?S.res.find(function(r){return r.id===v;}):{id:"r"+Date.now(),cid:cid,rid:0};Object.assign(o,{dist:val("r-dist")||"—",time:tm,place:pl||"—",comment:val("r-com")});if(!v)S.res.push(o);closeSheet();render();toast(v?"Resultat geännert":"Resultat gespäichert");},
+ resdel:function(v){S.res=S.res.filter(function(r){return r.id!==v;});delete S.share[v];closeSheet();render();toast("Resultat geläscht");},
+ /* Präsenz */
+ pres:function(v){presSheet(v);},
+ ptog:function(v){var p=v.split("|"),t=trById(p[0]),a=attOf(t);a[p[1]]=!a[p[1]];presSheet(p[0]);render();},
+ gadd:function(v){var n=val("gname");if(!n)return;(S.guests[v]=S.guests[v]||[]).push(n);presSheet(v);render();},
+ gdel:function(v){var p=v.split("|");S.guests[p[0]].splice(+p[1],1);presSheet(p[0]);render();},
+ /* Teilen */
+ shr:function(v){shareSheet(v);},
+ shopt:function(v){var o=S.share[v]||{};o.opt=document.getElementById("opt").checked;if(!o.opt)o.approved=false;S.share[v]=o;shareSheet(v);render();},
+ approve:function(v){S.share[v].approved=true;render();toast("Fräigigi");},unapprove:function(v){S.share[v].approved=false;render();},
+ mb:function(){go({t:"mb"});},wb:function(){go({t:"wb"});},fg:function(){go({t:"fg"});},
+ vote:function(v){var w=S.wishes.find(function(x){return x.id===v;}),i=w.votes.indexOf("me");if(i>=0)w.votes.splice(i,1);else w.votes.push("me");render();},
+ wadd:function(){sheet('<h2>Wonsch androen'+nei()+'</h2><label>Titel<input id="w-t" maxlength="60"></label><label>Beschreiwung<textarea id="w-x" rows="3" maxlength="200"></textarea></label><label class="ck" style="margin-top:14px"><input type="checkbox" id="w-a">Anonym (nëmmen d\'Comité kann de Verfasser gesinn)</label><button class="btn full" style="margin-top:14px" data-a="wsave">Absenden</button>');},
+ wsave:function(){var t=val("w-t");if(!t){toast("Titel fehlt");return;}S.wishes.push({id:"w"+Date.now(),title:t,text:val("w-x"),by:document.getElementById("w-a").checked?"anonym":"Läufer A",votes:["me"],status:""});closeSheet();render();toast("Merci fir däi Wonsch!");},
+ csv:function(){exportCsv();}
+};
+function coForm(c){var e=c||{name:"",date:"2026-12-20",time:"10:00",place:"",land:"LUX",deadline:"2026-12-15",info:""};
+  sheet('<h2>'+(c?"Course änneren":"+ Course")+(c?nei():"")+'</h2><label>Numm<input id="f-name" value="'+esc(e.name)+'"></label><label>Datum<input type="date" id="f-date" value="'+e.date+'"></label><label>Auerzäit<input type="time" id="f-time" value="'+e.time+'"></label><label>Uert<input id="f-place" value="'+esc(e.place)+'"></label><label>Land<select id="f-land">'+["LUX","GER","BEL","FRA","ESP","SUI"].map(function(x){return '<option'+(x===e.land?" selected":"")+'>'+x+'</option>';}).join("")+'</select></label><label>Umeldungsschluss<input type="date" id="f-dl" value="'+e.deadline+'"></label><label>Info<textarea id="f-info" rows="3">'+esc(e.info)+'</textarea></label>'+(c?'<input type="hidden" id="f-dist" value="">':'<label>Meng Distanz<select id="f-dist"><option value="">— (spéider)</option>'+distOpts(null,"")+'</select></label>')+'<button class="btn full" style="margin-top:14px" data-a="cosave" data-v="'+(c?c.id:"")+'">Späicheren</button>');}
+function resForm(r,cid){var e=r||{dist:"",time:"",place:"",comment:""};
+  sheet('<h2>'+(r?"Resultat änneren"+nei():"Resultat androen")+'</h2><label>Distanz<input id="r-dist" value="'+esc(e.dist)+'"></label><label>Zäit (h:mm:ss)<input id="r-time" value="'+esc(e.time)+'" placeholder="1:52:30"></label><label>Plaz<input id="r-place" value="'+esc(e.place)+'"></label><label>Kommentar<input id="r-com" value="'+esc(e.comment)+'"></label><button class="btn full" style="margin-top:14px" data-a="ressave" data-v="'+(r?r.id:"")+'" data-w="'+(cid||"")+'">Späicheren</button>'+(r?'<button class="btn full ghost" style="margin-top:8px" data-a="resdel" data-v="'+r.id+'">Läschen</button>':""));}
+function presSheet(id){var t=trById(id),a=attOf(t),g=S.guests[id]||[];
+  var cand=RUN.filter(function(r){return status(t,r.id)!=="nee"||a[r.id];});
+  sheet('<h2>Präsenzlëscht'+nei()+'</h2><div class="muted sm">'+esc(t.title)+' · '+longDate(t.date)+'</div><div style="margin-top:8px">'+cand.map(function(r){return '<label class="pw"><input type="checkbox" '+(a[r.id]?"checked":"")+' data-a="ptog" data-v="'+id+'|'+r.id+'"><span class="sp">'+r.name+'</span><span class="muted sm">'+stBadge(status(t,r.id))+'</span></label>';}).join("")+g.map(function(n,i){return '<div class="pw"><span style="width:26px;color:var(--green)">✓</span><span class="sp">'+esc(n)+' <span class="badge b-n">Gaascht</span></span><button class="btn sm sec" data-a="gdel" data-v="'+id+'|'+i+'">×</button></div>';}).join("")+'</div><div class="row" style="margin-top:12px"><input id="gname" placeholder="Gaascht: Numm" style="margin:0"><button class="btn" data-a="gadd" data-v="'+id+'">+ Gaascht</button></div><button class="btn full sec" style="margin-top:14px" data-a="close">Fäerdeg ('+(Object.keys(a).filter(function(k){return a[k];}).length+g.length)+' do)</button>');}
+function shareSheet(rid){var r=S.res.find(function(x){return x.id===rid;}),c=coById(r.cid),sh=S.share[rid]||{};
+  sheet('<h2>Fir Social Media'+nei()+'</h2><div class="share"><img src="sauerbeen-schriftzug.png" alt=""><div class="k">'+esc(c.name)+'</div><div class="n">'+RUN[r.rid].name.replace(" (Du)","")+'</div><div class="t">'+esc(r.time)+'</div><div class="m">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div><div class="m" style="color:#cdd4f5">'+longDate(c.date)+' · '+esc(c.place)+'</div></div><div class="muted sm" style="text-align:center;margin:6px 0 10px">Virschau 1080 × 1350 (Instagram-Format)</div><label class="ck"><input type="checkbox" id="opt" '+(sh.opt?"checked":"")+' data-a="shopt" data-v="'+rid+'">Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.</label>'+(sh.opt?'<div class="sm" style="margin-top:10px;color:var(--sunt)">'+(sh.approved?"✓ Vum Comité fräigigi":"Waart op Fräiginn duerch d'Comité")+'</div>':"")+'<button class="btn full sec" style="margin-top:14px" data-a="close">Zoumaachen</button>');}
+function exportCsv(){
+  var rows=[["Course","Datum","Uert","Land","Umeldungsschluss","Läufer","Distanz","Zäit","Plaz"]];
+  S.courses.slice().sort(function(a,b){return a.date<b.date?-1:1;}).forEach(function(c){var rg=S.reg[c.id]||{},ks=Object.keys(rg);
+    if(!ks.length)rows.push([c.name,c.date,c.place,c.land,c.deadline,"","","",""]);
+    ks.forEach(function(k){var r=S.res.find(function(x){return x.cid===c.id&&x.rid===+k;});rows.push([c.name,c.date,c.place,c.land,c.deadline,RUN[+k].name.replace(" (Du)",""),rg[k],r?r.time:"",r?r.place:""]);});});
+  var csv="﻿"+rows.map(function(r){return r.map(function(x){return '"'+String(x).replace(/"/g,'""')+'"';}).join(";");}).join("\r\n");
+  try{var b=new Blob([csv],{type:"text/csv;charset=utf-8"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="coursen-beispill.csv";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1000);toast("CSV erstallt: coursen-beispill.csv ("+(rows.length-1)+" Zeilen)");}catch(e){toast("Export net méiglech");}}
+document.addEventListener("click",function(e){var el=e.target.closest("[data-a]");if(!el||el.tagName==="INPUT"&&el.type==="checkbox"&&e.type!=="click")return;
+  if(el.tagName==="LABEL")return;var f=A[el.dataset.a];if(f){if(el.dataset.a==="ressave")f(el.dataset.v,el.dataset.w);else f(el.dataset.v);}});
+RUN[0].pace=S.pace;setLang(S.lang);
+render();
+</script>
+</body>
+</html>
