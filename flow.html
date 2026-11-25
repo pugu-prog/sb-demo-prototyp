@@ -153,11 +153,11 @@ function ic(n){var p={cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><pat
 /* ===== Testdaten (alles erfunden) ===== */
 var RUN=[];["A","B","C","D","E","F","G","H","I","J","K","L","M","N"].forEach(function(l,i){RUN.push({id:i,name:"Läufer "+l+(i===0?" (Du)":""),short:l,pace:["4:30–5:00","4:00–4:30","4:30–5:00","5:00–5:30","5:30+","4:30–5:00","5:00–5:30","4:00–4:30","5:30+","4:30–5:00","5:00–5:30","4:30–5:00","5:30+","4:00–4:30"][i]});});
 var PACES=["4:00–4:30","4:30–5:00","5:00–5:30","5:30+"];
-var NOTES={2:"kommen 10 Min méi spéit",4:"mat Kinnerwon 🙂",7:"Waarm-up fänken ech eleng un",11:"hunn nach Muskelkater"};
-var TTITLES={3:["Schwell","Intervaller","Biergleef & Schwell"],5:["Pyramid","Tempo-Dauerlaf","Biergleef & Schwell"],0:["Laftreff"]};
-var TINT={Schwell:["Mettel","threshold"],Intervaller:["Haart","interval"],"Biergleef & Schwell":["Mettel","hill"],Pyramid:["Haart","interval"],"Tempo-Dauerlaf":["Mettel","tempo"],Laftreff:["Liicht","Ausdauer"]};
-var DESC={Schwell:"Aufwärmen: 15 Min. lockeren Dauerlauf + Lauf-ABC\nHaaptdeel: 4 × 8 Min. Schwelle (Pause 2 Min. Trabpause)\nAuslafen: 10 Min.\nMobility: 10 Min. am Stadion",Intervaller:"Aufwärmen 15 Min.\n8 × 400 m (Pause 90 Sek.)\nAuslafen 10 Min.","Biergleef & Schwell":"Aufwärmen 15 Min. op der Strooss\n5 × Biergop (ca. 2 Min.), lues erofjoggen\nAnschleißend 2 × 6 Min. Schwelle\nAuslafen 10 Min.",Pyramid:"Aufwärmen 15 Min.\n1-2-3-4-3-2-1 Min. haart, jeweils 1 Min. Pause\nAuslafen 10 Min.","Tempo-Dauerlaf":"Aufwärmen 10 Min.\n30 Min. Tempo-Dauerlaf\nAuslafen 10 Min.",Laftreff:"Gemittlechen Dauerlaf an Gruppen, Ennerhalung inklusiv. Kaffi duerno am Veräinsheem."};
-var PLACES={Schwell:"Stadion Diekirch",Intervaller:"Stadion Diekirch","Biergleef & Schwell":"Stadion Diekirch",Pyramid:"Stadion Diekirch","Tempo-Dauerlaf":"Asport Angelduerf",Laftreff:"Asport Angelduerf"};
+var NOTES={2:"kommen 10 Min méi spéit",4:"mat der Kannerkutsch 🙂",7:"Waarm-up fänken ech eleng un",11:"hunn nach Muskelkater"};
+var TTITLES={3:["Schwell","Intervallen","Biergleef & Schwell"],5:["Pyramid","Tempo-Dauerlaf","Biergleef & Schwell"],0:["Laftreff"]};
+var TINT={Schwell:["Mëttel","threshold"],Intervallen:["Haart","interval"],"Biergleef & Schwell":["Mëttel","hill"],Pyramid:["Haart","interval"],"Tempo-Dauerlaf":["Mëttel","tempo"],Laftreff:["Liicht","Ausdauer"]};
+var DESC={Schwell:"Opwiermen: 15 Min. lockeren Dauerlaf + Laf-ABC\nHaaptdeel: 4 × 8 Min. Schwelle (Paus 2 Min. Trab-Paus)\nAuslafen: 10 Min.\nMobilitéit: 10 Min. am Stadion",Intervallen:"Opwiermen 15 Min.\n8 × 400 m (Paus 90 Sek.)\nAuslafen 10 Min.","Biergleef & Schwell":"Opwiermen 15 Min. op der Strooss\n5 × Biergop (ca. 2 Min.), lues erofjoggen\nDuerno 2 × 6 Min. Schwelle\nAuslafen 10 Min.",Pyramid:"Opwiermen 15 Min.\n1-2-3-4-3-2-1 Min. haart, jeeweils 1 Min. Paus\nAuslafen 10 Min.","Tempo-Dauerlaf":"Opwiermen 10 Min.\n30 Min. Tempo-Dauerlaf\nAuslafen 10 Min.",Laftreff:"Gemittlechen Dauerlaf a Gruppen, Ennerhalung inklusiv. Kaffi duerno am Veräinsheem."};
+var PLACES={Schwell:"Stadion Diekirch",Intervallen:"Stadion Diekirch","Biergleef & Schwell":"Stadion Diekirch",Pyramid:"Stadion Diekirch","Tempo-Dauerlaf":"Asport Angelduerf",Laftreff:"Asport Angelduerf"};
 function genTrainings(){
   var out=[],d=D("2026-09-02"),end=D("2026-12-20"),k=0,sun=0;
   while(d<=end){var w=d.getDay(),t=null;
@@ -169,11 +169,11 @@ function genTrainings(){
   return out;}
 var TR=genTrainings();
 var CO0=[
- {id:"c1",name:"Großkarolinenfelder Nikolauslauf",date:"2026-11-28",time:"14:00",place:"Großkarolinenfeld",land:"GER",deadline:"2026-11-22",info:"Stroossenlaf: 5 km, 10 km.\nNikolaus-Mütz ass bei der Startnummer dobäi.",mine:false},
+ {id:"c1",name:"Großkarolinenfelder Nikolauslauf",date:"2026-11-28",time:"14:00",place:"Großkarolinenfeld",land:"GER",deadline:"2026-11-22",info:"Stroossenlaf: 5 km, 10 km.\nKleeschen-Mutz ass bei der Startnummer dobäi.",mine:false},
  {id:"c2",name:"Cross Championnat",date:"2026-11-29",time:"11:00",place:"Dudelange",land:"LUX",deadline:"2026-11-27",info:"Nationale Cross-Championnat. Distanzen: 4 km (Kuerz), 8 km (Laang).\nChampionnat-Lizenz noutwendeg.",mine:false},
  {id:"c3",name:"Valencia Maratón",date:"2026-12-06",time:"08:30",place:"Valencia",land:"ESP",deadline:"2026-12-01",info:"Marathon 42,2 km, flaach. Gruppereesen ass geplangt, Info kënnt per Mail.",mine:true},
  {id:"c4",name:"Trail de Dinant Winter",date:"2026-12-13",time:"09:00",place:"Dinant",land:"BEL",deadline:"2026-12-08",info:"Distanzen: 12 km (350 Hm), 25 km (900 Hm), 42 km (1600 Hm).",mine:false},
- {id:"c5",name:"X-Mas Trail",date:"2026-12-13",time:"10:30",place:"Neunkirchen",land:"GER",deadline:"2026-12-10",info:"Trail 10 km / 21 km. Weihnachtsmützen erwünscht.",mine:true},
+ {id:"c5",name:"X-Mas Trail",date:"2026-12-13",time:"10:30",place:"Neunkirchen",land:"GER",deadline:"2026-12-10",info:"Trail 10 km / 21 km. Mutze si wëllkomm.",mine:true},
  {id:"p1",name:"Herbstlaf Ettelbréck",date:"2026-11-08",time:"10:00",place:"Ettelbréck",land:"LUX",deadline:"2026-11-05",info:"Hallefmarathon op der Sauer-Streck.",mine:false},
  {id:"p2",name:"Halloween Trail",date:"2026-11-01",time:"15:00",place:"Veianen",land:"LUX",deadline:"2026-10-29",info:"Trail 12 km / 21 km, Kostümer erlaabt.",mine:false},
  {id:"p3",name:"Pilzlaf",date:"2026-10-11",time:"09:30",place:"Mäerzeg",land:"LUX",deadline:"2026-10-08",info:"10 km Stroossenlaf.",mine:false}
@@ -184,7 +184,7 @@ var RES0=[
  {id:"r2",cid:"p1",rid:1,dist:"Hallefmarathon",time:"1:38:12",place:"12. overall",comment:""},
  {id:"r3",cid:"p1",rid:3,dist:"10km",time:"52:07",place:"3. AK",comment:"Neie Rekord 🎉"},
  {id:"r4",cid:"p2",rid:0,dist:"Trail 21km",time:"2:31:10",place:"58.",comment:""},
- {id:"r5",cid:"p2",rid:2,dist:"Trail 12km",time:"1:12:44",place:"7. (2. AK)",comment:"Vill Bam an Blieder 😅"},
+ {id:"r5",cid:"p2",rid:2,dist:"Trail 12km",time:"1:12:44",place:"7. (2. AK)",comment:"Vill Beem a Blieder 😅"},
  {id:"r6",cid:"p3",rid:0,dist:"10km",time:"54:20",place:"83",comment:""},
  {id:"r7",cid:"p3",rid:4,dist:"10km",time:"49:58",place:"20.",comment:""}
 ];
@@ -202,59 +202,59 @@ var LANGS={
   "Méi":"Mon","Dën":"Tue","Mët":"Wed","Don":"Thu","Fre":"Fri","Sam":"Sat","So":"Sun",
   "Nächst Events":"Upcoming events","alles":"all","Keng Events un deem Dag.":"No events on this day.",
   "Kommend":"Upcoming","Vergaangen":"Past","Näischt do.":"Nothing here.",
-  "Jo":"Yes","Villäicht":"Maybe","Nee":"No","✓ Dobäi":"✓ Going","Liicht":"Easy","Mettel":"Moderate","Haart":"Hard","Ausdauer":"endurance",
-  "Schwell":"Threshold","Intervaller":"Intervals","Biergleef & Schwell":"Hill & threshold","Pyramid":"Pyramid","Tempo-Dauerlaf":"Tempo run","Laftreff":"Group run",
+  "Jo":"Yes","Villäicht":"Maybe","Nee":"No","✓ Dobäi":"✓ Going","Liicht":"Easy","Mëttel":"Moderate","Haart":"Hard","Ausdauer":"endurance",
+  "Schwell":"Threshold","Intervallen":"Intervals","Biergleef & Schwell":"Hill & threshold","Pyramid":"Pyramid","Tempo-Dauerlaf":"Tempo run","Laftreff":"Group run",
   "Athlet":"Athlete","Comité":"Committee","Trainer":"Coach",
   "DEMO-SCHALTER · Roll wielen":"DEMO SWITCH · choose role","Ergänzungen (Prototyp)":"Additions (prototype)",
   "Profil änneren":"Edit profile","Notifikatiounen":"Notifications","Kont":"Account","Hëllef":"Help","Iwwer d'App":"About the app","Ofmellen":"Log out",
-  "Sprooch":"Language","Meng Auswertung":"My analysis","Lescht Aktivitéit":"Latest activity","Méi Detailer":"More details","FIT-Datei eropluedden":"Upload FIT file","Pace pro Kilometer":"Pace per kilometre","Leeschtung pro Block":"Power per block","Pace pro 100 m":"Pace per 100 m","Lafen":"Running","Schwammen":"Swimming","Mäi Beräich":"My area","Wunschbox":"Wish box","Social-Media Fräiginn":"Social media approval","Export Coursen (CSV)":"Export races (CSV)",
-  "Prototyp · v0.1 · Demo-Daten (erfonnen)":"Prototype · v0.1 · demo data (fictional)",
-  "Datum":"Date","Auerzäit":"Time","Uert":"Place","Beschreiwung":"Description","Deng Umeldung":"Your response","Dain aktuellen Status:":"Your current status:",
+  "Sprooch":"Language","Meng Auswäertung":"My analysis","Lescht Aktivitéit":"Latest activity","Méi Detailer":"More details","FIT-Datei eroplueden":"Upload FIT file","Pace pro Kilometer":"Pace per kilometre","Leeschtung pro Block":"Power per block","Pace pro 100 m":"Pace per 100 m","Lafen":"Running","Schwammen":"Swimming","Mäi Beräich":"My area","Wonschbox":"Wish box","Social-Media Fräiginn":"Social media approval","Export Coursen (CSV)":"Export races (CSV)",
+  "Prototyp · v0.1 · Demo-Daten (erfonnt)":"Prototype · v0.1 · demo data (fictional)",
+  "Datum":"Date","Auerzäit":"Time","Uert":"Place","Beschreiwung":"Description","Deng Umeldung":"Your response","Däin aktuelle Status:":"Your current status:",
   "15 Min. virum Training sprengt de Status automatesch op Neen.":"15 min before training the status automatically switches to No.",
   "NOTIZ FIR DÉI ANER (OPTIONAL)":"NOTE FOR THE OTHERS (OPTIONAL)","Späicheren":"Save","Participanten":"Participants","All":"All",
   "Präsenz":"Attendance","Präsenzlëscht":"Attendance list","Keen an dëser Grupp.":"Nobody in this group.",
   "Umeldungsschluss":"Registration deadline","Course änneren":"Edit race","Meng Umeldung":"My registration","Umeldung änneren":"Change registration",
   "Umeldungsschluss ass ofgelaf":"Registration deadline has passed","Distanz":"Distance","Umellen":"Register","Resultater":"Results","Nach keng Resultater.":"No results yet.",
-  "+ Resultat androen":"+ Add result","Änneren":"Edit","Fir Social Media":"For social media","fräigigi":"approved","waart op Fräiginn":"awaiting approval",
+  "+ Resultat androen":"+ Add result","Änneren":"Edit","Fir Social Media":"For social media","fräiginn":"approved","waart op Fräiginn":"awaiting approval",
   "Anerer":"Other","— (spéider)":"— (later)","Meng Distanz":"My distance","Numm":"Name","Land":"Country","Info":"Info",
   "Resultat änneren":"Edit result","Resultat androen":"Add result","Zäit (h:mm:ss)":"Time (h:mm:ss)","Plaz":"Place","Kommentar":"Comment","Läschen":"Delete",
   "Vun der Course ofmellen":"Withdraw from race",
   "Virschau 1080 × 1350 (Instagram-Format)":"Preview 1080 × 1350 (Instagram format)",
   "Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.":"May be published (name, time). Revocable at any time.",
-  "✓ Vum Comité fräigigi":"✓ Approved by the committee","Waart op Fräiginn duerch d'Comité":"Awaiting committee approval","Zoumaachen":"Close",
+  "✓ Vum Comité fräiginn":"✓ Approved by the committee","Waart op Fräiginn duerch d'Comité":"Awaiting committee approval","Zoumaachen":"Close",
   "Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.":"Only results with opt-in “May be published” appear here.",
   "Virschau":"Preview","Fräiginn":"Approve","Zréckzéien":"Withdraw","op Fräiginn":"pending",
   "Nach näischt zur Fräiginn. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)":"Nothing to approve yet. (As an athlete, choose “For social media” on a result.)",
   "Trainings besicht":"Trainings attended","Nëmmen du gesäis dës Zuelen.":"Only you can see these numbers.","Meng Trainings":"My trainings",
-  "… nëmmen déi lescht 12 gewisen":"… only the last 12 are shown","Meng Bestzäiten":"My personal bests","Nach keng.":"None yet.","Meng Resultater":"My results",
+  "… nëmmen déi lescht 12 gewisen":"… only the last 12 are shown","Meng Beschtzäiten":"My personal bests","Nach keng.":"None yet.","Meng Resultater":"My results",
   "⌚ Spéider: Daten-Import (Garmin/Coros)":"⌚ Later: data import (Garmin/Coros)",
-  "Wat wëlls du an der App? Stëmm fir Wënsch vun aneren mat engem Daum.":"What do you want in the app? Vote for others’ wishes with a thumbs-up.",
-  "+ Wonsch androen":"+ Add wish","Wonsch androen":"Add wish","Titel":"Title","Anonym (nëmmen d'Comité kann de Verfasser gesinn)":"Anonymous (only the committee can see the author)","Absenden":"Submit",
+  "Wat wëlls du an der App? Stëmm fir Wënsch vun anere mat engem Daum.":"What do you want in the app? Vote for others’ wishes with a thumbs-up.",
+  "+ Wonsch androen":"+ Add wish","Wonsch androen":"Add wish","Titel":"Title","Anonym (nëmmen d'Comité kann den Auteur gesinn)":"Anonymous (only the committee can see the author)","Ofschécken":"Submit",
   "anonym":"anonymous","geplant":"planned",
   "Kalenner-Export fir Handy (ICS)":"Calendar export for phone (ICS)","Trainingen automatesch am Handy-Kalenner.":"Trainings automatically in the phone calendar.",
   "Dark/Light Modus":"Dark/light mode","Hell Variant fir dote wou et sonneg ass.":"Light variant for when it’s sunny.",
   "Erënnerung virun Umeldeschluss":"Reminder before registration deadline","Push 2 Deeg virum Schluss vun enger Course.":"Push notification 2 days before a race’s deadline.",
   "Pace-Grupp":"Pace group","Wielt déi Grupp, an där s du normalerweis leefs. Am Training gesäis du dann „Meng Pace-Grupp“.":"Choose the group you normally run in. In training you will then see “My pace group”.",
   "Nei Trainingen":"New trainings","Nei Coursen":"New races","Erënnerung virun Training":"Reminder before training","OK":"OK",
-  "Hei wäerte mir spéider d'Funktiounen vun der Sauerbeen App erklären.":"Here we will later explain the features of the Sauerbeen app.","Versioun 0.1 (Prototyp)":"Version 0.1 (prototype)",
+  "Hei wäerte mir spéider d'Funktioune vun der Sauerbeen App erklären.":"Here we will later explain the features of the Sauerbeen app.","Versioun 0.1 (Prototyp)":"Version 0.1 (prototype)",
   "Am Prototyp gëtt et kee Login. Demo-Daten zrécksetzen?":"The prototype has no login. Reset demo data?","Daten zrécksetzen":"Reset data","Ofbriechen":"Cancel",
   "Notiz gespäichert":"Note saved","Zréckgesat":"Reset","Numm, Datum an Uert ausfëllen":"Please fill in name, date and place","Course geännert":"Race updated","Course ugeluecht":"Race created",
   "Umeldung geännert":"Registration updated","Ofgemellt":"Withdrawn","Zäit ausfëllen":"Please enter the time","Resultat geännert":"Result updated","Resultat gespäichert":"Result saved","Resultat geläscht":"Result deleted",
-  "Fräigigi":"Approved","Merci fir däi Wonsch!":"Thanks for your wish!","Titel fehlt":"Title missing","Export net méiglech":"Export not possible",
+  "Fräiginn":"Approved","Merci fir däi Wonsch!":"Thanks for your wish!","Titel feelt":"Title missing","Export net méiglech":"Export not possible",
   "Gaascht: Numm":"Guest name","+ Gaascht":"+ Guest",
-  "Aufwärmen: 15 Min. lockeren Dauerlauf + Lauf-ABC":"Warm-up: 15 min easy run + running drills","Haaptdeel: 4 × 8 Min. Schwelle (Pause 2 Min. Trabpause)":"Main set: 4 × 8 min threshold (2 min jog recovery)",
-  "Auslafen: 10 Min.":"Cool-down: 10 min","Mobility: 10 Min. am Stadion":"Mobility: 10 min at the stadium","Aufwärmen 15 Min.":"Warm-up 15 min","8 × 400 m (Pause 90 Sek.)":"8 × 400 m (90 sec rest)","Auslafen 10 Min.":"Cool-down 10 min",
-  "Aufwärmen 15 Min. op der Strooss":"Warm-up 15 min on the road","5 × Biergop (ca. 2 Min.), lues erofjoggen":"5 × uphill (approx. 2 min), jog down slowly","Anschleißend 2 × 6 Min. Schwelle":"Then 2 × 6 min threshold",
-  "1-2-3-4-3-2-1 Min. haart, jeweils 1 Min. Pause":"1-2-3-4-3-2-1 min hard, 1 min rest each","Aufwärmen 10 Min.":"Warm-up 10 min","30 Min. Tempo-Dauerlaf":"30 min tempo run",
-  "Gemittlechen Dauerlaf an Gruppen, Ennerhalung inklusiv. Kaffi duerno am Veräinsheem.":"Relaxed group run, chatting included. Coffee afterwards at the clubhouse.",
-  "Stroossenlaf: 5 km, 10 km.":"Road race: 5 km, 10 km.","Nikolaus-Mütz ass bei der Startnummer dobäi.":"Santa hat comes with the start number.",
+  "Opwiermen: 15 Min. lockeren Dauerlaf + Laf-ABC":"Warm-up: 15 min easy run + running drills","Haaptdeel: 4 × 8 Min. Schwelle (Paus 2 Min. Trab-Paus)":"Main set: 4 × 8 min threshold (2 min jog recovery)",
+  "Auslafen: 10 Min.":"Cool-down: 10 min","Mobilitéit: 10 Min. am Stadion":"Mobilitéit: 10 min at the stadium","Opwiermen 15 Min.":"Warm-up 15 min","8 × 400 m (Paus 90 Sek.)":"8 × 400 m (90 sec rest)","Auslafen 10 Min.":"Cool-down 10 min",
+  "Opwiermen 15 Min. op der Strooss":"Warm-up 15 min on the road","5 × Biergop (ca. 2 Min.), lues erofjoggen":"5 × uphill (approx. 2 min), jog down slowly","Duerno 2 × 6 Min. Schwelle":"Then 2 × 6 min threshold",
+  "1-2-3-4-3-2-1 Min. haart, jeeweils 1 Min. Pause":"1-2-3-4-3-2-1 min hard, 1 min rest each","Opwiermen 10 Min.":"Warm-up 10 min","30 Min. Tempo-Dauerlaf":"30 min tempo run",
+  "Gemittlechen Dauerlaf a Gruppen, Ennerhalung inklusiv. Kaffi duerno am Veräinsheem.":"Relaxed group run, chatting included. Coffee afterwards at the clubhouse.",
+  "Stroossenlaf: 5 km, 10 km.":"Road race: 5 km, 10 km.","Kleeschen-Mutz ass bei der Startnummer dobäi.":"Santa hat comes with the start number.",
   "Nationale Cross-Championnat. Distanzen: 4 km (Kuerz), 8 km (Laang).":"National cross championship. Distances: 4 km (short), 8 km (long).","Championnat-Lizenz noutwendeg.":"Championship licence required.",
   "Marathon 42,2 km, flaach. Gruppereesen ass geplangt, Info kënnt per Mail.":"Marathon 42.2 km, flat. Group travel is planned, info follows by mail.",
   "Distanzen: 12 km (350 Hm), 25 km (900 Hm), 42 km (1600 Hm).":"Distances: 12 km (350 m elevation), 25 km (900 m), 42 km (1600 m).",
-  "Trail 10 km / 21 km. Weihnachtsmützen erwünscht.":"Trail 10 km / 21 km. Christmas hats welcome.","Hallefmarathon op der Sauer-Streck.":"Half marathon along the Sauer.",
+  "Trail 10 km / 21 km. Mutze si wëllkomm.":"Trail 10 km / 21 km. Christmas hats welcome.","Hallefmarathon op der Sauer-Streck.":"Half marathon along the Sauer.",
   "Trail 12 km / 21 km, Kostümer erlaabt.":"Trail 12 km / 21 km, costumes allowed.","10 km Stroossenlaf.":"10 km road race.",
-  "kommen 10 Min méi spéit":"arriving 10 min late","mat Kinnerwon 🙂":"with stroller 🙂","Waarm-up fänken ech eleng un":"I’ll start my warm-up alone","hunn nach Muskelkater":"still have sore muscles",
-  "Schéint Wieder, Konditioun passt!":"Nice weather, fitness is fine!","Neie Rekord 🎉":"New record 🎉","Vill Bam an Blieder 😅":"Lots of trees and leaves 😅"
+  "kommen 10 Min méi spéit":"arriving 10 min late","mat der Kannerkutsch 🙂":"with stroller 🙂","Waarm-up fänken ech eleng un":"I’ll start my warm-up alone","hunn nach Muskelkater":"still have sore muscles",
+  "Schéint Wieder, Konditioun passt!":"Nice weather, fitness is fine!","Neie Rekord 🎉":"New record 🎉","Vill Beem a Blieder 😅":"Lots of trees and leaves 😅"
   },
   pat:[
    [/(\d{1,2}:\d{2}) Auer/g,"$1"],
@@ -270,7 +270,7 @@ var LANGS={
    [/^CSV erstallt: (.*) \((\d+) Zeilen\)$/,"CSV created: $1 ($2 rows)"],
    [/«(.*)»/,function(m,t){return "«"+trs(t)+"»";}],
    [/^Sprooch: Lëtzebuergesch$/,"Language: Lëtzebuergesch"],[/^Sprooch: (.*)$/,"Language: $1"],
-   [/^(Schwell|Intervaller|Pyramid|Tempo-Dauerlaf|Laftreff|Biergleef & Schwell)( · .*)$/,function(m,t,r){return LANGS.en.exact[t]+r;}],
+   [/^(Schwell|Intervallen|Pyramid|Tempo-Dauerlaf|Laftreff|Biergleef & Schwell)( · .*)$/,function(m,t,r){return LANGS.en.exact[t]+r;}],
    [/^vun /,"by "],[/^by anonym$/,"by anonymous"],[/^Trainings am Joer (\d+)$/,"trainings in $1"],[/^Waart op Fräiginn$/,"awaiting approval"],
    [/Plaz /g,"Place "],[/Läufer /g,"Runner "],[/\(Du\)/g,"(You)"],[/Gaascht/g,"Guest"],[/Hallefmarathon/g,"Half marathon"],
    [/Ettelbréck/g,"Ettelbruck"],[/Veianen/g,"Vianden"],[/Mäerzeg/g,"Mertzig"],[/Herbstlaf/g,"Autumn run"],[/Pilzlaf/g,"Mushroom run"],[/Cross Championnat/g,"Cross Championship"],[/Maratón/g,"Marathon"],
@@ -306,8 +306,8 @@ function status(t,rid){
 function hash(s,n){var h=n*31+7;for(var i=0;i<s.length;i++)h=(h*33+s.charCodeAt(i))>>>0;return h;}
 function noteOf(t,rid){if(rid===0)return(S.rs[t.id]||{}).note||"";return hash(t.id,rid)%9===0&&NOTES[rid]?NOTES[rid]:"";}
 function attOf(t){if(!S.att[t.id]){var a={};RUN.forEach(function(r){if(status(t,r.id)==="jo"&&(hash("a"+t.id,r.id)%10)>0)a[r.id]=true;});S.att[t.id]=a;}return S.att[t.id];}
-function lvlCls(l){return l==="Liicht"?"g":l==="Mettel"?"y":"r";}
-function lvlDot(l){return l==="Liicht"?"#15803d":l==="Mettel"?"#e8a33f":"#b91c1c";}
+function lvlCls(l){return l==="Liicht"?"g":l==="Mëttel"?"y":"r";}
+function lvlDot(l){return l==="Liicht"?"#15803d":l==="Mëttel"?"#e8a33f":"#b91c1c";}
 function stBadge(s){var m={jo:["Jo","b-g"],villaicht:["Villäicht","b-y"],nee:["Nee","b-r"]}[s];return '<span class="badge '+m[1]+'">'+m[0]+'</span>';}
 function nei(){return '<span class="nei">NEI</span>';}
 function toSec(t){var p=t.replace(/'/g,":").split(":").map(Number);if(p.some(isNaN))return 1e9;return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];}
@@ -353,12 +353,12 @@ function vProf(){
   var roles=["Athlet","Trainer","Comité"];
   var h='<div class="demo"><div class="sm" style="margin-bottom:8px;color:var(--sunt);font-weight:700">DEMO-SCHALTER · Roll wielen</div><div class="seg">'+roles.map(function(r){return '<button class="'+(S.role===r?"on":"")+'" data-a="role" data-v="'+r+'">'+r+'</button>';}).join("")+'</div></div>';
   h+='<div class="card" style="text-align:center"><div class="av big">L</div><div style="font-size:22px;font-weight:800">Läufer A (Du)</div><div class="muted">laeufer.a@beispill.test</div><div class="muted sm" style="margin:6px 0 10px">📍 Sauerbeen · Member zënter Juli 2026</div><span class="badge b-r" style="background:#4a2161">'+S.role+'</span></div>';
-  var items=[["an","Meng Auswertung","an",true,"chart"],["bar","Mäi Beräich","mb",true,"chart"],["pace","Pace-Grupp: "+S.pace,"pace",true,"group"],["wish","Wunschbox","wb",true,"bulb"]];
+  var items=[["an","Meng Auswäertung","an",true,"chart"],["bar","Mäi Beräich","mb",true,"chart"],["pace","Pace-Grupp: "+S.pace,"pace",true,"group"],["wish","Wonschbox","wb",true,"bulb"]];
   if(S.role==="Comité"){items.push(["x","Social-Media Fräiginn","fg",true,"share"]);items.push(["x","Export Coursen (CSV)","csv",true,"dl"]);}
   h+='<div class="card menu"><h3>Ergänzungen (Prototyp)</h3>'+items.map(function(i){return '<div class="li" data-a="'+i[2]+'">'+ic(i[4])+'<span class="sp">'+i[1]+nei()+'</span><span class="chev">›</span></div>';}).join("")+'</div>';
   h+='<div class="card menu"><h3>Kont</h3><div class="li" data-a="soon" data-v="Profil änneren">'+ic("user")+'<span class="sp">Profil änneren</span><span class="chev">›</span></div><div class="li" data-a="lang">'+ic("group")+'<span class="sp">Sprooch: '+LANGS[S.lang].name+'</span><span class="chev">›</span></div><div class="li" data-a="notif">'+ic("bell")+'<span class="sp">Notifikatiounen</span><span class="chev">›</span></div></div>';
   h+='<div class="card menu"><h3>Hëllef</h3><div class="li" data-a="soon" data-v="Support">'+ic("help")+'<span class="sp">Support<div class="muted sm">support@sauerbeen.example</div></span><span class="chev">›</span></div><div class="li" data-a="about">'+ic("info")+'<span class="sp">Iwwer d\'App</span><span class="chev">›</span></div></div>';
-  h+='<button class="btn full ghost" data-a="reset">Ofmellen</button><div class="muted sm" style="text-align:center;margin:14px">Prototyp · v0.1 · Demo-Daten (erfonnen)</div><div class="fsun"><span class="fdot"></span></div>';
+  h+='<button class="btn full ghost" data-a="reset">Ofmellen</button><div class="muted sm" style="text-align:center;margin:14px">Prototyp · v0.1 · Demo-Daten (erfonnt)</div><div class="fsun"><span class="fdot"></span></div>';
   return h;}
 
 /* --- Detail Training --- */
@@ -372,7 +372,7 @@ function vTrDetail(id){
   h+='<div class="card" style="margin-top:14px"><div class="li"><div class="muted sm">Datum</div>'+longDate(t.date)+'</div><div class="li"><div class="muted sm">Auerzäit</div>'+t.time+' Auer</div><div class="li"><div class="muted sm">Uert</div>'+esc(t.place)+'</div></div>';
   h+='<div class="card"><h3>Beschreiwung</h3><div style="white-space:pre-line">'+esc(t.desc)+'</div></div>';
   if(!past){
-   h+='<div class="card"><h3>Deng Umeldung</h3><div class="sm muted" style="margin-bottom:10px">Dain aktuellen Status: '+stBadge(cur)+'</div><div class="seg">'+[["jo","Jo","jo"],["villaicht","Villäicht","vl"],["nee","Nee","ne"]].map(function(b){return '<button class="'+b[2]+(cur===b[0]?" on":"")+'" data-a="rs" data-v="'+b[0]+'">'+b[1]+'</button>';}).join("")+'</div><div class="sm muted" style="margin-top:10px">15 Min. virum Training sprengt de Status automatesch op Neen.</div>'+
+   h+='<div class="card"><h3>Deng Umeldung</h3><div class="sm muted" style="margin-bottom:10px">Däin aktuelle Status: '+stBadge(cur)+'</div><div class="seg">'+[["jo","Jo","jo"],["villaicht","Villäicht","vl"],["nee","Nee","ne"]].map(function(b){return '<button class="'+b[2]+(cur===b[0]?" on":"")+'" data-a="rs" data-v="'+b[0]+'">'+b[1]+'</button>';}).join("")+'</div><div class="sm muted" style="margin-top:10px">15 Min. virum Training sprengt de Status automatesch op Neen.</div>'+
     '<label>NOTIZ FIR DÉI ANER (OPTIONAL)<textarea id="note" rows="2" maxlength="50" placeholder="z.B. „kommen 10 Min méi spéit“" oninput="document.getElementById(\'nc\').textContent=this.value.length+\'/50\'">'+esc(me.note||"")+'</textarea></label><div class="row" style="margin-top:8px"><span class="muted sm" id="nc">'+(me.note||"").length+'/50</span><span class="sp"></span><button class="btn sm" data-a="note">Späicheren</button></div></div>';
   }
   if(S.role!=="Athlet"){
@@ -402,7 +402,7 @@ function vCoDetail(id){
    var rs=S.res.filter(function(r){return r.cid===id;}),has=rs.some(function(r){return r.rid===0;});
    h+='<div class="card"><h3>Resultater</h3>'+rs.map(function(r){var rn=RUN[r.rid],sh=S.share[r.id];
      return '<div class="li"><div class="row"><div class="av">'+rn.short+'</div><div class="sp">'+rn.name+'<div class="muted sm">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div></div><b style="color:var(--sunt);font-size:17px">'+esc(r.time)+'</b></div>'+(r.comment?'<div class="note" style="margin:4px 0 0 50px">«'+esc(r.comment)+'»</div>':"")+
-     (r.rid===0?'<div class="row" style="margin:8px 0 0 50px;gap:8px;flex-wrap:wrap"><button class="btn sm sec" data-a="resedit" data-v="'+r.id+'">Änneren'+nei()+'</button><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Fir Social Media'+nei()+'</button>'+(sh&&sh.opt?'<span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"waart op Fräiginn")+'</span>':"")+'</div>':"")+'</div>';}).join("")+(rs.length?"":'<div class="empty">Nach keng Resultater.</div>')+
+     (r.rid===0?'<div class="row" style="margin:8px 0 0 50px;gap:8px;flex-wrap:wrap"><button class="btn sm sec" data-a="resedit" data-v="'+r.id+'">Änneren'+nei()+'</button><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Fir Social Media'+nei()+'</button>'+(sh&&sh.opt?'<span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräiginn":"waart op Fräiginn")+'</span>':"")+'</div>':"")+'</div>';}).join("")+(rs.length?"":'<div class="empty">Nach keng Resultater.</div>')+
      (has?"":'<button class="btn full" data-a="resadd" data-v="'+id+'">+ Resultat androen</button>')+'</div>';}
   return h;}
 
@@ -410,19 +410,19 @@ function vCoDetail(id){
 
 /* --- Feedback un den Trainer (PDF) --- */
 var FBD={run:[["Ø Pace","5:07","/km"],["Ø Häerzfrequenz","158","bpm"]],bike:[["Ø Leeschtung","186","W"],["Ø Häerzfrequenz","142","bpm"]],swim:[["Ø Pace","1:55","/100 m"],["Ø Häerzfrequenz","138","bpm"]]};
-var FBL={run:"Schong",bike:"Rad",swim:"Equipment"};
-var FBN=["Gel","Gedrénks","Riegel / Bar","Waasser","Näischt"],FBR=["Liicht","Gutt","Mettel","Haart","Ganz haart"],FBS=["Gutt","Mettel","Schlecht"],FBB=["Nee","Wuedelen","Knéi","Féiss","Réck","Aner"];
+var FBL={run:"Schong",bike:"Rad",swim:"Equipement"};
+var FBN=["Gel","Gedrénks","Riegel / Bar","Waasser","Näischt"],FBR=["Liicht","Gutt","Mëttel","Haart","Ganz haart"],FBS=["Gutt","Mëttel","Schlecht"],FBB=["Nee","Wueden","Knéi","Féiss","Réck","Aner"];
 function fbo(k){S.fb=S.fb||{};var f=S.fb[k]=S.fb[k]||{shoes:[],shoe:"",nutri:[],kh:"",rpe:0,sleep:"",pain:"",kom:"",v1:"",v2:"",sent:""};return f;}
 function fbSet(key,val){fbo(S.ansp||"run")[key]=val;save();}
 function fbChips(items,sel,act,multi){return '<div class="chips" style="margin:4px 0 8px">'+items.map(function(x,i){var on=multi?sel.indexOf(x)>=0:sel===(act==="fbr"?i+1:x);return '<button class="chip s'+(on?' on':'')+'" data-a="'+act+'" data-v="'+(act==="fbr"?i+1:x)+'">'+x+'</button>';}).join("")+'</div>';}
 function vFb(k,a){
   var f=fbo(k),d=FBD[k],lab=FBL[k];
-  var h='<div class="card"><h3>Feedback un den Trainer'+nei()+'</h3><div class="muted sm" style="margin-bottom:10px">Déi <b style="color:var(--accent)">blo Felder</b> kommen aus der Auswertung (korrigéierbar). '+lab+' an Ernärung wielt een nëmmen eemol aus, dono si se virgeschloen.</div>';
+  var h='<div class="card"><h3>Feedback un den Trainer'+nei()+'</h3><div class="muted sm" style="margin-bottom:10px">Déi <b style="color:var(--accent)">blo Felder</b> kommen aus der Auswäertung (korrigéierbar). '+lab+' an Ernärung wielt een nëmmen eemol aus, dono si se virgeschloen.</div>';
   h+='<div class="fbg"><label class="fbb">'+d[0][0]+' ('+d[0][2]+')<input value="'+esc(f.v1||d[0][1])+'" oninput="fbSet(\'v1\',this.value)"></label><label class="fbb">'+d[1][0]+' ('+d[1][2]+')<input value="'+esc(f.v2||d[1][1])+'" oninput="fbSet(\'v2\',this.value)"></label></div>';
   if(!f.shoes.length||S.fbAdd){h+='<label class="fbb">'+lab+(f.shoes.length?' dobäisetzen':' (eemol aleeën)')+'<input id="fb-newshoe" placeholder="z.B. Triumph 24 „Vinte e quatro“"></label><button class="btn sm" style="margin-top:8px" data-a="fbshoeadd">Späicheren</button>';}
   else h+='<label class="fbb">'+lab+'<select onchange="fbSet(\'shoe\',this.value)">'+f.shoes.map(function(x){return '<option'+(x===f.shoe?' selected':'')+'>'+esc(x)+'</option>';}).join("")+'</select></label><a class="sm" style="color:var(--accent);font-weight:700;cursor:pointer;display:inline-block;margin-top:6px" data-a="fbshoenew">+ '+lab+' dobäisetzen</a>';
-  h+='<label class="fbb" style="margin-top:12px">Nutrition</label>'+fbChips(FBN,f.nutri,"fbn",true)+'<label class="fbb">Kuelenhydrater pro Stonn (g, optional)<input inputmode="numeric" value="'+esc(f.kh)+'" oninput="fbSet(\'kh\',this.value)"></label>';
-  h+='<label>Wéi haart war et?</label>'+fbChips(FBR,f.rpe,"fbr")+'<label>Schlof / Middegkeet</label>'+fbChips(FBS,f.sleep,"fbs")+'<label>Beschwerden</label>'+fbChips(FBB,f.pain,"fbp");
+  h+='<label class="fbb" style="margin-top:12px">Nutritioun</label>'+fbChips(FBN,f.nutri,"fbn",true)+'<label class="fbb">Kuelenhydrater pro Stonn (g, optional)<input inputmode="numeric" value="'+esc(f.kh)+'" oninput="fbSet(\'kh\',this.value)"></label>';
+  h+='<label>Wéi haart war et?</label>'+fbChips(FBR,f.rpe,"fbr")+'<label>Schlof / Middegkeet</label>'+fbChips(FBS,f.sleep,"fbs")+'<label>Péng</label>'+fbChips(FBB,f.pain,"fbp");
   h+='<label>Kommentar fir den Trainer<textarea rows="3" maxlength="400" placeholder="Wéi huet et sech ugefillt? Besonnesches?" oninput="fbSet(\'kom\',this.value)">'+esc(f.kom)+'</textarea></label>';
   h+='<div class="row" style="margin-top:14px;gap:8px"><button class="btn sec sp" data-a="fbpdf">PDF-Virschau</button><button class="btn sp" data-a="fbsend">PDF un den Trainer</button></div>'+(f.sent?'<div class="muted sm" style="margin-top:8px">✓ Lescht geschéckt: '+longDate(f.sent)+'</div>':'')+'</div>';
   return h;
@@ -432,35 +432,35 @@ function fbPaper(k,a){
   return '<h2>PDF-Virschau</h2><div class="paper"><div class="ph"><b>SauerBeen · Feedback</b><span>'+longDate(TODAY)+'</span></div><h4>'+a.name+' · '+a.titel+'</h4><table>'
    +a.kp.slice(0,2).map(function(x){return row(x[0],x[1]+" "+x[2]);}).join("")
    +row(d[0][0],(f.v1||d[0][1])+" "+d[0][2])+row(d[1][0],(f.v2||d[1][1])+" "+d[1][2])
-   +row(FBL[k],f.shoe)+row("Nutrition",f.nutri.join(", ")+(f.kh?" · "+f.kh+" g/h":""))+row("Belaaschtung",f.rpe?FBR[f.rpe-1]:"")+row("Schlof",f.sleep)+row("Beschwerden",f.pain)+row("Kommentar",esc(f.kom))
+   +row(FBL[k],f.shoe)+row("Nutritioun",f.nutri.join(", ")+(f.kh?" · "+f.kh+" g/h":""))+row("Belaaschtung",f.rpe?FBR[f.rpe-1]:"")+row("Schlof",f.sleep)+row("Péng",f.pain)+row("Kommentar",esc(f.kom))
    +'</table></div><div class="muted sm" style="margin:8px 0">Empfänger: Trainer (a Kopie fir dech). Beispill.</div><button class="btn full" data-a="fbsend">Elo schécken</button>';
 }
 
-/* --- Meng Auswertung (Design B): Beispill-Daten, spéider aus FIT-Import --- */
+/* --- Meng Auswäertung (Design B): Beispill-Daten, spéider aus FIT-Import --- */
 var AN={
  run:{name:"Lafen",titel:"Schwell · Mëttwoch 25. Nov.",kp:[["Distanz","10,2","km"],["Zäit","52:14",""],["Ø Pace","5:07","/km"],["Ø Häerzfrequenz","158","bpm"]],
   bars:[["km 1","5:21",72],["km 2","5:12",80],["km 3","5:04",86],["km 4","5:02",88],["km 5","5:00",90],["km 6","5:03",87],["km 7","5:01",89],["km 8","4:58",93],["km 9","4:55",96],["km 10","4:49",100]],barTitel:"Pace pro Kilometer",
-  zonen:[8,22,38,26,6],zonTitel:"Zäit an den HF-Zonen",extra:[["Schwell-Block 6 × 1 km","Ø 4:31 /km, Pause 90 s, Schwankung 3 s"],["Rhythmus","Ø 174 Schrëtt/min"],["Héichtemeter","+ 64 m"]]},
- bike:{name:"Velo",titel:"Sonndegsrees · Sonndeg 22. Nov.",kp:[["Distanz","42,6","km"],["Zäit","1:21:10",""],["Ø Leeschtung","186","W"],["NP","201","W"]],
+  zonen:[8,22,38,26,6],zonTitel:"Zäit an den HF-Zonen",extra:[["Schwell-Block 6 × 1 km","Ø 4:31 /km, Paus 90 s, Schwankung 3 s"],["Rhythmus","Ø 174 Schrëtt/min"],["Héichtemeter","+ 64 m"]]},
+ bike:{name:"Vëlo",titel:"Sonndegsrees · Sonndeg 22. Nov.",kp:[["Distanz","42,6","km"],["Zäit","1:21:10",""],["Ø Leeschtung","186","W"],["NP","201","W"]],
   bars:[["0–10′","171 W",78],["10–20′","192 W",88],["20–30′","205 W",94],["30–40′","198 W",90],["40–50′","188 W",86],["50–60′","176 W",80],["60–70′","201 W",92],["70–81′","219 W",100]],barTitel:"Leeschtung pro Block",
-  zonen:[14,34,30,18,4],zonTitel:"Zäit an den Leeschtungszonen",extra:[["Ø Geschwindegkeet","31,5 km/h"],["Max. Leeschtung (5 s)","612 W"],["Kadenz","Ø 88 U/min"]]},
+  zonen:[14,34,30,18,4],zonTitel:"Zäit an de Leeschtungszonen",extra:[["Ø Geschwindegkeet","31,5 km/h"],["Max. Leeschtung (5 s)","612 W"],["Kadenz","Ø 88 U/min"]]},
  swim:{name:"Schwammen",titel:"Mëttwoch-Training · Mëttwoch 18. Nov.",kp:[["Distanz","2 000","m"],["Zäit","38:20",""],["Ø Pace","1:55","/100 m"],["SWOLF","38",""]],
   bars:[["100 m","1:58",88],["200 m","1:56",92],["300 m","1:55",94],["400 m","1:57",90],["500 m","1:54",96],["…","",0],["1,7 km","1:55",94],["1,8 km","1:52",98],["1,9 km","1:50",100],["2,0 km","1:49",100]],barTitel:"Pace pro 100 m",
-  zonen:[10,30,40,16,4],zonTitel:"Zäit an den Intensitéitszonen",extra:[["Zich-Rate","Ø 29 Zich/min"],["Zich pro Bunn (25 m)","Ø 17"],["Technik","Brust 60 % · Crawl 40 %"]]}
+  zonen:[10,30,40,16,4],zonTitel:"Zäit an den Intensitéitszonen",extra:[["Zich-Rate","Ø 29 Zich/min"],["Zich pro Bunn (25 m)","Ø 17"],["Technik","Broscht 60 % · Crawl 40 %"]]}
 };
 var ZC=["#9ac5d8","#5aa3c4","#e8a33f","#d9731b","#b91c1c"];
 function anSport(){return AN[S.ansp||"run"];}
 function vAn(){
   var k=S.ansp||"run",a=AN[k];
   var h='<div class="sp3" style="margin:6px 0 14px">';
-  [["run","Lafen","38 km"],["bike","Velo","96 km"],["swim","Schwammen","3,8 km"]].forEach(function(x){h+='<div data-a="ansp" data-v="'+x[0]+'" style="'+(k===x[0]?'border-color:var(--accent);background:var(--card)':'')+'"><b>'+x[1]+'</b><small>'+x[2]+' · Woch</small></div>';});
+  [["run","Lafen","38 km"],["bike","Vëlo","96 km"],["swim","Schwammen","3,8 km"]].forEach(function(x){h+='<div data-a="ansp" data-v="'+x[0]+'" style="'+(k===x[0]?'border-color:var(--accent);background:var(--card)':'')+'"><b>'+x[1]+'</b><small>'+x[2]+' · Woch</small></div>';});
   h+='</div>';
   h+='<div class="card"><h3>Lescht Aktivitéit'+nei()+'</h3><div style="font-size:18px;font-weight:700;margin-bottom:10px">'+a.titel+'</div><div class="kp">'+a.kp.map(function(x){return '<div><small>'+x[0]+'</small><b>'+x[1]+'<em>'+x[2]+'</em></b></div>';}).join("")+'</div></div>';
   h+='<div class="card"><h3>'+a.barTitel+'</h3>'+a.bars.map(function(b){return b[2]?'<div class="brow"><div class="l">'+b[0]+'</div><div class="t"><i'+(b[2]===100?' class="s"':'')+' style="width:'+b[2]+'%"></i></div><div class="v">'+b[1]+'</div></div>':'<div class="muted sm" style="text-align:center">· · ·</div>';}).join("")+'</div>';
   var tot=a.zonen.reduce(function(x,y){return x+y;},0);
   h+='<div class="card"><h3>'+a.zonTitel+'</h3><div class="zone">'+a.zonen.map(function(z,i){return '<i style="width:'+(z/tot*100)+'%;background:'+ZC[i]+'"></i>';}).join("")+'</div><div class="zl">'+a.zonen.map(function(z,i){return '<span>Z'+(i+1)+' '+z+'%</span>';}).join("")+'</div></div>';
   h+='<div class="card"><h3>Méi Detailer</h3>'+a.extra.map(function(e){return '<div class="li row"><div class="sp">'+e[0]+'</div><b class="mono" style="font-size:13px;text-align:right">'+e[1]+'</b></div>';}).join("")+'</div>';
-  h+='<div class="card" style="border-style:dashed;text-align:center"><div class="muted sm" style="margin-bottom:10px">Beispill-Daten. Mat dem Import kënnt dës Auswertung automatesch aus denger Garmin-/Coros-/FIT-Datei.</div><button class="btn sec full" data-a="soon" data-v="FIT-Datei eropluedden">FIT-Datei eropluedden</button></div>';
+  h+='<div class="card" style="border-style:dashed;text-align:center"><div class="muted sm" style="margin-bottom:10px">Beispill-Daten. Mat dem Import kënnt dës Auswäertung automatesch aus denger Garmin-/Coros-/FIT-Datei.</div><button class="btn sec full" data-a="soon" data-v="FIT-Datei eroplueden">FIT-Datei eroplueden</button></div>';
   h+=vFb(k,a);
   h+='<div class="muted sm" style="text-align:center;margin:4px 0 8px">Nëmmen du an däin Trainer gesinn dës Zuelen.</div>';
   return h;
@@ -472,25 +472,25 @@ function vMb(){
   var inY=att.filter(function(t){return t.date.slice(0,4)===String(S.year);});
   var months={};inY.forEach(function(t){var k=+t.date.slice(5,7)-1;months[k]=(months[k]||0)+1;});
   var max=Math.max.apply(null,Object.values(months).concat([1]));
-  var h='<div class="card" data-a="an" style="cursor:pointer"><div class="row"><div class="sp"><h3 style="margin:0 0 4px">Meng Auswertung'+nei()+'</h3><div class="muted sm">Lafen · Velo · Schwammen: Pace, Leeschtung, Zonen</div></div><span class="chev">›</span></div></div><div class="card"><h3>Trainings besicht'+nei()+'</h3><div class="row"><div style="font-size:42px;font-weight:800;color:var(--sunt)">'+inY.length+'</div><div class="muted">Trainings am Joer '+S.year+'</div></div><div style="margin-top:10px">';
+  var h='<div class="card" data-a="an" style="cursor:pointer"><div class="row"><div class="sp"><h3 style="margin:0 0 4px">Meng Auswäertung'+nei()+'</h3><div class="muted sm">Lafen · Vëlo · Schwammen: Pace, Leeschtung, Zonen</div></div><span class="chev">›</span></div></div><div class="card"><h3>Trainings besicht'+nei()+'</h3><div class="row"><div style="font-size:42px;font-weight:800;color:var(--sunt)">'+inY.length+'</div><div class="muted">Trainings am Joer '+S.year+'</div></div><div style="margin-top:10px">';
   for(var m=8;m<=10;m++){var n=months[m]||0;h+='<div class="row" style="margin:6px 0"><div style="width:84px" class="sm">'+MON[m]+'</div><div class="sp"><div class="bar" style="width:'+Math.round(n/max*100)+'%"></div></div><b>'+n+'</b></div>';}
   h+='<div class="muted sm" style="margin-top:8px">Nëmmen du gesäis dës Zuelen.</div></div>';
   h+='<div class="card"><h3>Meng Trainings</h3>'+att.slice().reverse().slice(0,12).map(function(t){return '<div class="li row"><div class="sp"><div>'+esc(t.title)+'</div><div class="muted sm">'+longDate(t.date)+'</div></div><span class="badge b-'+lvlCls(t.lvl)+'">'+t.lvl+'</span></div>';}).join("")+'<div class="muted sm" style="margin-top:8px">… nëmmen déi lescht 12 gewisen</div></div>';
   var mine=S.res.filter(function(r){return r.rid===0;}),best={};
   mine.forEach(function(r){if(!best[r.dist]||toSec(r.time)<toSec(best[r.dist].time))best[r.dist]=r;});
-  h+='<div class="card"><h3>Meng Bestzäiten</h3>'+(Object.keys(best).map(function(k){return '<div class="li row"><div class="sp">'+esc(k)+'</div><b style="color:var(--sunt)">'+esc(best[k].time)+'</b></div>';}).join("")||'<div class="muted">Nach keng.</div>')+'</div>';
+  h+='<div class="card"><h3>Meng Beschtzäiten</h3>'+(Object.keys(best).map(function(k){return '<div class="li row"><div class="sp">'+esc(k)+'</div><b style="color:var(--sunt)">'+esc(best[k].time)+'</b></div>';}).join("")||'<div class="muted">Nach keng.</div>')+'</div>';
   h+='<div class="card"><h3>Meng Resultater</h3>'+mine.map(function(r){var c=coById(r.cid);return '<div class="li row" data-a="co" data-v="'+c.id+'" style="cursor:pointer"><div class="sp">'+esc(c.name)+'<div class="muted sm">'+longDate(c.date)+' · '+esc(r.dist)+' · Plaz '+esc(r.place)+'</div></div><b style="color:var(--sunt)">'+esc(r.time)+'</b></div>';}).join("")+'</div>';
   h+='<div class="card" style="border-style:dashed;text-align:center" ><div class="muted">⌚ Spéider: Daten-Import (Garmin/Coros)</div></div>';
   return h;}
-/* --- Wunschbox --- */
+/* --- Wonschbox --- */
 function vWb(){
   var l=S.wishes.slice().sort(function(a,b){return b.votes.length-a.votes.length;});
-  return '<div class="muted sm" style="margin-bottom:12px">Wat wëlls du an der App? Stëmm fir Wënsch vun aneren mat engem Daum.</div><button class="btn full" data-a="wadd" style="margin-bottom:14px">+ Wonsch androen</button>'+
+  return '<div class="muted sm" style="margin-bottom:12px">Wat wëlls du an der App? Stëmm fir Wënsch vun anere mat engem Daum.</div><button class="btn full" data-a="wadd" style="margin-bottom:14px">+ Wonsch androen</button>'+
    l.map(function(w){var on=w.votes.indexOf("me")>=0;return '<div class="card row"><button class="vote'+(on?" on":"")+'" data-a="vote" data-v="'+w.id+'"><span>👍</span><span>'+w.votes.length+'</span></button><div class="sp"><div style="font-weight:700">'+esc(w.title)+'</div><div class="muted sm">'+esc(w.text)+'</div><div class="muted sm" style="margin-top:4px">vun '+esc(w.by)+(w.status?' · <span class="badge b-y" style="padding:1px 8px;font-size:11px">'+w.status+'</span>':"")+'</div></div></div>';}).join("");}
 /* --- Freigabe --- */
 function vFg(){
   var l=S.res.filter(function(r){return S.share[r.id]&&S.share[r.id].opt;});
-  return '<div class="muted sm" style="margin-bottom:12px">Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.</div>'+(l.map(function(r){var c=coById(r.cid),sh=S.share[r.id];return '<div class="card"><div class="row"><div class="sp"><b>'+RUN[r.rid].name+'</b><div class="muted sm">'+esc(c.name)+' · '+esc(r.dist)+' · '+esc(r.time)+'</div></div><span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräigigi":"op Fräiginn")+'</span></div><div class="row" style="margin-top:10px;gap:8px"><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Virschau</button>'+(sh.approved?'<button class="btn sm ghost" data-a="unapprove" data-v="'+r.id+'">Zréckzéien</button>':'<button class="btn sm" data-a="approve" data-v="'+r.id+'">Fräiginn</button>')+'</div></div>';}).join("")||'<div class="empty">Nach näischt zur Fräiginn. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)</div>');}
+  return '<div class="muted sm" style="margin-bottom:12px">Nëmmen Resultater mat Opt-in „Dierf publizéiert ginn“ erschéngen hei.</div>'+(l.map(function(r){var c=coById(r.cid),sh=S.share[r.id];return '<div class="card"><div class="row"><div class="sp"><b>'+RUN[r.rid].name+'</b><div class="muted sm">'+esc(c.name)+' · '+esc(r.dist)+' · '+esc(r.time)+'</div></div><span class="badge '+(sh.approved?"b-g":"b-y")+'">'+(sh.approved?"fräiginn":"op Fräiginn")+'</span></div><div class="row" style="margin-top:10px;gap:8px"><button class="btn sm sec" data-a="shr" data-v="'+r.id+'">Virschau</button>'+(sh.approved?'<button class="btn sm ghost" data-a="unapprove" data-v="'+r.id+'">Zréckzéien</button>':'<button class="btn sm" data-a="approve" data-v="'+r.id+'">Fräiginn</button>')+'</div></div>';}).join("")||'<div class="empty">Nach näischt zur Fräiginn. (Als Athlet bei engem Resultat „Fir Social Media“ wielen.)</div>');}
 
 /* ===== Render ===== */
 function render(){
@@ -499,8 +499,8 @@ function render(){
     if(k==="tr"){title="Training";body=vTrDetail(top.id);}
     else if(k==="co"){title="Course";body=vCoDetail(top.id);}
     else if(k==="mb"){title="Mäi Beräich";body=vMb();}
-    else if(k==="an"){title="Meng Auswertung";body=vAn();}
-    else if(k==="wb"){title="Wunschbox";body=vWb();}
+    else if(k==="an"){title="Meng Auswäertung";body=vAn();}
+    else if(k==="wb"){title="Wonschbox";body=vWb();}
     else if(k==="fg"){title="Social-Media Fräiginn";body=vFg();}}
   else{body={cal:vCal,tr:vTr,co:vCo,pr:vProf}[S.tab]();}
   var hd;
@@ -546,7 +546,7 @@ var A={
  notif:function(){sheet('<h2>Notifikatiounen</h2>'+[["tr","Nei Trainingen"],["co","Nei Coursen"],["rem","Erënnerung virun Training"]].map(function(x){return '<label class="ck" style="padding:10px 0"><input type="checkbox" '+(S.notif[x[0]]?"checked":"")+' onchange="S.notif[\''+x[0]+'\']=this.checked;save()">'+x[1]+'</label>';}).join("")+'<button class="btn full" style="margin-top:12px" data-a="close">OK</button>');},
  close:function(){closeSheet();},
  lang:function(){var k=Object.keys(LANGS),i=(k.indexOf(S.lang)+1)%k.length;closeSheet();setLang(k[i]);window.__resetScroll=false;render();toast(LANGS[S.lang].name);},
- about:function(){sheet('<h2>Iwwer d\'App</h2><p>Hei wäerte mir spéider d\'Funktiounen vun der Sauerbeen App erklären.</p><p class="muted">Versioun 0.1 (Prototyp)<span class="fdot"></span></p><button class="btn full" data-a="close">OK</button>');},
+ about:function(){sheet('<h2>Iwwer d\'App</h2><p>Hei wäerte mir spéider d\'Funktioune vun der Sauerbeen App erklären.</p><p class="muted">Versioun 0.1 (Prototyp)<span class="fdot"></span></p><button class="btn full" data-a="close">OK</button>');},
  soon:function(v){toast(v+": am Prototyp net aktiv");},
  reset:function(){sheet('<h2>Ofmellen</h2><p class="muted">Am Prototyp gëtt et kee Login. Demo-Daten zrécksetzen?</p><button class="btn full" data-a="doreset">Daten zrécksetzen</button><button class="btn full sec" style="margin-top:8px" data-a="close">Ofbriechen</button>');},
  doreset:function(){S=fresh();setLang(S.lang);RUN[0].pace=S.pace;closeSheet();render();toast("Zréckgesat");},
@@ -572,11 +572,11 @@ var A={
  /* Teilen */
  shr:function(v){shareSheet(v);},
  shopt:function(v){var o=S.share[v]||{};o.opt=document.getElementById("opt").checked;if(!o.opt)o.approved=false;S.share[v]=o;shareSheet(v);render();},
- approve:function(v){S.share[v].approved=true;render();toast("Fräigigi");},unapprove:function(v){S.share[v].approved=false;render();},
+ approve:function(v){S.share[v].approved=true;render();toast("Fräiginn");},unapprove:function(v){S.share[v].approved=false;render();},
  mb:function(){go({t:"mb"});},wb:function(){go({t:"wb"});},fg:function(){go({t:"fg"});},
  vote:function(v){var w=S.wishes.find(function(x){return x.id===v;}),i=w.votes.indexOf("me");if(i>=0)w.votes.splice(i,1);else w.votes.push("me");render();},
- wadd:function(){sheet('<h2>Wonsch androen'+nei()+'</h2><label>Titel<input id="w-t" maxlength="60"></label><label>Beschreiwung<textarea id="w-x" rows="3" maxlength="200"></textarea></label><label class="ck" style="margin-top:14px"><input type="checkbox" id="w-a">Anonym (nëmmen d\'Comité kann de Verfasser gesinn)</label><button class="btn full" style="margin-top:14px" data-a="wsave">Absenden</button>');},
- wsave:function(){var t=val("w-t");if(!t){toast("Titel fehlt");return;}S.wishes.push({id:"w"+Date.now(),title:t,text:val("w-x"),by:document.getElementById("w-a").checked?"anonym":"Läufer A",votes:["me"],status:""});closeSheet();render();toast("Merci fir däi Wonsch!");},
+ wadd:function(){sheet('<h2>Wonsch androen'+nei()+'</h2><label>Titel<input id="w-t" maxlength="60"></label><label>Beschreiwung<textarea id="w-x" rows="3" maxlength="200"></textarea></label><label class="ck" style="margin-top:14px"><input type="checkbox" id="w-a">Anonym (nëmmen d\'Comité kann den Auteur gesinn)</label><button class="btn full" style="margin-top:14px" data-a="wsave">Ofschécken</button>');},
+ wsave:function(){var t=val("w-t");if(!t){toast("Titel feelt");return;}S.wishes.push({id:"w"+Date.now(),title:t,text:val("w-x"),by:document.getElementById("w-a").checked?"anonym":"Läufer A",votes:["me"],status:""});closeSheet();render();toast("Merci fir däi Wonsch!");},
  csv:function(){exportCsv();}
 };
 function coForm(c){var e=c||{name:"",date:"2026-12-20",time:"10:00",place:"",land:"LUX",deadline:"2026-12-15",info:""};
@@ -587,7 +587,7 @@ function presSheet(id){var t=trById(id),a=attOf(t),g=S.guests[id]||[];
   var cand=RUN.filter(function(r){return status(t,r.id)!=="nee"||a[r.id];});
   sheet('<h2>Präsenzlëscht'+nei()+'</h2><div class="muted sm">'+esc(t.title)+' · '+longDate(t.date)+'</div><div style="margin-top:8px">'+cand.map(function(r){return '<label class="pw"><input type="checkbox" '+(a[r.id]?"checked":"")+' data-a="ptog" data-v="'+id+'|'+r.id+'"><span class="sp">'+r.name+'</span><span class="muted sm">'+stBadge(status(t,r.id))+'</span></label>';}).join("")+g.map(function(n,i){return '<div class="pw"><span style="width:26px;color:var(--green)">✓</span><span class="sp">'+esc(n)+' <span class="badge b-n">Gaascht</span></span><button class="btn sm sec" data-a="gdel" data-v="'+id+'|'+i+'">×</button></div>';}).join("")+'</div><div class="row" style="margin-top:12px"><input id="gname" placeholder="Gaascht: Numm" style="margin:0"><button class="btn" data-a="gadd" data-v="'+id+'">+ Gaascht</button></div><button class="btn full sec" style="margin-top:14px" data-a="close">Fäerdeg ('+(Object.keys(a).filter(function(k){return a[k];}).length+g.length)+' do)</button>');}
 function shareSheet(rid){var r=S.res.find(function(x){return x.id===rid;}),c=coById(r.cid),sh=S.share[rid]||{};
-  sheet('<h2>Fir Social Media'+nei()+'</h2><div class="share"><img src="sauerbeen-schriftzug.png" alt=""><div class="k">'+esc(c.name)+'</div><div class="n">'+RUN[r.rid].name.replace(" (Du)","")+'</div><div class="t">'+esc(r.time)+'</div><div class="m">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div><div class="m" style="color:#cdd4f5">'+longDate(c.date)+' · '+esc(c.place)+'</div></div><div class="muted sm" style="text-align:center;margin:6px 0 10px">Virschau 1080 × 1350 (Instagram-Format)</div><label class="ck"><input type="checkbox" id="opt" '+(sh.opt?"checked":"")+' data-a="shopt" data-v="'+rid+'">Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.</label>'+(sh.opt?'<div class="sm" style="margin-top:10px;color:var(--sunt)">'+(sh.approved?"✓ Vum Comité fräigigi":"Waart op Fräiginn duerch d'Comité")+'</div>':"")+'<button class="btn full sec" style="margin-top:14px" data-a="close">Zoumaachen</button>');}
+  sheet('<h2>Fir Social Media'+nei()+'</h2><div class="share"><img src="sauerbeen-schriftzug.png" alt=""><div class="k">'+esc(c.name)+'</div><div class="n">'+RUN[r.rid].name.replace(" (Du)","")+'</div><div class="t">'+esc(r.time)+'</div><div class="m">'+esc(r.dist)+' · Plaz '+esc(r.place)+'</div><div class="m" style="color:#cdd4f5">'+longDate(c.date)+' · '+esc(c.place)+'</div></div><div class="muted sm" style="text-align:center;margin:6px 0 10px">Virschau 1080 × 1350 (Instagram-Format)</div><label class="ck"><input type="checkbox" id="opt" '+(sh.opt?"checked":"")+' data-a="shopt" data-v="'+rid+'">Dierf publizéiert ginn (Numm, Zäit). Jidderzäit widderruffbar.</label>'+(sh.opt?'<div class="sm" style="margin-top:10px;color:var(--sunt)">'+(sh.approved?"✓ Vum Comité fräiginn":"Waart op Fräiginn duerch d'Comité")+'</div>':"")+'<button class="btn full sec" style="margin-top:14px" data-a="close">Zoumaachen</button>');}
 function exportCsv(){
   var rows=[["Course","Datum","Uert","Land","Umeldungsschluss","Läufer","Distanz","Zäit","Plaz"]];
   S.courses.slice().sort(function(a,b){return a.date<b.date?-1:1;}).forEach(function(c){var rg=S.reg[c.id]||{},ks=Object.keys(rg);
