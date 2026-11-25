@@ -125,6 +125,13 @@ nav{background:var(--bg)}nav button.on{color:var(--accent)}nav button.on svg{str
 .sp3{display:flex;gap:8px}.sp3>div{flex:1;text-align:center;background:var(--soft);border-radius:14px;padding:10px 4px;cursor:pointer;border:1.5px solid transparent}
 .sp3 b{display:block;font:500 17px 'IBM Plex Mono',monospace;color:var(--accent)}.sp3 small{font-size:11px;color:var(--muted)}
 .pill{display:inline-block;font-size:11px;font-weight:700;color:var(--sunt);border:1px solid var(--sun);border-radius:10px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+
+.btn.sec{color:var(--accent)}
+label.fbb{display:block;font-size:12px;font-weight:700;color:var(--accent);margin-top:12px}label.fbb input,label.fbb select{border:1.5px solid var(--accent);background:var(--soft);color:var(--ink);font-weight:600}
+.fbg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.paper{background:#fff;color:#1c2b35;border-radius:6px;padding:14px;font-size:12px;box-shadow:0 2px 12px #0003;border-top:5px solid var(--accent)}
+.paper .ph{display:flex;justify-content:space-between;color:#5b7d8c;margin-bottom:6px}.paper h4{margin:4px 0 8px;font-size:14px}
+.paper table{width:100%;border-collapse:collapse}.paper td{padding:4px 2px;border-bottom:1px solid #e3e8ec;vertical-align:top}.paper td:first-child{color:#5b7d8c;width:40%}
 @media(prefers-color-scheme:dark){:root{--page:#0a1319;--bg:#0f1b22;--card:#17262e;--soft:#22343d;--soft2:#2b4552;--field:#13222a;--ink:#eef3f5;--muted:#93b3bf;--line:#26404b;--accent:#f0b563;--on-accent:#0f1b22;--sunt:#f0b563;--ok:#4ade80;--bad:#f87171;--cold:#60a5fa}
  .logo{background:#eef3f5}.card{box-shadow:none}.seg button.on.jo,.seg button.on.ne{color:#0f1b22}.vl{color:#0f1b22}}
 </style>
@@ -400,6 +407,35 @@ function vCoDetail(id){
   return h;}
 
 
+
+/* --- Feedback un den Trainer (PDF) --- */
+var FBD={run:[["Ø Pace","5:07","/km"],["Ø Häerzfrequenz","158","bpm"]],bike:[["Ø Leeschtung","186","W"],["Ø Häerzfrequenz","142","bpm"]],swim:[["Ø Pace","1:55","/100 m"],["Ø Häerzfrequenz","138","bpm"]]};
+var FBL={run:"Schong",bike:"Rad",swim:"Equipment"};
+var FBN=["Gel","Gedrénks","Rieder / Bar","Waasser","Näischt"],FBR=["Liicht","Gutt","Mettel","Haart","Ganz haart"],FBS=["Gutt","Mettel","Schlecht"],FBB=["Nee","Wuedelen","Knéi","Féiss","Réck","Aner"];
+function fbo(k){S.fb=S.fb||{};var f=S.fb[k]=S.fb[k]||{shoes:[],shoe:"",nutri:[],kh:"",rpe:0,sleep:"",pain:"",kom:"",v1:"",v2:"",sent:""};return f;}
+function fbSet(key,val){fbo(S.ansp||"run")[key]=val;save();}
+function fbChips(items,sel,act,multi){return '<div class="chips" style="margin:4px 0 8px">'+items.map(function(x,i){var on=multi?sel.indexOf(x)>=0:sel===(act==="fbr"?i+1:x);return '<button class="chip s'+(on?' on':'')+'" data-a="'+act+'" data-v="'+(act==="fbr"?i+1:x)+'">'+x+'</button>';}).join("")+'</div>';}
+function vFb(k,a){
+  var f=fbo(k),d=FBD[k],lab=FBL[k];
+  var h='<div class="card"><h3>Feedback un den Trainer'+nei()+'</h3><div class="muted sm" style="margin-bottom:10px">Déi <b style="color:var(--accent)">blo Felder</b> kommen aus der Auswertung (korrigéierbar). '+lab+' an Ernärung wielt een nëmmen eemol aus, dono si se virgeschloen.</div>';
+  h+='<div class="fbg"><label class="fbb">'+d[0][0]+' ('+d[0][2]+')<input value="'+esc(f.v1||d[0][1])+'" oninput="fbSet(\'v1\',this.value)"></label><label class="fbb">'+d[1][0]+' ('+d[1][2]+')<input value="'+esc(f.v2||d[1][1])+'" oninput="fbSet(\'v2\',this.value)"></label></div>';
+  if(!f.shoes.length||S.fbAdd){h+='<label class="fbb">'+lab+(f.shoes.length?' dobäisetzen':' (eemol aleeën)')+'<input id="fb-newshoe" placeholder="z.B. Triumph 24 „Vinte e quatro“"></label><button class="btn sm" style="margin-top:8px" data-a="fbshoeadd">Späicheren</button>';}
+  else h+='<label class="fbb">'+lab+'<select onchange="fbSet(\'shoe\',this.value)">'+f.shoes.map(function(x){return '<option'+(x===f.shoe?' selected':'')+'>'+esc(x)+'</option>';}).join("")+'</select></label><a class="sm" style="color:var(--accent);font-weight:700;cursor:pointer;display:inline-block;margin-top:6px" data-a="fbshoenew">+ '+lab+' dobäisetzen</a>';
+  h+='<label class="fbb" style="margin-top:12px">Nutrition</label>'+fbChips(FBN,f.nutri,"fbn",true)+'<label class="fbb">Kuelenhydrater pro Stonn (g, optional)<input inputmode="numeric" value="'+esc(f.kh)+'" oninput="fbSet(\'kh\',this.value)"></label>';
+  h+='<label>Wéi haart war et?</label>'+fbChips(FBR,f.rpe,"fbr")+'<label>Schlof / Mëdegkeet</label>'+fbChips(FBS,f.sleep,"fbs")+'<label>Beschwerden</label>'+fbChips(FBB,f.pain,"fbp");
+  h+='<label>Kommentar fir den Trainer<textarea rows="3" maxlength="400" placeholder="Wéi huet et sech ugefillt? Besonnesches?" oninput="fbSet(\'kom\',this.value)">'+esc(f.kom)+'</textarea></label>';
+  h+='<div class="row" style="margin-top:14px;gap:8px"><button class="btn sec sp" data-a="fbpdf">PDF-Virschau</button><button class="btn sp" data-a="fbsend">PDF un den Trainer</button></div>'+(f.sent?'<div class="muted sm" style="margin-top:8px">✓ Lescht geschéckt: '+longDate(f.sent)+'</div>':'')+'</div>';
+  return h;
+}
+function fbPaper(k,a){
+  var f=fbo(k),d=FBD[k],row=function(l,v){return '<tr><td>'+l+'</td><td><b>'+(v||"–")+'</b></td></tr>';};
+  return '<h2>PDF-Virschau</h2><div class="paper"><div class="ph"><b>SauerBeen · Feedback</b><span>'+longDate(TODAY)+'</span></div><h4>'+a.name+' · '+a.titel+'</h4><table>'
+   +a.kp.slice(0,2).map(function(x){return row(x[0],x[1]+" "+x[2]);}).join("")
+   +row(d[0][0],(f.v1||d[0][1])+" "+d[0][2])+row(d[1][0],(f.v2||d[1][1])+" "+d[1][2])
+   +row(FBL[k],f.shoe)+row("Nutrition",f.nutri.join(", ")+(f.kh?" · "+f.kh+" g/h":""))+row("Belaaschtung",f.rpe?FBR[f.rpe-1]:"")+row("Schlof",f.sleep)+row("Beschwerden",f.pain)+row("Kommentar",esc(f.kom))
+   +'</table></div><div class="muted sm" style="margin:8px 0">Empfänger: Trainer (a Kopie fir dech). Beispill.</div><button class="btn full" data-a="fbsend">Elo schécken</button>';
+}
+
 /* --- Meng Auswertung (Design B): Beispill-Daten, spéider aus FIT-Import --- */
 var AN={
  run:{name:"Lafen",titel:"Schwell · Mëttwoch 25. Nov.",kp:[["Distanz","10,2","km"],["Zäit","52:14",""],["Ø Pace","5:07","/km"],["Ø Häerzfrequenz","158","bpm"]],
@@ -425,7 +461,8 @@ function vAn(){
   h+='<div class="card"><h3>'+a.zonTitel+'</h3><div class="zone">'+a.zonen.map(function(z,i){return '<i style="width:'+(z/tot*100)+'%;background:'+ZC[i]+'"></i>';}).join("")+'</div><div class="zl">'+a.zonen.map(function(z,i){return '<span>Z'+(i+1)+' '+z+'%</span>';}).join("")+'</div></div>';
   h+='<div class="card"><h3>Méi Detailer</h3>'+a.extra.map(function(e){return '<div class="li row"><div class="sp">'+e[0]+'</div><b class="mono" style="font-size:13px;text-align:right">'+e[1]+'</b></div>';}).join("")+'</div>';
   h+='<div class="card" style="border-style:dashed;text-align:center"><div class="muted sm" style="margin-bottom:10px">Beispill-Daten. Mat dem Import kënnt dës Auswertung automatesch aus denger Garmin-/Coros-/FIT-Datei.</div><button class="btn sec full" data-a="soon" data-v="FIT-Datei eropluedden">FIT-Datei eropluedden</button></div>';
-  h+='<div class="muted sm" style="text-align:center;margin:4px 0 8px">Nëmmen du gesäis dës Zuelen.</div>';
+  h+=vFb(k,a);
+  h+='<div class="muted sm" style="text-align:center;margin:4px 0 8px">Nëmmen du an däin Trainer gesinn dës Zuelen.</div>';
   return h;
 }
 
@@ -492,6 +529,14 @@ var A={
  tr:function(v){window.__resetScroll=true;go({t:"tr",id:v});},co:function(v){window.__resetScroll=true;go({t:"co",id:v});},
  an:function(){window.__resetScroll=true;go({t:"an"});},
  ansp:function(v){S.ansp=v;render();},
+ fbn:function(v){var f=fbo(S.ansp||"run"),i=f.nutri.indexOf(v);if(i<0)f.nutri.push(v);else f.nutri.splice(i,1);save();render();},
+ fbr:function(v){fbo(S.ansp||"run").rpe=+v;save();render();},
+ fbs:function(v){var f=fbo(S.ansp||"run");f.sleep=f.sleep===v?"":v;save();render();},
+ fbp:function(v){var f=fbo(S.ansp||"run");f.pain=f.pain===v?"":v;save();render();},
+ fbshoenew:function(){S.fbAdd=true;render();},
+ fbshoeadd:function(){var f=fbo(S.ansp||"run"),el=document.getElementById("fb-newshoe"),n=el?el.value.trim():"";if(!n){toast("Numm aginn");return;}f.shoes.push(n);f.shoe=n;S.fbAdd=false;save();render();toast("Gespäichert");},
+ fbpdf:function(){var k=S.ansp||"run";sheet(fbPaper(k,AN[k]));},
+ fbsend:function(){var f=fbo(S.ansp||"run");f.sent=TODAY;save();closeSheet();render();toast("PDF un den Trainer geschéckt (Demo)");},
  role:function(v){S.role=v;render();toast("Roll: "+v);},
  rs:function(v){var id=S.stack[S.stack.length-1].id,o=S.rs[id]||{note:""};o.s=v;S.rs[id]=o;render();toast("Umeldung: "+{jo:"Jo",villaicht:"Villäicht",nee:"Nee"}[v]);},
  note:function(){var id=S.stack[S.stack.length-1].id,o=S.rs[id]||{s:status(trById(id),0)};o.note=val("note").slice(0,50);S.rs[id]=o;render();toast("Notiz gespäichert");},
