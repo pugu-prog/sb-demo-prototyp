@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>SauerBeen App – Prototyp C (Club)</title>
 <style>
-:root{--page:#e7eaf6;--bg:#fdfdff;--card:#ffffff;--soft:#e6e9f6;--soft2:#ccd3ee;--field:#f4f5fc;--ink:#00244e;--muted:#5a6595;--line:#dde1f1;--accent:#293d96;--on-accent:#ffffff;--sun:#ffed00;--sunt:#7a6b00;--ok:#15803d;--bad:#ef2853;--cold:#293d96;--navy:var(--soft);--navy2:var(--bg);--yellow:var(--sun);--pink:var(--accent);--violet:var(--cold);--green:var(--ok)}
+:root{--page:#e7eaf6;--bg:#fdfdff;--card:#ffffff;--soft:#e6e9f6;--soft2:#ccd3ee;--field:#f4f5fc;--ink:#00244e;--muted:#5a6595;--line:#dde1f1;--accent:#293d96;--on-accent:#ffffff;--sun:#ffed00;--sunt:#7a6b00;--ok:#15803d;--bad:#ef0044;--grad:linear-gradient(135deg,#ef0044 0%,#b0105f 32%,#5a2a95 66%,#1b2f9e 100%);--cold:#293d96;--navy:var(--soft);--navy2:var(--bg);--yellow:var(--sun);--pink:var(--accent);--violet:var(--cold);--green:var(--ok)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;background:var(--page);font-family:Archivo,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink)}
 #app{position:relative;margin:0 auto;max-width:430px;height:100dvh;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
@@ -79,7 +79,7 @@ label.ck input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--pink
 .sheet h2{margin:0 0 6px}
 .toast{position:absolute;z-index:20;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-weight:700;padding:10px 16px;border-radius:30px;font-size:14px;box-shadow:0 6px 20px #0006;max-width:90%;text-align:center}
 .share{aspect-ratio:4/5;border-radius:16px;background:linear-gradient(160deg,#293d96,#00244e 70%);position:relative;overflow:hidden;padding:7% 8%;display:flex;flex-direction:column;container-type:inline-size}
-.share:before{content:"";position:absolute;width:90%;height:30%;background:#ef2853;opacity:.85;border-radius:200px;right:-35%;bottom:12%;transform:rotate(-24deg)}
+.share:before{content:"";position:absolute;width:90%;height:30%;background:linear-gradient(135deg,#ef0044,#5a2a95);opacity:.9;border-radius:200px;right:-35%;bottom:12%;transform:rotate(-24deg)}
 .share:after{content:"";position:absolute;width:80%;height:22%;background:#ffed00;opacity:.95;border-radius:200px;left:-30%;bottom:-2%;transform:rotate(-24deg)}
 .share>*{position:relative;z-index:1}
 .share img{height:9cqw;align-self:flex-start}
@@ -125,13 +125,13 @@ nav{background:var(--bg)}nav button.on{color:var(--accent)}nav button.on svg{str
 .sp3{display:flex;gap:8px}.sp3>div{flex:1;text-align:center;background:var(--soft);border-radius:14px;padding:10px 4px;cursor:pointer;border:1.5px solid transparent}
 .sp3 b{display:block;font:500 17px 'IBM Plex Mono',monospace;color:var(--accent)}.sp3 small{font-size:11px;color:var(--muted)}
 .pill{display:inline-block;font-size:11px;font-weight:700;color:var(--sunt);border:1px solid var(--sun);border-radius:10px;padding:1px 7px;margin-left:6px;vertical-align:middle}
-@media(prefers-color-scheme:dark){:root{--page:#070c24;--bg:#0b1230;--card:#141d4a;--soft:#1d2860;--soft2:#2b3a86;--field:#101842;--ink:#f2f4ff;--muted:#9aa5d8;--line:#2b3a86;--accent:#ffed00;--on-accent:#00244e;--sunt:#ffed00;--ok:#4ade80;--bad:#ff5c7c;--cold:#8ea2ff}
+@media(prefers-color-scheme:dark){:root{--page:#070c24;--bg:#0b1230;--card:#141d4a;--soft:#1d2860;--soft2:#2b3a86;--field:#101842;--ink:#f2f4ff;--muted:#9aa5d8;--line:#2b3a86;--accent:#ffed00;--on-accent:#00244e;--sunt:#ffed00;--ok:#4ade80;--bad:#ff5c7c;--cold:#8ea2ff;--grad:linear-gradient(135deg,#ef0044 0%,#b0105f 32%,#5a2a95 66%,#3d52c8 100%)}
 .card{box-shadow:none}.seg button.on.jo,.seg button.on.ne{color:#00244e}.vl{color:#00244e}}
 
 /* Design C: Dashboard */
 .hero{position:relative;overflow:hidden;border-radius:24px;padding:18px 18px 16px;margin-bottom:14px;color:#fff;background:linear-gradient(140deg,#293d96 0%,#00244e 85%)}
 .hero:before{content:"";position:absolute;width:260px;height:120px;background:#ffed00;opacity:.95;border-radius:200px;right:-130px;top:-62px;transform:rotate(-24deg)}
-.hero:after{content:"";position:absolute;width:200px;height:80px;background:#ef2853;opacity:.9;border-radius:200px;right:-60px;top:52px;transform:rotate(-24deg)}
+.hero:after{content:"";position:absolute;width:200px;height:80px;background:linear-gradient(90deg,#ef0044,#7a1a7a);opacity:.95;border-radius:200px;right:-60px;top:52px;transform:rotate(-24deg)}
 .hero>*{position:relative;z-index:1}
 .hero .hk{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#ffed00}
 .hero .hg{font-size:15px;opacity:.85;margin-top:2px}
@@ -143,7 +143,7 @@ nav{background:var(--bg)}nav button.on{color:var(--accent)}nav button.on svg{str
 .hero .dseg button{background:#ffffff1f;border:1.5px solid #ffffff55;color:#fff;font-size:14px;padding:10px 4px}
 .hero .dseg button.on.jo{background:#4ade80;border-color:#4ade80;color:#00244e}
 .hero .dseg button.on.vl{background:#ffed00;border-color:#ffed00;color:#00244e}
-.hero .dseg button.on.ne{background:#ef2853;border-color:#ef2853;color:#fff}
+.hero .dseg button.on.ne{background:#ef0044;border-color:#ef0044;color:#fff}
 .week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
 .week>div{text-align:center;border-radius:14px;padding:8px 0 6px;background:var(--soft);font-size:12px;color:var(--muted);font-weight:600}
 .week b{display:block;font-size:17px;color:var(--ink);margin-top:2px}
@@ -154,8 +154,9 @@ nav{background:var(--bg)}nav button.on{color:var(--accent)}nav button.on svg{str
 .mini b{display:block;font:500 18px 'IBM Plex Mono',monospace;color:var(--accent)}
 .mini small{font-size:11px;color:var(--muted)}
 .race{display:flex;align-items:center;gap:12px}
-.race .rd{background:var(--accent);color:var(--on-accent);border-radius:14px;width:60px;padding:8px 0;text-align:center;flex:none}
+.race .rd{background:var(--grad);color:#fff;border-radius:14px;width:60px;padding:8px 0;text-align:center;flex:none}
 .race .rd small{display:block;font-size:11px;text-transform:uppercase}.race .rd b{font-size:24px;line-height:1.1;display:block}
+.date{background:var(--grad)!important;color:#fff!important}.bar{background:var(--grad)!important}.brow .t i{background:var(--grad)}.brow .t i.s{background:var(--sun)}
 .sec-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 10px}
 .sec-h a{font-size:13px;font-weight:700;color:var(--accent);cursor:pointer}
 </style>
@@ -331,7 +332,7 @@ function hash(s,n){var h=n*31+7;for(var i=0;i<s.length;i++)h=(h*33+s.charCodeAt(
 function noteOf(t,rid){if(rid===0)return(S.rs[t.id]||{}).note||"";return hash(t.id,rid)%9===0&&NOTES[rid]?NOTES[rid]:"";}
 function attOf(t){if(!S.att[t.id]){var a={};RUN.forEach(function(r){if(status(t,r.id)==="jo"&&(hash("a"+t.id,r.id)%10)>0)a[r.id]=true;});S.att[t.id]=a;}return S.att[t.id];}
 function lvlCls(l){return l==="Liicht"?"g":l==="Mettel"?"y":"r";}
-function lvlDot(l){return l==="Liicht"?"#15803d":l==="Mettel"?"#e8a33f":"#ef2853";}
+function lvlDot(l){return l==="Liicht"?"#15803d":l==="Mettel"?"#e8a33f":"#ef0044";}
 function stBadge(s){var m={jo:["Jo","b-g"],villaicht:["Villäicht","b-y"],nee:["Nee","b-r"]}[s];return '<span class="badge '+m[1]+'">'+m[0]+'</span>';}
 function nei(){return '<span class="nei">NEI</span>';}
 function toSec(t){var p=t.replace(/'/g,":").split(":").map(Number);if(p.some(isNaN))return 1e9;return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];}
@@ -482,7 +483,7 @@ var AN={
   bars:[["100 m","1:58",88],["200 m","1:56",92],["300 m","1:55",94],["400 m","1:57",90],["500 m","1:54",96],["…","",0],["1,7 km","1:55",94],["1,8 km","1:52",98],["1,9 km","1:50",100],["2,0 km","1:49",100]],barTitel:"Pace pro 100 m",
   zonen:[10,30,40,16,4],zonTitel:"Zäit an den Intensitéitszonen",extra:[["Zich-Rate","Ø 29 Zich/min"],["Zich pro Bunn (25 m)","Ø 17"],["Technik","Brust 60 % · Crawl 40 %"]]}
 };
-var ZC=["#9ac5d8","#5aa3c4","#e8a33f","#d9731b","#ef2853"];
+var ZC=["#9ac5d8","#5aa3c4","#e8a33f","#d9731b","#ef0044"];
 function anSport(){return AN[S.ansp||"run"];}
 function vAn(){
   var k=S.ansp||"run",a=AN[k];
@@ -539,7 +540,7 @@ function render(){
   var hd;
   if(top)hd='<header><button class="back" data-a="back">←</button><div class="ttl sp" style="text-align:center;margin-right:34px">'+title+'</div></header>';
   else{var right="";
-    if(S.tab==="cal")right='<div class="leg"><i style="background:#15803d"></i><i style="background:#e8a33f"></i><i style="background:#ef2853"></i>Training <i style="background:#293d96;margin-left:6px"></i>Coursen</div>';
+    if(S.tab==="cal")right='<div class="leg"><i style="background:#15803d"></i><i style="background:#e8a33f"></i><i style="background:#ef0044"></i>Training <i style="background:#293d96;margin-left:6px"></i>Coursen</div>';
     if(S.tab==="co")right='<button class="btn" data-a="coadd" style="padding:9px 16px">+ Course</button>';
     if(S.tab==="pr")hd='<header><div class="ttl sp" style="font-size:30px">Profil</div>'+langBtn+'</header>';
     hd=hd||'<header><span class="logo" role="img" aria-label="SauerBeen"></span><span class="sp"></span>'+right+langBtn+'</header>';}
