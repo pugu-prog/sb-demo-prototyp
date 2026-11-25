@@ -441,7 +441,7 @@ function vCoDetail(id){
 /* --- Feedback un den Trainer (PDF) --- */
 var FBD={run:[["Ø Pace","5:07","/km"],["Ø Häerzfrequenz","158","bpm"]],bike:[["Ø Leeschtung","186","W"],["Ø Häerzfrequenz","142","bpm"]],swim:[["Ø Pace","1:55","/100 m"],["Ø Häerzfrequenz","138","bpm"]]};
 var FBL={run:"Schong",bike:"Rad",swim:"Equipment"};
-var FBN=["Gel","Gedrénks","Rieder / Bar","Waasser","Näischt"],FBR=["Liicht","Gutt","Mettel","Haart","Ganz haart"],FBS=["Gutt","Mettel","Schlecht"],FBB=["Nee","Wuedelen","Knéi","Féiss","Réck","Aner"];
+var FBN=["Gel","Gedrénks","Riegel / Bar","Waasser","Näischt"],FBR=["Liicht","Gutt","Mettel","Haart","Ganz haart"],FBS=["Gutt","Mettel","Schlecht"],FBB=["Nee","Wuedelen","Knéi","Féiss","Réck","Aner"];
 function fbo(k){S.fb=S.fb||{};var f=S.fb[k]=S.fb[k]||{shoes:[],shoe:"",nutri:[],kh:"",rpe:0,sleep:"",pain:"",kom:"",v1:"",v2:"",sent:""};return f;}
 function fbSet(key,val){fbo(S.ansp||"run")[key]=val;save();}
 function fbChips(items,sel,act,multi){return '<div class="chips" style="margin:4px 0 8px">'+items.map(function(x,i){var on=multi?sel.indexOf(x)>=0:sel===(act==="fbr"?i+1:x);return '<button class="chip s'+(on?' on':'')+'" data-a="'+act+'" data-v="'+(act==="fbr"?i+1:x)+'">'+x+'</button>';}).join("")+'</div>';}
