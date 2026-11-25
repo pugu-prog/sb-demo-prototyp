@@ -463,7 +463,7 @@ function fbPaper(k,a){
    +a.kp.slice(0,2).map(function(x){return row(x[0],x[1]+" "+x[2]);}).join("")
    +row(d[0][0],(f.v1||d[0][1])+" "+d[0][2])+row(d[1][0],(f.v2||d[1][1])+" "+d[1][2])
    +row(FBL[k],f.shoe)+row("Nutritioun",f.nutri.join(", ")+(f.kh?" · "+f.kh+" g/h":""))+row("Belaaschtung",f.rpe?FBR[f.rpe-1]:"")+row("Schlof",f.sleep)+row("Péng",f.pain)+row("Kommentar",esc(f.kom))
-   +'</table></div><div class="muted sm" style="margin:8px 0">Empfänger: Trainer (a Kopie fir dech). Beispill.</div><button class="btn full" data-a="fbsend">Elo schécken</button>';
+   +'</table><div class="fsun" style="margin:12px 0 0"><span class="fdot" style="width:8px;height:8px;box-shadow:none"></span></div></div><div class="muted sm" style="margin:8px 0">Empfänger: Trainer (a Kopie fir dech). Beispill.</div><button class="btn full" data-a="fbsend">Elo schécken</button>';
 }
 
 
@@ -502,6 +502,7 @@ function vDash(){
   h+='<div class="card" data-a="an" style="cursor:pointer"><div class="sec-h"><h3 style="margin:0">Meng Woch a Zuelen'+nei()+'</h3><a>Auswäertung ›</a></div>'
    +'<div class="mini"><div><b>'+AN.run.wk+'</b><small>Lafen</small></div><div><b>'+AN.bike.wk+'</b><small>Vëlo</small></div><div><b>'+AN.swim.wk+'</b><small>Schwammen</small></div></div>'
    +'<div class="row" style="margin-top:12px"><div style="font:500 30px \'IBM Plex Mono\',monospace;color:var(--accent)">'+att.length+'</div><div class="muted sm">Trainings am Joer '+S.year+'<br>Lescht Aktivitéit: '+AN.run.titel+'</div></div></div>';
+  h+='<div class="fsun" style="margin:8px 0 0"><span class="fdot"></span></div>';
   return h;
 }
 
